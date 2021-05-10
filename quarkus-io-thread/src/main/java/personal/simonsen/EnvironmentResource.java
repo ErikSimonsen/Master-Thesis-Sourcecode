@@ -1,33 +1,19 @@
-package org.acme;
+package personal.simonsen;
 
-import javax.validation.constraints.NotBlank;
+import io.smallrye.mutiny.Uni;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
 
-@Path("/")
-public class MessageResource {
-
-    private MessageService messageService;
-
-    public MessageResource(MessageService messageService) {
-        this.messageService = messageService;
-    }
+@Path("/environment")
+public class EnvironmentResource {
 
     @GET
-    @Path("/hello/{name}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String hello(@NotBlank @PathParam("name") String name) {
-        return messageService.sayHello(name);
-    }
-
-    @GET
-    @Path("/environment")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String env() {
+    public Uni<String> env() {
         StringBuilder stringBuilder = new StringBuilder();
 
         ProcessHandle processHandle = ProcessHandle.current();
@@ -39,12 +25,11 @@ public class MessageResource {
         stringBuilder.append("\n");
 
         stringBuilder.append("thread-name: ").append(Thread.currentThread().getName()).append("\n");
-        stringBuilder.append("\n\n");
-        stringBuilder.append("stack trace: ").append("\n\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("stack trace: ").append("\n");
 
         Arrays.stream(Thread.currentThread().getStackTrace()).forEach(ste -> stringBuilder.append(ste.toString()).append("\n"));
 
-        return stringBuilder.toString();
-
+        return Uni.createFrom().item(stringBuilder.toString());
     }
 }
