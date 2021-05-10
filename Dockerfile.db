@@ -1,0 +1,6 @@
+FROM postgres:alpine
+COPY fruits.sql /docker-entrypoint-initdb.d
+ENV POSTGRES_USER=quarkus
+ENV POSTGRES_PASSWORD=quarkus
+ENV POSTGRES_DB=quarkus
+EXPOSE 5432
