@@ -27,7 +27,7 @@ scripts:
     - sh: sdk use java ${{JAVA_VERSION}}
     - sh: java --version
     - sh: cd ${{SERVER_FILE_PATH}}
-    - sh: git -c http.sslVerify=false clone ${{TEST_REPO_URL}}
+    - sh: git -c http.sslVerify=false clone --branch dynamic_resources ${{TEST_REPO_URL}}
     - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
     - sh: git checkout ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
@@ -140,16 +140,15 @@ states:
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
       ,   targetJar: 'quarkus-io-thread-runner.jar'
-      ,   runRates: [ 20000, 30000, 40000, 45000, 47000, 48000, 50000, 60000, 80000, 100000, 120000, 122000, 124000, 126000 ]
+      ,   runRates: [ 20000, 30000, 40000 ]
     }, {
         name: 'quarkus-worker-pool'
       , buildCmd: './mvnw clean package -DskipTests'
       , dockerfile: src/main/docker/Dockerfile.jvm
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
-      , javaOptions: ' '
       , targetJar: 'quarkus-worker-pool-runner.jar'
-      , runRates: [ 10000, 20000, 30000, 40000, 42000, 44000, 46000, 48000 ]
+      , runRates: [ 20000, 30000, 40000 ]
     }
   ]
 
