@@ -12,7 +12,7 @@ const proc = spawn("java", ["-jar", args[0]]);
 
 const startTime = new Date().getTime();
 const intervalHandle = setInterval(() => {
-  request("http://localhost:8080/hello/John", (error, response, body) => {
+  request("http://localhost:8080/greeting/John", (error, response, body) => {
       if (!error && response && response.statusCode === 200 && body) {
           const time = new Date().getTime() - startTime;
           console.log(time + " ms");

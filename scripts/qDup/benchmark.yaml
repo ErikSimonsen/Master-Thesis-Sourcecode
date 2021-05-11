@@ -21,17 +21,16 @@ scripts:
     - sh: if [ -d ${{CLIENT_FILE_PATH}} ]; then rm -Rf ${{CLIENT_FILE_PATH}}; fi
     - sh: mkdir -p ${{CLIENT_FILE_PATH}}/output
 
-
-
   build-applications:
     - sh: sdk use java ${{JAVA_VERSION}}
     - sh: java --version
     - sh: cd ${{SERVER_FILE_PATH}}
-    - sh: git -c http.sslVerify=false clone --branch dynamic_resources ${{TEST_REPO_URL}}
+    - sh: git -c http.sslVerify=false clone ${{TEST_REPO_URL}}
     - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
-    - sh: git checkout ${{TEST_REPO_BRANCH}}
+    - sh: git switch ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
     - sh: npm install request
+    - sh: docker build -f ./Dockerfile.db -t postgres-db .
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}/${{RUNTIME.name}}
@@ -45,7 +44,11 @@ scripts:
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out
         - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time.js ${{RUNTIME.name}}/target/${{RUNTIME.targetJar}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
         - queue-download: ${{SERVER_FILE_PATH}}/output/*
-
+        
+  start-database:
+    - sh: docker stop quarkus-db
+    - sh: docker run --rm -d --network=host --name=quarkus-db postgres-db
+    
   start-applications:
     - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
     - for-each: RUNTIME ${{RUNTIMES}}
@@ -72,11 +75,11 @@ scripts:
         - for-each: RUN_RATE ${{RUNTIME.runRates}}
           then:
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-START
-            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} ${{TEST_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP.wrk2.out
+            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} ${{TEST_DYNAMIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP.wrk2.out
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-END
             - sh: sleep 5s
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START
-            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} --latency ${{TEST_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE.wrk2.out
+            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} --latency ${{TEST_DYNAMIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE.wrk2.out
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END
         - signal: ${{RUNTIME.name}}-DONE
     - queue-download: ${{CLIENT_FILE_PATH}}/output/*
@@ -116,6 +119,7 @@ roles:
       - clear-server-dirs
       - build-applications
     run-scripts:
+      - start-database
       - start-applications
       - capture-platform-stats
 
@@ -123,7 +127,7 @@ states:
 
   TEST_REPO_URL: https://github.com/ErikSimonsen/quarkus-iothread-workerpool
   TEST_REPO_DIR: quarkus-iothread-workerpool
-  TEST_REPO_BRANCH: master
+  TEST_REPO_BRANCH: dynamic_resources
   SERVER_FILE_PATH: /tmp/quarkus-test/server
   CLIENT_FILE_PATH: /tmp/quarkus-test/client
 
@@ -140,7 +144,7 @@ states:
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
       ,   targetJar: 'quarkus-io-thread-runner.jar'
-      ,   runRates: [ 20000, 30000, 40000 ]
+      ,   runRates: [ 30000, 40000 ]
     }, {
         name: 'quarkus-worker-pool'
       , buildCmd: './mvnw clean package -DskipTests'
@@ -148,12 +152,12 @@ states:
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
       , targetJar: 'quarkus-worker-pool-runner.jar'
-      , runRates: [ 20000, 30000, 40000 ]
+      , runRates: [ 30000, 40000 ]
     }
   ]
 
-
-  TEST_ENDPOINT: http://erik-pc.local:8080/hello/Bob
+  TEST_STATIC_ENDPOINT: http://erik-pc.local:8080/greeting/Bob
+  TEST_DYNAMIC_ENDPOINT: http://erik-pc.local:8080/fruits/1
   ENVIRONMENT_URL: http://erik-pc.local:8080/environment
 
   JAVA_VERSION: '11.0.11-open'
