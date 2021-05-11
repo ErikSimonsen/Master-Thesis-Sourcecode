@@ -64,6 +64,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>quarkus-worker-pool</finalName>
         <plugins>
             <plugin>
                 <groupId>io.quarkus</groupId>
