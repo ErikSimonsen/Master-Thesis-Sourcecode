@@ -30,15 +30,14 @@ scripts:
     - sh: git switch ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
     - sh: npm install request
-    - sh: docker build -f ./Dockerfile.db -t postgres-db .
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}/${{RUNTIME.name}}
         - sh: eval ${{RUNTIME.testCmd}} > /dev/null #First build *might* download all artifacts - discard
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval ${{RUNTIME.testCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out; done
+        - sh: eval ${{RUNTIME.testCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval ${{RUNTIME.buildCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out; done
+        - sh: eval ${{RUNTIME.buildCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out
         - sh: docker build -f ${{RUNTIME.dockerfile}} -t ${{RUNTIME.dockerImageName}} .
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out
@@ -129,7 +128,7 @@ states:
   TEST_ITERATIONS: 5
 
   DOCKER_APP_CPUS: 4
-  DOCKER_APP_MEM: 256m
+  DOCKER_APP_MEM: 1024m
 
   RUNTIMES: [
     {

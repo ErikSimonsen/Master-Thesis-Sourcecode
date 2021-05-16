@@ -1,4 +1,4 @@
-name: Quarkus Event Loop vs Worker Pool
+name: JVM Static Resources Quarkus Event Loop vs Worker Pool
 scripts:
 
   define-signals:
@@ -30,31 +30,26 @@ scripts:
     - sh: git switch ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
     - sh: npm install request
-    - sh: docker build -f ./Dockerfile.db -t postgres-db .
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}/${{RUNTIME.name}}
         - sh: eval ${{RUNTIME.testCmd}} > /dev/null #First build *might* download all artifacts - discard
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval ${{RUNTIME.testCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out; done
+        - sh: eval ${{RUNTIME.testCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval ${{RUNTIME.buildCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out; done
+        - sh: eval ${{RUNTIME.buildCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out
         - sh: docker build -f ${{RUNTIME.dockerfile}} -t ${{RUNTIME.dockerImageName}} .
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out
         - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time.js ${{RUNTIME.name}}/target/${{RUNTIME.targetJar}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
         - queue-download: ${{SERVER_FILE_PATH}}/output/*
-        
-  start-database:
-    - sh: docker stop quarkus-db
-    - sh: docker run --rm -d --network=host --name=quarkus-db postgres-db
     
-  start-applications:
+  start-applications: 
     - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - sh: docker stop ${{RUNTIME.name}} #Force a stop, in case we have a container running with same name
-        - sh: docker run --rm -d --network=host --cpus=${{DOCKER_CPUS}} --memory=${{DOCKER_MEM}} --name=${{RUNTIME.name}} ${{RUNTIME.dockerImageName}}:latest
+        - sh: docker run --rm -d --network=host --cpus=${{DOCKER_APP_CPUS}} --memory=${{DOCKER_APP_MEM}} --name=${{RUNTIME.name}} ${{RUNTIME.dockerImageName}}:latest
         - sh: sleep 5s
         - sh: ps -AF | grep ${{RUNTIME.targetJar}} | grep -v grep | awk '{print $2}'
           then:
@@ -75,11 +70,11 @@ scripts:
         - for-each: RUN_RATE ${{RUNTIME.runRates}}
           then:
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-START
-            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} ${{TEST_DYNAMIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP.wrk2.out
+            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} ${{TEST_STATIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP.wrk2.out
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-END
             - sh: sleep 5s
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START
-            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} --latency ${{TEST_DYNAMIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE.wrk2.out
+            - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} --latency ${{TEST_STATIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE.wrk2.out
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END
         - signal: ${{RUNTIME.name}}-DONE
     - queue-download: ${{CLIENT_FILE_PATH}}/output/*
@@ -119,7 +114,6 @@ roles:
       - clear-server-dirs
       - build-applications
     run-scripts:
-      - start-database
       - start-applications
       - capture-platform-stats
 
@@ -127,37 +121,36 @@ states:
 
   TEST_REPO_URL: https://github.com/ErikSimonsen/quarkus-iothread-workerpool
   TEST_REPO_DIR: quarkus-iothread-workerpool
-  TEST_REPO_BRANCH: dynamic_resources
+  TEST_REPO_BRANCH: master
   SERVER_FILE_PATH: /tmp/quarkus-test/server
   CLIENT_FILE_PATH: /tmp/quarkus-test/client
 
   TEST_ITERATIONS: 5
 
-  DOCKER_CPUS: 4
-  DOCKER_MEM: 256m
+  DOCKER_APP_CPUS: 4
+  DOCKER_APP_MEM: 1024m
 
   RUNTIMES: [
     {
           name: 'quarkus-io-thread'
-      ,   buildCmd: './mvnw clean package -DskipTests'
-      ,   dockerfile: src/main/docker/Dockerfile.jvm
+      ,   buildCmd: './mvnw clean package -DskipTests -Pnative -Dquarkus.native.container-build=true'
+      ,   dockerfile: src/main/docker/Dockerfile.native
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
       ,   targetJar: 'quarkus-io-thread-runner.jar'
-      ,   runRates: [ 30000, 40000 ]
+      ,   runRates: [20000, 30000, 40000, 45000, 47000, 48000, 50000, 60000, 80000, 100000, 120000, 122000, 124000, 126000]
     }, {
         name: 'quarkus-worker-pool'
-      , buildCmd: './mvnw clean package -DskipTests'
-      , dockerfile: src/main/docker/Dockerfile.jvm
+      , buildCmd: './mvnw clean package -DskipTests -Pnative -Dquarkus.native.container-build=true'
+      , dockerfile: src/main/docker/Dockerfile.native
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
       , targetJar: 'quarkus-worker-pool-runner.jar'
-      , runRates: [ 30000, 40000 ]
+      , runRates: [10000, 20000, 30000, 40000, 42000, 44000, 46000, 48000]
     }
   ]
 
   TEST_STATIC_ENDPOINT: http://erik-pc.local:8080/greeting/Bob
-  TEST_DYNAMIC_ENDPOINT: http://erik-pc.local:8080/fruits
   ENVIRONMENT_URL: http://erik-pc.local:8080/environment
 
   JAVA_VERSION: '11.0.11-open'

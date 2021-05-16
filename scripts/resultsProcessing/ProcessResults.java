@@ -281,7 +281,6 @@ public class ProcessResults {
             runtimeResult.avgCpu = averageResultCol(file, null, 8) / ProcessResultsCmd.cpuCount;
             runtimeResult.minCpu = minResultCol(file, null, 8) / ProcessResultsCmd.cpuCount;
             runtimeResult.maxCpu = maxResultCol(file, null, 8) / ProcessResultsCmd.cpuCount;
-
             result.findgraphData(runtime.concat("-avgRss")).add(new BenchmarkResult.GraphPoint(Double.parseDouble(txRate), runtimeResult.avgRss));
             result.findgraphData(runtime.concat("-avgCpu")).add(new BenchmarkResult.GraphPoint(Double.parseDouble(txRate), runtimeResult.avgCpu));
         };

@@ -13,15 +13,15 @@ scripts:
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START 1
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END 1
 
-  clear-server-dirs:
+  clear-server-dirs: # runs on server host
     - sh: if [ -d ${{SERVER_FILE_PATH}} ]; then rm -Rf ${{SERVER_FILE_PATH}}; fi
     - sh: mkdir -p ${{SERVER_FILE_PATH}}/output
 
-  clear-client-dirs:
+  clear-client-dirs: # runs on client host
     - sh: if [ -d ${{CLIENT_FILE_PATH}} ]; then rm -Rf ${{CLIENT_FILE_PATH}}; fi
     - sh: mkdir -p ${{CLIENT_FILE_PATH}}/output
-
-  build-applications:
+    
+  build-applications: # runs on server host
     - sh: sdk use java ${{JAVA_VERSION}}
     - sh: java --version
     - sh: cd ${{SERVER_FILE_PATH}}
@@ -31,44 +31,44 @@ scripts:
     - sh: git rev-parse HEAD
     - sh: npm install request
     - sh: docker build -f ./Dockerfile.db -t postgres-db .
+    - sh: docker stop quarkus-db # stop a potentially still running container (likely due to an error in the script)
+    - sh: docker run --rm -d --network=host --name=quarkus-db postgres-db
+    - sh: sleep 5s
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}/${{RUNTIME.name}}
         - sh: eval ${{RUNTIME.testCmd}} > /dev/null #First build *might* download all artifacts - discard
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval ${{RUNTIME.testCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out; done
+        - sh: eval ${{RUNTIME.testCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.test.out
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval ${{RUNTIME.buildCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out; done
+        - sh: eval ${{RUNTIME.buildCmd}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.build.out
         - sh: docker build -f ${{RUNTIME.dockerfile}} -t ${{RUNTIME.dockerImageName}} .
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out
         - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time.js ${{RUNTIME.name}}/target/${{RUNTIME.targetJar}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
         - queue-download: ${{SERVER_FILE_PATH}}/output/*
-        
-  start-database:
-    - sh: docker stop quarkus-db
-    - sh: docker run --rm -d --network=host --name=quarkus-db postgres-db
     
-  start-applications:
+  start-applications: # runs on server host
     - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - sh: docker stop ${{RUNTIME.name}} #Force a stop, in case we have a container running with same name
         - sh: docker run --rm -d --network=host --cpus=${{DOCKER_APP_CPUS}} --memory=${{DOCKER_APP_MEM}} --name=${{RUNTIME.name}} ${{RUNTIME.dockerImageName}}:latest
         - sh: sleep 5s
-        - sh: ps -AF | grep ${{RUNTIME.targetJar}} | grep -v grep | awk '{print $2}'
+        - sh: ps -AF | grep ${{RUNTIME.targetJar}} | grep -v grep | awk '{print $2}' # get process id of java process
           then:
             - set-state: RUN.JAVA_APP_PID
         - sh: curl  -s -w "%{http_code}\n"  -o ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.env.out ${{ENVIRONMENT_URL}}
-        - signal: ${{RUNTIME.name}}-READY
+        - signal: ${{RUNTIME.name}}-READY # signal client host that it generate-load script can continue (it waits on this signal)
         - wait-for: ${{RUNTIME.name}}-DONE
         - sh: docker logs ${{RUNTIME.name}} > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.run.log
         - queue-download: ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.run.log
         - sh: docker stop ${{RUNTIME.name}}
         - sh: sleep 5s #wait for java process to exit
+    - sh: docker stop quarkus-db # stop the database after all runtime tests are done    
 
 
-  generate-load:
+  generate-load: # runs on client host
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - wait-for: ${{RUNTIME.name}}-READY
@@ -81,10 +81,11 @@ scripts:
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START
             - sh: wrk -t 4 -c 100 -d60s -R ${{RUN_RATE}} --latency ${{TEST_DYNAMIC_ENDPOINT}} > ${{CLIENT_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE.wrk2.out
             - signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END
+            - sh: sleep 5s # make sure the top-process is killed before the next iteration
         - signal: ${{RUNTIME.name}}-DONE
     - queue-download: ${{CLIENT_FILE_PATH}}/output/*
 
-  capture-platform-stats:
+  capture-platform-stats: # runs on server host
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
         - for-each: RUN_RATE ${{RUNTIME.runRates}}
@@ -119,10 +120,8 @@ roles:
       - clear-server-dirs
       - build-applications
     run-scripts:
-      - start-database
       - start-applications
       - capture-platform-stats
-
 states:
 
   TEST_REPO_URL: https://github.com/ErikSimonsen/quarkus-iothread-workerpool
@@ -134,7 +133,7 @@ states:
   TEST_ITERATIONS: 5
 
   DOCKER_APP_CPUS: 4
-  DOCKER_APP_MEM: 256m
+  DOCKER_APP_MEM: 1024m
   DOCKER_DB_CPUS: 4
   DOCKER_DB_MEM: 512m
   RUNTIMES: [
@@ -145,7 +144,7 @@ states:
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
       ,   targetJar: 'quarkus-io-thread-runner.jar'
-      ,   runRates: [ 10000, 15000, 20000, 25000, 30000 ]
+      ,   runRates: [5000, 10000, 15000, 20000, 25000]
     }, {
         name: 'quarkus-worker-pool'
       , buildCmd: './mvnw clean package -DskipTests'
@@ -153,7 +152,7 @@ states:
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
       , targetJar: 'quarkus-worker-pool-runner.jar'
-      , runRates: [ 10000, 15000, 20000, 25000, 30000 ]
+      , runRates: [5000, 10000, 15000, 20000, 25000]
     }
   ]
 
