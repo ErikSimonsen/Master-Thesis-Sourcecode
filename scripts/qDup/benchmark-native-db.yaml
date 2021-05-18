@@ -45,7 +45,7 @@ scripts:
         - sh: docker build -f ${{RUNTIME.dockerfile}} -t ${{RUNTIME.dockerImageName}} .
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time.js ${{RUNTIME.name}}/target/${{RUNTIME.targetJar}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
+        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time-native.js ${{RUNTIME.name}}/target/${{RUNTIME.targetJar}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
         - queue-download: ${{SERVER_FILE_PATH}}/output/*
     
   start-applications: # runs on server host
