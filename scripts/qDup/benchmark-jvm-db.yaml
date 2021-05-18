@@ -30,9 +30,9 @@ scripts:
     - sh: git switch ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
     - sh: npm install request
-    - sh: docker build -f ./Dockerfile.db -t postgres-db .
-    - sh: docker stop quarkus-db # stop a potentially still running container (likely due to an error in the script)
-    - sh: docker run --rm -d --network=host --name=quarkus-db postgres-db
+    - sh: docker build -f ${{DATABASE.dockerfile}} -t ${{DATABASE.dockerImageName}} .
+    - sh: docker stop ${{DATABASE.name}} # stop a potentially still running container (likely due to an error in the script)
+    - sh: docker run --rm -d --network=host --name=${{DATABASE.name}} ${{DATABASE.dockerImageName}} -c max_connections=${{DATABASE.maxConnections}}
     - sh: sleep 5s
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
@@ -65,7 +65,8 @@ scripts:
         - queue-download: ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.run.log
         - sh: docker stop ${{RUNTIME.name}}
         - sh: sleep 5s #wait for java process to exit
-    - sh: docker stop quarkus-db # stop the database after all runtime tests are done    
+    - sh: docker logs ${{DATABASE.name}} > ${{SERVER_FILE_PATH}}/output/${{DATABASE.name}}.run.log
+    - sh: docker stop ${{DATABASE.name}} # stop the database after all runtime tests are done    
 
 
   generate-load: # runs on client host
@@ -155,7 +156,12 @@ states:
       , runRates: [5000, 10000, 15000, 20000, 25000]
     }
   ]
-
+  DATABASE: {
+  	name: 'quarkus-db'
+  	maxConnections: 100,
+  	dockerfile: Dockerfile.db,
+  	dockerImageName: postgres-db
+  }
   TEST_DYNAMIC_ENDPOINT: http://erik-pc.local:8080/fruits
   ENVIRONMENT_URL: http://erik-pc.local:8080/environment
 

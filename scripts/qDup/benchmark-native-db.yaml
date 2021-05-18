@@ -1,4 +1,4 @@
-name: JVM Dynamic Resources (Database) Quarkus Event Loop vs Worker Pool
+name: Native Executable Dynamic Resources (Database) Quarkus Event Loop vs Worker Pool
 scripts:
 
   define-signals:
@@ -30,9 +30,9 @@ scripts:
     - sh: git switch ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
     - sh: npm install request
-    - sh: docker build -f ./Dockerfile.db -t postgres-db .
-    - sh: docker stop quarkus-db # stop a potentially still running container (likely due to an error in the script)
-    - sh: docker run --rm -d --network=host --name=quarkus-db postgres-db
+    - sh: docker build -f ${{DATABASE.dockerfile}} -t ${{DATABASE.dockerImageName}} .
+    - sh: docker stop ${{DATABASE.name}} # stop a potentially still running container (likely due to an error in the script)
+    - sh: docker run --rm -d --network=host --name=${{DATABASE.name}} ${{DATABASE.dockerImageName}} -c max_connections=${{DATABASE.maxConnections}}
     - sh: sleep 5s
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
@@ -45,7 +45,7 @@ scripts:
         - sh: docker build -f ${{RUNTIME.dockerfile}} -t ${{RUNTIME.dockerImageName}} .
         - sh: cd ${{SERVER_FILE_PATH}}/${{TEST_REPO_DIR}}
         - sh: echo "" > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out
-        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time-native.js ${{RUNTIME.name}}/target/${{RUNTIME.targetJar}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
+        - sh: for i in  $(seq 1 ${{TEST_ITERATIONS}}); do eval node scripts/timing/time-native.js ${{RUNTIME.name}}/target/${{RUNTIME.targetFile}} >> ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.timeFirstRequest.out; done
         - queue-download: ${{SERVER_FILE_PATH}}/output/*
     
   start-applications: # runs on server host
@@ -55,7 +55,7 @@ scripts:
         - sh: docker stop ${{RUNTIME.name}} #Force a stop, in case we have a container running with same name
         - sh: docker run --rm -d --network=host --cpus=${{DOCKER_APP_CPUS}} --memory=${{DOCKER_APP_MEM}} --name=${{RUNTIME.name}} ${{RUNTIME.dockerImageName}}:latest
         - sh: sleep 5s
-        - sh: ps -AF | grep ${{RUNTIME.targetJar}} | grep -v grep | awk '{print $2}' # get process id of java process
+        - sh: ps -AF | grep ${{RUNTIME.runName}} | grep -v grep | awk '{print $2}' # get process id of java process
           then:
             - set-state: RUN.JAVA_APP_PID
         - sh: curl  -s -w "%{http_code}\n"  -o ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.env.out ${{ENVIRONMENT_URL}}
@@ -65,7 +65,8 @@ scripts:
         - queue-download: ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.run.log
         - sh: docker stop ${{RUNTIME.name}}
         - sh: sleep 5s #wait for java process to exit
-    - sh: docker stop quarkus-db # stop the database after all runtime tests are done    
+    - sh: docker logs ${{DATABASE.name}} > ${{SERVER_FILE_PATH}}/output/${{DATABASE.name}}.run.log
+    - sh: docker stop ${{DATABASE.name}} # stop the database after all runtime tests are done    
 
 
   generate-load: # runs on client host
@@ -91,12 +92,12 @@ scripts:
         - for-each: RUN_RATE ${{RUNTIME.runRates}}
           then:
             - wait-for: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-START
-            - sh: top -b  -d 1 -p ${{RUN.JAVA_APP_PID}} | grep java > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-top.out &
+            - sh: top -b  -d 1 -p ${{RUN.JAVA_APP_PID}} | grep application > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-top.out &
             - sh: export TOP_PID=$!
             - wait-for: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-END
             - sh: kill -9 $TOP_PID
             - wait-for: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START
-            - sh: top -b  -d 1 -p ${{RUN.JAVA_APP_PID}} | grep java > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-top.out &
+            - sh: top -b  -d 1 -p ${{RUN.JAVA_APP_PID}} | grep application > ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-top.out &
             - sh: export TOP_PID=$!
             - wait-for: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END
             - sh: kill -9 $TOP_PID
@@ -143,7 +144,8 @@ states:
       ,   dockerfile: src/main/docker/Dockerfile.native
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
-      ,   targetJar: 'quarkus-io-thread-runner.jar'
+      ,   targetFile: 'quarkus-io-thread-runner' # native application, not a .jar file anymore
+      ,   runName: './application' # the application runs under the name 'application' inside the Dockercontainer (Dockerfile.native - default generated Dockerfile), instead of the app name, use './application' instead of 'application' because otherwise there would be multiple processes be found via grep
       ,   runRates: [5000, 10000, 15000, 20000, 25000]
     }, {
         name: 'quarkus-worker-pool'
@@ -151,11 +153,17 @@ states:
       , dockerfile: src/main/docker/Dockerfile.native
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
-      , targetJar: 'quarkus-worker-pool-runner.jar'
+      , targetFile: 'quarkus-worker-pool-runner' # native application, not a .jar file anymore
+      , runName: './application' # the application runs under the name 'application' inside the Dockercontainer (Dockerfile.native - default generated Dockerfile), instead of the app name, use './application' instead of 'application' because otherwise there would be multiple processes be found via grep
       , runRates: [5000, 10000, 15000, 20000, 25000]
     }
   ]
-
+  DATABASE: {
+  	name: 'quarkus-db'
+  	maxConnections: 100,
+  	dockerfile: Dockerfile.db,
+  	dockerImageName: postgres-db
+  }
   TEST_DYNAMIC_ENDPOINT: http://erik-pc.local:8080/fruits
   ENVIRONMENT_URL: http://erik-pc.local:8080/environment
 
