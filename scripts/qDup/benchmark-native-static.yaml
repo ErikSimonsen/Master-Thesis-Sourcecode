@@ -12,7 +12,10 @@ scripts:
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-END 1
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START 1
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END 1
-
+  
+  set-locale-numeric:
+    - sh: export LC_NUMERIC="en_US.UTF-8"
+     
   clear-server-dirs:
     - sh: if [ -d ${{SERVER_FILE_PATH}} ]; then rm -Rf ${{SERVER_FILE_PATH}}; fi
     - sh: mkdir -p ${{SERVER_FILE_PATH}}/output
@@ -105,18 +108,21 @@ roles:
   client:
     hosts: [client]
     setup-scripts:
+      - set-locale-numeric
       - clear-client-dirs
     run-scripts:
       - generate-load
   server:
     hosts: [server]
     setup-scripts:
+      - set-locale-numeric
       - define-signals
       - clear-server-dirs
       - build-applications
     run-scripts:
       - start-applications
       - capture-platform-stats
+
 
 states:
 
@@ -129,7 +135,7 @@ states:
   TEST_ITERATIONS: 5
 
   DOCKER_APP_CPUS: 4
-  DOCKER_APP_MEM: 1024m
+  DOCKER_APP_MEM: 512m
 
   RUNTIMES: [
     {

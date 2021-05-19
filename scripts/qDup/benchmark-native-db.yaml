@@ -12,7 +12,10 @@ scripts:
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-WARM-UP-END 1
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-START 1
             - set-signal: ${{RUNTIME.name}}-${{RUN_RATE}}-MEASURE-END 1
-
+ 
+  set-locale-numeric:
+    - sh: export LC_NUMERIC="en_US.UTF-8"
+    
   clear-server-dirs: # runs on server host
     - sh: if [ -d ${{SERVER_FILE_PATH}} ]; then rm -Rf ${{SERVER_FILE_PATH}}; fi
     - sh: mkdir -p ${{SERVER_FILE_PATH}}/output
@@ -65,7 +68,6 @@ scripts:
         - queue-download: ${{SERVER_FILE_PATH}}/output/${{RUNTIME.name}}.run.log
         - sh: docker stop ${{RUNTIME.name}}
         - sh: sleep 5s #wait for java process to exit
-    - sh: docker logs ${{DATABASE.name}} > ${{SERVER_FILE_PATH}}/output/${{DATABASE.name}}.run.log
     - sh: docker stop ${{DATABASE.name}} # stop the database after all runtime tests are done    
 
 
@@ -111,12 +113,14 @@ roles:
   client:
     hosts: [client]
     setup-scripts:
+      - set-locale-numeric
       - clear-client-dirs
     run-scripts:
       - generate-load
   server:
     hosts: [server]
     setup-scripts:
+      - set-locale-numeric
       - define-signals
       - clear-server-dirs
       - build-applications
@@ -134,7 +138,7 @@ states:
   TEST_ITERATIONS: 5
 
   DOCKER_APP_CPUS: 4
-  DOCKER_APP_MEM: 1024m
+  DOCKER_APP_MEM: 512m
   DOCKER_DB_CPUS: 4
   DOCKER_DB_MEM: 512m
   RUNTIMES: [
@@ -146,7 +150,7 @@ states:
       ,   testCmd: './mvnw clean test'
       ,   targetFile: 'quarkus-io-thread-runner' # native application, not a .jar file anymore
       ,   runName: './application' # the application runs under the name 'application' inside the Dockercontainer (Dockerfile.native - default generated Dockerfile), instead of the app name, use './application' instead of 'application' because otherwise there would be multiple processes be found via grep
-      ,   runRates: [5000, 10000, 15000, 20000, 25000]
+      ,   runRates: [5000, 10000, 15000, 20000]
     }, {
         name: 'quarkus-worker-pool'
       , buildCmd: './mvnw clean package -DskipTests -Pnative -Dquarkus.native.container-build=true'
@@ -155,14 +159,14 @@ states:
       , testCmd: './mvnw clean test'
       , targetFile: 'quarkus-worker-pool-runner' # native application, not a .jar file anymore
       , runName: './application' # the application runs under the name 'application' inside the Dockercontainer (Dockerfile.native - default generated Dockerfile), instead of the app name, use './application' instead of 'application' because otherwise there would be multiple processes be found via grep
-      , runRates: [5000, 10000, 15000, 20000, 25000]
+      , runRates: [5000, 10000, 15000, 20000]
     }
   ]
   DATABASE: {
-  	name: 'quarkus-db'
-  	maxConnections: 100,
-  	dockerfile: Dockerfile.db,
-  	dockerImageName: postgres-db
+        name: 'quarkus-db',
+        maxConnections: 100,
+        dockerfile: Dockerfile.db,
+        dockerImageName: postgres-db
   }
   TEST_DYNAMIC_ENDPOINT: http://erik-pc.local:8080/fruits
   ENVIRONMENT_URL: http://erik-pc.local:8080/environment
