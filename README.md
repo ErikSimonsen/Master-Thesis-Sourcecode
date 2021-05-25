@@ -1,10 +1,12 @@
 # An IO thread and a worker thread walk into a bar: a microbenchmark story
 
-This repository contains the source code, results and scripts used to generate the data used in the Quarkus blog post `An IO thread and a worker thread walk into a bar: a microbenchmark story`
-
+This repository contains the source code, results and scripts used to generate the data used in my master thesis. 
+Originally forked from the repository providing the data for the Quarkus blog post `An IO thread and a worker thread walk into a bar: a microbenchmark story`:
+	https://github.com/johnaohara/quarkus-iothread-workerpool
+	
 Docker is used to create the environment available to the System Under Test
 
-We use [wrk2](https://github.com/giltene/wrk2) to drive the load from the client machine to the server running the System Under Test.  To understand why we ues wrk2, please read http://highscalability.com/blog/2015/10/5/your-load-generator-is-probably-lying-to-you-take-the-red-pi.html  
+[wrk2](https://github.com/giltene/wrk2) is used to drive the load from the client machine to the server running the System Under Test.  To understand why wrk2, please read http://highscalability.com/blog/2015/10/5/your-load-generator-is-probably-lying-to-you-take-the-red-pi.html  
 
 Running the benchmark is managed by a [qDup](https://github.com/Hyperfoil/qDup)  script.  qDup is an automation tool that provides a way to coordinate multiple terminal shell connections for queuing performance tests and collecting output files  
 
@@ -25,16 +27,16 @@ Timing of system startup and results graphing is provided by [node.js](https://n
 
 ### Setup
 
-1. Ensure [docker](https://docs.docker.com/get-docker/) deamon is running on the server-host that you wish to run the
-   applications. Please refer to Docker installation documentation for your particular operating system.
+1. Ensure [docker](https://docs.docker.com/get-docker/) daemon is running on the server-host that you wish to run the
+   applications at. Please refer to Docker installation documentation for your particular operating system.
 
 2. Install [node.js](https://nodejs.org/en/) on the server-host that will be used to run the benchmark applications, and
-   the host (probably your current machine) that will be used to start the benchmark application from.
+   the host (probably your current machine) that will be used to generate the result graphs.
 
 3. Install [sdkman](https://sdkman.io/install) on the server-host that will be used to run the benchmark applications,
-   and the host (probably your current machine) that will be used to start the benchmark application from.
+   and the host (probably your current machine) that will be used to generate the result graphs from the data.
 
-4. Install [jbang](https://github.com/maxandersen/jbang) on the host that will be used generate the graphs from the
+4. Install [jbang](https://github.com/maxandersen/jbang) on the host (probably your current machine) that will be used to generate the graphs from the
    generated data.
 
     ```shell script
@@ -44,7 +46,7 @@ Timing of system startup and results graphing is provided by [node.js](https://n
 4. Build and install [wrk2](https://github.com/giltene/wrk2/wiki/Installing-wrk2-on-Linux) on the client-host machine
    that will be used to drive load to the server
 
-   CentOS / RedHat / Fedora
+   CentOS / RedHat / Fedora (of course dnf can also be used)
 
     ```shell script
     sudo yum -y groupinstall 'Development Tools'
@@ -73,7 +75,11 @@ Timing of system startup and results graphing is provided by [node.js](https://n
     ```
 4. Ensure that you are able to open a remote SSH connection to the client and server machines from your current machine, without the need to enter a password.
 
-    You can do this by adding your public ssh key to `~/.ssh/authorized_keys` on the client and server machines
+    You can do this by adding your public ssh key to `~/.ssh/authorized_keys` on the client and server machines.
+    Note that on all machines which you are connecting to via SSH an SSH-Server has to be running.
+    Some helful links:
+    https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/infrastructure-services/OpenSSH/#s2-ssh-configuration-sshd
+    https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/infrastructure-services/OpenSSH/#s3-ssh-configuration-keypairs-generating
 
 5. Modify the following lines `scripts/qDup/benchmark.yaml` to point to your client and server machines
 
@@ -91,11 +97,11 @@ Timing of system startup and results graphing is provided by [node.js](https://n
    where;
    - `{USER}` is the username you wish to connect to the remote machine with
    - `{CLIENT_HOST}` is the fully qualified domain name of the client machine to run generate load
-   - `{SERVER_HOST}` is the fully qualified domain name of the server machine with the docker deamon already running in
+   - `{SERVER_HOST}` is the fully qualified domain name of the server machine with the docker daemon already running in
      step (1)
 
 6. Run the benchmark script with
-   qDup: `java -jar {path_to_qDup}/qDup-0.6.3-uber.jar -B ./results/data ./scripts/qDup/benchmark.yaml`.
+   qDup: `java -jar {path_to_qDup}/qDup-0.6.3-uber.jar -B ./results/data ./scripts/qDup/{script_name}.yaml`.
 
    N.B. this script may appear to freeze, it takes approx 30 mins to run and will not always write output to the
    terminal.
@@ -112,44 +118,3 @@ Timing of system startup and results graphing is provided by [node.js](https://n
     - `{SERVER_HOST}` is the fully qualified domain name of the server machine defined in  `scripts/qDup/benchmark.yaml` in step (5)
 
 8. Results and graphs will be available in `./results/runResult.json` and `./results/graphs/` respectively.
-
-## Results 
-
-Quarkus 999-SNAPSHOT
-
-| Quarkus - 999-SNAPSHOT - 4 CPU's | Worker Pool | IO Thread |
-| --- | --- | --- |
-|Mean Build Time (ms) |  |  |
-|Mean Test Time (ms) |  |  |
-|Mean Start Time to First Request (ms) |  |  |
-|Max RSS (MB) |  |  |
-|Max Throughput (req/sec) |  |  |
-|Max Req/Sec/MB |  | 
-
-
-## Test Environment
-
-### Server
-
-| benchserver4 |  |
-| --- | --- |
-| Hardware | HP ProLiant DL380 Gen9
-| CPU's |  2 x Intel(R) Xeon(R) CPU E5-2640 v3 @ 2.60GHz| 
-|  | 8 cores per socket, +HT, 32 cores total |
-| Memory | 256GB |
-| Storage | 2 x SanDisk ioDrive2 (600GB) - 2.4GB total |
-|OS | Red Hat Enterprise Linux Server release 7.7 (Maipo) |
-| Kernel | Linux benchserver4.perf.lab.eng.rdu2.redhat.com 3.10.0-1062.1.1.el7.x86_64 #1 SMP Tue Aug 13 18:39:59 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux |
-
-### Client
-
-| benchclient1 |  |
-| --- | --- |
-| Hardware | HP ProLiant DL380 G7
-| CPU's |  2 x Intel(R) Xeon(R) CPU X5660  @ 2.80GHz 
-|  | 6 cores per socket, +HT, 24 cores total |
-| Memory | 64GB |
-| Storage | 4 x 146GB 15K RAID |
-|OS | Red Hat Enterprise Linux Server release 7.6 (Maipo) |
-| Kernel | Linux benchclient1 3.10.0-229.el7.x86_64 #1 SMP Thu Jan 29 18:37:38 EST 2015 x86_64 x86_64 x86_64 GNU/LinuxLinux benchclient1 3.10.0-229.el7.x86_64 #1 SMP Thu Jan 29 18:37:38 EST 2015 x86_64 x86_64 x86_64 GNU/Linux |
-
