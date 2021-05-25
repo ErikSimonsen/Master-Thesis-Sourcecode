@@ -35,7 +35,7 @@ scripts:
     - sh: npm install request
     - sh: docker build -f ${{DATABASE.dockerfile}} -t ${{DATABASE.dockerImageName}} .
     - sh: docker stop ${{DATABASE.name}} # stop a potentially still running container (likely due to an error in the script)
-    - sh: docker run --rm -d --network=host --name=${{DATABASE.name}} ${{DATABASE.dockerImageName}} -c max_connections=${{DATABASE.maxConnections}}
+    - sh: docker run --rm -d --network=host --cpus=${{DOCKER_DB_CPUS}} --memory=${{DOCKER_DB_MEM}} --name=${{DATABASE.name}} ${{DATABASE.dockerImageName}} -c max_connections=${{DATABASE.maxConnections}}
     - sh: sleep 5s
     - for-each: RUNTIME ${{RUNTIMES}}
       then:
@@ -140,7 +140,7 @@ states:
   DOCKER_APP_CPUS: 4
   DOCKER_APP_MEM: 1024m
   DOCKER_DB_CPUS: 4
-  DOCKER_DB_MEM: 1024m
+  DOCKER_DB_MEM: 2048m
   RUNTIMES: [
     {
           name: 'quarkus-io-thread'
@@ -164,7 +164,7 @@ states:
   ]
   DATABASE: {
         name: 'quarkus-db',
-        maxConnections: 100,
+        maxConnections: 150,
         dockerfile: Dockerfile.db,
         dockerImageName: postgres-db
   }
