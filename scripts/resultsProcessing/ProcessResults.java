@@ -403,6 +403,16 @@ public class ProcessResults {
                     .map(line -> line.trim().replaceAll("\\s+", " "))
                     .filter(line -> !(line.split(" ").length <= col))
                     .map(line -> line.split(" ")[col])
+                    .map(line -> {
+                        //res column (reserved non-swap memory), top will display the memory in MiB and GiB instead of KiB at some point
+                        //ex: 880224 (in kb), 993.0m (in mb), 1.0g (in gb) -> replace dot, m and g to display kb
+                        if(col == 5 && (line.contains("m") || line.contains("g"))){
+                            line = line.replaceAll("\\.", "");
+                            line = line.replaceAll("m", "00");
+                            line = line.replaceAll("g", "00000");
+                        }
+                        return line;
+                    })
                     .mapToDouble(line -> line.contains("s") ? Double.parseDouble(line.replaceAll("s", "")) * 1000.0 : Double.parseDouble(line));
         }
 
