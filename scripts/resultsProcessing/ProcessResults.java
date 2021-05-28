@@ -82,9 +82,7 @@ public class ProcessResults {
     }
 
     private enum FILE_TYPES {
-        BUILD("(\\S*-\\S*-\\S*)\\.build\\.out", Parsers.buildParser),
         RUN("(\\S*-\\S*-\\S*)\\.run\\.log", Parsers.runParser),
-        TEST("(\\S*-\\S*-\\S*)\\.test\\.out", Parsers.testParser),
         FIRST_REQUEST("(\\S*-\\S*-\\S*)\\.timeFirstRequest\\.out", Parsers.firstRequestParser),
         DOCKER_STATS("(\\S*-\\S*-\\S*)-([0-9]*)-MEASURE-stats\\.out", Parsers.serverStatsParser),
         CLIENT_RESULTS("(\\S*-\\S*-\\S*)-([0-9]*)-MEASURE\\.wrk2\\.out", Parsers.clientResultsParser),
@@ -186,8 +184,6 @@ public class ProcessResults {
     static class RuntimeResult {
 
         public Double avgStartTime;
-        public Double avgBuildTime;
-        public Double avgTestTime;
         private Map<String, RuntimeRunResult> runtimeRunResults = new TreeMap<>();
 
         public RuntimeRunResult getRuntimeResult(String txRate) {
@@ -230,14 +226,6 @@ public class ProcessResults {
         interface OutputParser {
             void parseFile(BenchmarkResult result, File file, String pattern) throws IOException;
         }
-
-        static final OutputParser buildParser = (result, file, pattern) -> {
-            result.getRuntimeResult(extractRuntimeName(file, pattern)).avgBuildTime = averageResultCol(file, "Total time", 3);
-        };
-
-        static final OutputParser testParser = (result, file, pattern) -> {
-            result.getRuntimeResult(extractRuntimeName(file, pattern)).avgTestTime = averageResultCol(file, "Total time", 3);
-        };
 
         static final OutputParser runParser = (result, file, pattern) -> {
             //Do nothing with run log

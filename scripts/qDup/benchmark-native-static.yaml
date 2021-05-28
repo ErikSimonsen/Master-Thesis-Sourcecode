@@ -145,7 +145,6 @@ states:
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
       ,   targetFile: 'quarkus-io-thread-runner' # native application, not a .jar file anymore
-      ,   # native application, not a .jar file anymore
       ,   runName: './application' # the application runs under the name 'application' inside the Dockercontainer (Dockerfile.native - default generated Dockerfile), instead of the app name, use './application' instead of 'application' because otherwise there would be multiple processes be found via grep: './application' # the application runs under the name 'application' inside the Dockercontainer (Dockerfile.native - default generated Dockerfile), instead of the app name, use './application' instead of 'application' because otherwise there would be multiple processes be found via grep
       ,   runRates: [10000, 20000, 30000, 40000, 45000, 47000, 48000, 50000, 60000, 80000, 100000, 120000, 122000, 124000, 126000]
     }, {
