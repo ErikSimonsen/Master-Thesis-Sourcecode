@@ -36,14 +36,14 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running personal.simonsen.GreetingResourceTest
-2021-05-29 06:23:15,621 INFO  [org.hib.rea.pro.imp.ReactiveIntegrator] (main) HRX000001: Hibernate Reactive Preview
-STARTUP 06:23:15.726
-2021-05-29 06:23:15,829 INFO  [io.quarkus] (main) Quarkus 1.12.1.Final on JVM started in 2.226s. Listening on: http://localhost:8081
-2021-05-29 06:23:15,829 INFO  [io.quarkus] (main) Profile test activated. 
-2021-05-29 06:23:15,829 INFO  [io.quarkus] (main) Installed features: [cdi, hibernate-orm, hibernate-reactive, mutiny, reactive-pg-client, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]
-CALL HELLO 06:23:16.862
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.44 s - in personal.simonsen.GreetingResourceTest
-2021-05-29 06:23:17,043 INFO  [io.quarkus] (main) Quarkus stopped in 0.040s
+2021-07-03 05:43:35,160 INFO  [org.hib.rea.pro.imp.ReactiveIntegrator] (main) HRX000001: Hibernate Reactive Preview
+STARTUP 05:43:35.262
+2021-07-03 05:43:35,369 INFO  [io.quarkus] (main) Quarkus 1.12.1.Final on JVM started in 2.331s. Listening on: http://localhost:8081
+2021-07-03 05:43:35,370 INFO  [io.quarkus] (main) Profile test activated. 
+2021-07-03 05:43:35,370 INFO  [io.quarkus] (main) Installed features: [cdi, hibernate-orm, hibernate-reactive, mutiny, reactive-pg-client, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]
+CALL HELLO 05:43:36.396
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.72 s - in personal.simonsen.GreetingResourceTest
+2021-07-03 05:43:36,566 INFO  [io.quarkus] (main) Quarkus stopped in 0.037s
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -52,6 +52,6 @@ CALL HELLO 06:23:16.862
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.232 s
-[INFO] Finished at: 2021-05-29T06:23:17+02:00
+[INFO] Total time:  10.415 s
+[INFO] Finished at: 2021-07-03T05:43:36+02:00
 [INFO] ------------------------------------------------------------------------

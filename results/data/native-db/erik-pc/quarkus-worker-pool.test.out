@@ -34,13 +34,13 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running personal.simonsen.GreetingResourceTest
-STARTUP 06:25:17.955
-2021-05-29 06:25:18,047 INFO  [io.quarkus] (main) Quarkus 1.13.1.Final on JVM started in 2.393s. Listening on: http://localhost:8081
-2021-05-29 06:25:18,049 INFO  [io.quarkus] (main) Profile test activated. 
-2021-05-29 06:25:18,049 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
-CALL HELLO 06:25:19.173
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.636 s - in personal.simonsen.GreetingResourceTest
-2021-05-29 06:25:19,332 INFO  [io.quarkus] (main) Quarkus stopped in 0.033s
+STARTUP 05:45:38.706
+2021-07-03 05:45:38,791 INFO  [io.quarkus] (main) Quarkus 1.13.1.Final on JVM started in 2.400s. Listening on: http://localhost:8081
+2021-07-03 05:45:38,792 INFO  [io.quarkus] (main) Profile test activated. 
+2021-07-03 05:45:38,793 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
+CALL HELLO 05:45:39.841
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.499 s - in personal.simonsen.GreetingResourceTest
+2021-07-03 05:45:39,994 INFO  [io.quarkus] (main) Quarkus stopped in 0.030s
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -49,6 +49,6 @@ CALL HELLO 06:25:19.173
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.233 s
-[INFO] Finished at: 2021-05-29T06:25:19+02:00
+[INFO] Total time:  10.023 s
+[INFO] Finished at: 2021-07-03T05:45:40+02:00
 [INFO] ------------------------------------------------------------------------

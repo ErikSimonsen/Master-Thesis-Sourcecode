@@ -1,7 +1,8 @@
 # An IO thread and a worker thread walk into a bar: a microbenchmark story
 
 This repository contains the source code, results and scripts used to generate the data used in my master thesis. 
-Originally forked from the repository providing the data for the Quarkus blog post `An IO thread and a worker thread walk into a bar: a microbenchmark story`:
+
+Originally inspired and  forked from the repository providing the data for the Quarkus blog post `An IO thread and a worker thread walk into a bar: a microbenchmark story`:
 	https://github.com/johnaohara/quarkus-iothread-workerpool
 	
 Docker is used to create the environment available to the System Under Test
@@ -105,7 +106,13 @@ Timing of system startup and results graphing is provided by [node.js](https://n
 
    N.B. this script may appear to freeze, it takes approx 30 mins to run and will not always write output to the
    terminal.
-
+   Alternatively: Run the script executeQDupScripts.sh to run the 4 qDup scripts once, each for a different mode:
+   	- both applications run on jvm mode and only static resources are requested
+   	- both applications run on jvm mode and only dynamic resources (from a db container) are requested
+   	- both applications run on native mode and only static resources are requested
+   	- both applications run on native mode and only dynamic resources (from a db container) are requested
+   This will produce 4 directories (jvm-static, jvm-db, native-static, native-db) in ./results/data with all the data for each script-run.
+   executeQDupScripts.sh does nothing else than just calling the above code-snipped 4 times with a different {script_name}
 7. After the run has complete, process the run data with `processResults.sh`
 
     ```shell script
@@ -116,5 +123,11 @@ Timing of system startup and results graphing is provided by [node.js](https://n
     - `4` is the number of cpus (this is used to calculate the % cpu utilization)
     - `{CLIENT_HOST}` is the full qualified hostname of the client machine defined in  `scripts/qDup/benchmark.yaml` in step (5)
     - `{SERVER_HOST}` is the fully qualified domain name of the server machine defined in  `scripts/qDup/benchmark.yaml` in step (5)
-
+	
+    If you have used the executeQDupScripts.sh script mentioned above you have to use {TEST_RUN_DIR}/{SERVER_HOST} and {TEST_RUN_DIR}/{CLIENT_HOST} instead.
+    for example:
+     
+    ```shell script
+    $ ./processResults.sh 4 jvm-static/{SERVER_HOST} jvm-static/{CLIENT_HOST}
+    ```  
 8. Results and graphs will be available in `./results/runResult.json` and `./results/graphs/` respectively.
