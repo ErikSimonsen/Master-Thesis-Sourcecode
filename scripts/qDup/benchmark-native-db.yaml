@@ -164,7 +164,7 @@ states:
   ]
   DATABASE: {
         name: 'quarkus-db',
-        maxConnections: 150,
+        maxConnections: 100,
         dockerfile: Dockerfile.db,
         dockerImageName: postgres-db
   }

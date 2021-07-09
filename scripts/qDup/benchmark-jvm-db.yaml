@@ -33,7 +33,7 @@ scripts:
     - sh: git switch ${{TEST_REPO_BRANCH}}
     - sh: git rev-parse HEAD
     - sh: npm install request
-    - sh: docker build -f ${{DATABASE.dockerfile}} -t ${{DATABASE.dockerImageName}} .
+    - sh: docker build -f ${{DATABASE.dockerfile}} -t ${{DATABASE.dockerImageName}} . # keep in mind that the tag of the (if existant) old image (from a previous run qDup script) will be set to null, so regularly remove 'loose' docker images
     - sh: docker stop ${{DATABASE.name}} # stop a potentially still running container (likely due to an error in the script)
     - sh: docker run --rm -d --network=host --cpus=${{DOCKER_DB_CPUS}} --memory=${{DOCKER_DB_MEM}} --name=${{DATABASE.name}} ${{DATABASE.dockerImageName}} -c max_connections=${{DATABASE.maxConnections}}
     - sh: sleep 5s
@@ -162,7 +162,7 @@ states:
   ]
   DATABASE: {
      name: 'quarkus-db',
-     maxConnections: 150,
+     maxConnections: 100,
      dockerfile: Dockerfile.db,
      dockerImageName: postgres-db
   }
