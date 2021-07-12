@@ -40,10 +40,10 @@
 [INFO] [org.jboss.threads] JBoss Threads version 3.2.0.Final
 [INFO] [org.hibernate.Version] HHH000412: Hibernate ORM core version 5.4.28.Final
 [INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building fat jar: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/quarkus-io-thread-runner.jar
-[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 3549ms
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 3537ms
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.341 s
-[INFO] Finished at: 2021-07-03T04:15:18+02:00
+[INFO] Total time:  7.412 s
+[INFO] Finished at: 2021-07-12T01:09:03+02:00
 [INFO] ------------------------------------------------------------------------

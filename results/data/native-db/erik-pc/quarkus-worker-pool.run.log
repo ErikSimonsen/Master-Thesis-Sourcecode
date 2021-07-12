@@ -1,4 +1,4 @@
-STARTUP 04:00:57.880
-2021-07-03 04:00:57,882 INFO  [io.quarkus] (main) quarkus-worker-pool 1.0 native (powered by Quarkus 1.13.1.Final) started in 0.084s. Listening on: http://0.0.0.0:8080
-2021-07-03 04:00:57,882 INFO  [io.quarkus] (main) Profile prod activated. 
-2021-07-03 04:00:57,882 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
+STARTUP 00:55:25.827
+2021-07-12 00:55:25,829 INFO  [io.quarkus] (main) quarkus-worker-pool 1.0 native (powered by Quarkus 1.12.1.Final) started in 0.100s. Listening on: http://0.0.0.0:8080
+2021-07-12 00:55:25,829 INFO  [io.quarkus] (main) Profile prod activated. 
+2021-07-12 00:55:25,829 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]

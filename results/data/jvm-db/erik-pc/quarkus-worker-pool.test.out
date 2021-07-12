@@ -8,7 +8,7 @@
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ quarkus-worker-pool ---
 [INFO] Deleting /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-worker-pool/target
 [INFO] 
-[INFO] --- quarkus-maven-plugin:1.13.1.Final:generate-code (default) @ quarkus-worker-pool ---
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:generate-code (default) @ quarkus-worker-pool ---
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ quarkus-worker-pool ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -18,7 +18,7 @@
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 5 source files to /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-worker-pool/target/classes
 [INFO] 
-[INFO] --- quarkus-maven-plugin:1.13.1.Final:generate-code-tests (default) @ quarkus-worker-pool ---
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:generate-code-tests (default) @ quarkus-worker-pool ---
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ quarkus-worker-pool ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -34,13 +34,13 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running personal.simonsen.GreetingResourceTest
-STARTUP 04:15:52.883
-2021-07-03 04:15:52,968 INFO  [io.quarkus] (main) Quarkus 1.13.1.Final on JVM started in 2.503s. Listening on: http://localhost:8081
-2021-07-03 04:15:52,970 INFO  [io.quarkus] (main) Profile test activated. 
-2021-07-03 04:15:52,970 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
-CALL HELLO 04:15:54.003
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.652 s - in personal.simonsen.GreetingResourceTest
-2021-07-03 04:15:54,153 INFO  [io.quarkus] (main) Quarkus stopped in 0.033s
+STARTUP 01:09:37.675
+2021-07-12 01:09:37,779 INFO  [io.quarkus] (main) Quarkus 1.12.1.Final on JVM started in 2.443s. Listening on: http://localhost:8081
+2021-07-12 01:09:37,780 INFO  [io.quarkus] (main) Profile test activated. 
+2021-07-12 01:09:37,780 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
+CALL HELLO 01:09:38.855
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.553 s - in personal.simonsen.GreetingResourceTest
+2021-07-12 01:09:39,019 INFO  [io.quarkus] (main) Quarkus stopped in 0.036s
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -49,6 +49,6 @@ CALL HELLO 04:15:54.003
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.086 s
-[INFO] Finished at: 2021-07-03T04:15:54+02:00
+[INFO] Total time:  9.765 s
+[INFO] Finished at: 2021-07-12T01:09:39+02:00
 [INFO] ------------------------------------------------------------------------
