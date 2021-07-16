@@ -5,9 +5,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @Path("/environment")
 public class EnvironmentResource {
+    @ConfigProperty(name = "quarkus.vertx.worker-pool-size") 
+    int workerPoolSize;
+    @ConfigProperty(name = "quarkus.vertx.event-loops-pool-size") 
+    int eventLoopPoolSize;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -25,6 +30,8 @@ public class EnvironmentResource {
         stringBuilder.append("thread-name: ").append(Thread.currentThread().getName()).append("\n");
         stringBuilder.append("\n");
         stringBuilder.append("stack trace: ").append("\n");
+        stringBuilder.append("worker-pool-size: ").append(workerPoolSize).append("\n");
+        stringBuilder.append("eventLoop-pool-size: ").append(eventLoopPoolSize).append("\n");
 
         Arrays.stream(Thread.currentThread().getStackTrace()).forEach(ste -> stringBuilder.append(ste.toString()).append("\n"));
         return stringBuilder.toString();
