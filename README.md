@@ -81,8 +81,10 @@ Timing of system startup and results graphing is provided by [node.js](https://n
     Some helful links:
     https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/infrastructure-services/OpenSSH/#s2-ssh-configuration-sshd
     https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/infrastructure-services/OpenSSH/#s3-ssh-configuration-keypairs-generating
-
-5. Modify the following lines `scripts/qDup/benchmark.yaml` to point to your client and server machines
+5. If you modifiy the System Resource-Constraints of the Docker Containers be sure to set the Vert.x EventLoop-Thread Pool size accordingly (
+   because Vert.x does not know about the --cpu constraint so it still uses all cpu cores (see application.properties for more information).
+)
+6. Modify the following lines inside the qDup-scripts directory `scripts/qDup/*-benchmark.yaml` to point to your client and server machines
 
     ```yaml
    ...
@@ -101,7 +103,7 @@ Timing of system startup and results graphing is provided by [node.js](https://n
    - `{SERVER_HOST}` is the fully qualified domain name of the server machine with the docker daemon already running in
      step (1)
 
-6. Run the benchmark script with
+7. Run the benchmark script with
    qDup: `java -jar {path_to_qDup}/qDup-0.6.3-uber.jar -B ./results/data ./scripts/qDup/{script_name}.yaml`.
 
    N.B. this script may appear to freeze, it takes approx 30 mins to run and will not always write output to the
@@ -113,7 +115,7 @@ Timing of system startup and results graphing is provided by [node.js](https://n
    	- both applications run on native mode and only dynamic resources (from a db container) are requested
    This will produce 4 directories (jvm-static, jvm-db, native-static, native-db) in ./results/data with all the data for each script-run.
    executeQDupScripts.sh does nothing else than just calling the above code-snipped 4 times with a different {script_name}
-7. After the run has complete, process the run data with `processResults.sh`
+8. After the run has complete, process the run data with `processResults.sh`
 
     ```shell script
     $ ./processResults.sh 4 {SERVER_HOST} {CLIENT_HOST}
@@ -130,4 +132,4 @@ Timing of system startup and results graphing is provided by [node.js](https://n
     ```shell script
     $ ./processResults.sh 4 jvm-static/{SERVER_HOST} jvm-static/{CLIENT_HOST}
     ```  
-8. Results and graphs will be available in `./results/runResult.json` and `./results/graphs/` respectively.
+9. Results and graphs will be available in `./results/runResult.json` and `./results/graphs/` respectively.
