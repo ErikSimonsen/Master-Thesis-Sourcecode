@@ -151,7 +151,7 @@ states:
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
       , targetJar: 'quarkus-worker-pool-runner.jar'
-      , runRates: [10000, 20000, 30000, 40000, 45000, 50000, 55000, 60000, 70000, 80000]
+      , runRates: [10000, 20000, 30000, 40000, 45000, 50000, 55000, 60000, 65000, 70000, 75000]
     }
   ]
 
