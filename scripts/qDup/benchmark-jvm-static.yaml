@@ -143,7 +143,7 @@ states:
       ,   dockerImageName: framework/quarkus-io-thread
       ,   testCmd: './mvnw clean test'
       ,   targetJar: 'quarkus-io-thread-runner.jar'
-      ,   runRates: [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 100000, 110000, 120000, 130000, 140000, 150000]
+      ,   runRates: [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 100000, 110000, 120000, 130000, 132000, 134000, 136000, 138000]
     }, {
         name: 'quarkus-worker-pool'
       , buildCmd: './mvnw clean package -DskipTests'
@@ -151,7 +151,7 @@ states:
       , dockerImageName: framework/quarkus-worker-pool
       , testCmd: './mvnw clean test'
       , targetJar: 'quarkus-worker-pool-runner.jar'
-      , runRates: [10000, 20000, 30000, 40000, 50000, 60000, 70000]
+      , runRates: [10000, 20000, 30000, 40000, 50000, 60000, 65000, 70000, 72000]
     }
   ]
 
