@@ -34,7 +34,7 @@ function line({
   height: _height = 500,
   margin: _margin = { top: 20, right: 60, bottom: 60, left: 60 },
   lineWidth: _lineWidth = 2,
-  isCurve: _isCurve = true,
+  isCurve: _isCurve = false,
   tickSize: _tickSize = 5,
   tickPadding: _tickPadding = 5,
 } = {}) {
