@@ -93,6 +93,7 @@ function line({
       .y1(function(d) { return yScale(d.value); });
 
   if (_isCurve){
+  //https://stackoverflow.com/questions/32477247/d3-line-chart-giving-wrong-values-at-highest-number
     lineChart.curve(d3.curveBasis);
     area.curve(d3.curveBasis);
   } 
