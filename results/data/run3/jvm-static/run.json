@@ -1,0 +1,115 @@
+{
+  "counters": [],
+  "timestamps": {
+    "start": 1627557347503,
+    "cleanupStart": 1627557348932,
+    "runStop": 1627557348927
+  },
+  "profiles": {"client-setup@erik-laptop.": {
+    "timers": [
+      {
+        "stop": 1627557348934,
+        "nanos": 609363,
+        "name": "waiting in run queue",
+        "start": 1627557348933,
+        "millis": 1
+      },
+      {
+        "stop": 1627557348934,
+        "nanos": 38569,
+        "name": "client-setup",
+        "start": 1627557348934,
+        "millis": 0
+      },
+      {
+        "stop": 1627557348935,
+        "nanos": 882083,
+        "name": "next",
+        "start": 1627557348934,
+        "millis": 1
+      },
+      {
+        "stop": 1627557348935,
+        "nanos": 486754,
+        "name": "waiting in run queue",
+        "start": 1627557348935,
+        "millis": 0
+      },
+      {
+        "stop": -1,
+        "nanos": -38482006744006,
+        "name": "env",
+        "start": 1627557348935,
+        "millis": -1627557348936
+      }
+    ],
+    "stop": -1,
+    "nanos": -38482004690967,
+    "name": "client-setup@erik-laptop.",
+    "start": 1627557348933,
+    "millis": -1627557348934
+  }},
+  "latches": [],
+  "state": {
+    "CLIENT_FILE_PATH": "/tmp/quarkus-test/client",
+    "SERVER_FILE_PATH": "/tmp/quarkus-test/server",
+    "TEST_ITERATIONS": 5,
+    "DOCKER_APP_MEM": "1024m",
+    "TEST_STATIC_ENDPOINT": "http://erik-pc.local:8080/greeting/Bob",
+    "TEST_REPO_BRANCH": "master",
+    "TEST_REPO_URL": "https://github.com/ErikSimonsen/quarkus-iothread-workerpool",
+    "DOCKER_APP_CPUS": 4,
+    "ENVIRONMENT_URL": "http://erik-pc.local:8080/environment",
+    "RUNTIMES": [
+      {
+        "dockerImageName": "framework/quarkus-io-thread",
+        "buildCmd": "./mvnw clean package -DskipTests",
+        "dockerfile": "src/main/docker/Dockerfile.jvm",
+        "name": "quarkus-io-thread",
+        "targetJar": "quarkus-io-thread-runner.jar",
+        "runRates": [
+          10000,
+          20000,
+          30000,
+          40000,
+          50000,
+          60000,
+          70000,
+          80000,
+          100000,
+          110000,
+          120000,
+          130000,
+          132000,
+          134000,
+          136000,
+          138000,
+          140000
+        ],
+        "testCmd": "./mvnw clean test"
+      },
+      {
+        "dockerImageName": "framework/quarkus-worker-pool",
+        "buildCmd": "./mvnw clean package -DskipTests",
+        "dockerfile": "src/main/docker/Dockerfile.jvm",
+        "name": "quarkus-worker-pool",
+        "targetJar": "quarkus-worker-pool-runner.jar",
+        "runRates": [
+          10000,
+          20000,
+          30000,
+          40000,
+          50000,
+          60000,
+          65000,
+          68000,
+          70000
+        ],
+        "testCmd": "./mvnw clean test"
+      }
+    ],
+    "erik-laptop": {},
+    "TEST_REPO_DIR": "quarkus-iothread-workerpool",
+    "JAVA_VERSION": "11.0.11-open"
+  }
+}
