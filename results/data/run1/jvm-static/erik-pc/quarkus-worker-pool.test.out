@@ -34,8 +34,8 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running personal.simonsen.GreetingResourceTest
-2021-07-26 17:50:28,521 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-2021-07-26 17:50:28,524 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (main) HHH000342: Could not obtain connection to query metadata: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2021-08-18 21:26:20,738 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2021-08-18 21:26:20,741 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (main) HHH000342: Could not obtain connection to query metadata: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:303)
 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
 	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
@@ -62,13 +62,13 @@ Caused by: java.net.ConnectException: Verbindungsaufbau abgelehnt (Connection re
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
 	... 12 more
 
-STARTUP 17:50:28.745
-2021-07-26 17:50:28,835 INFO  [io.quarkus] (main) Quarkus 1.12.1.Final on JVM started in 2.439s. Listening on: http://localhost:8081
-2021-07-26 17:50:28,835 INFO  [io.quarkus] (main) Profile test activated. 
-2021-07-26 17:50:28,835 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
-CALL HELLO 17:50:29.970
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.623 s - in personal.simonsen.GreetingResourceTest
-2021-07-26 17:50:30,119 INFO  [io.quarkus] (main) Quarkus stopped in 0.026s
+STARTUP 21:26:20.964
+2021-08-18 21:26:21,063 INFO  [io.quarkus] (main) Quarkus 1.12.1.Final on JVM started in 2.415s. Listening on: http://localhost:8081
+2021-08-18 21:26:21,063 INFO  [io.quarkus] (main) Profile test activated. 
+2021-08-18 21:26:21,063 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
+CALL HELLO 21:26:22.077
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.402 s - in personal.simonsen.GreetingResourceTest
+2021-08-18 21:26:22,206 INFO  [io.quarkus] (main) Quarkus stopped in 0.024s
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -77,6 +77,6 @@ CALL HELLO 17:50:29.970
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  9.925 s
-[INFO] Finished at: 2021-07-26T17:50:30+02:00
+[INFO] Total time:  9.607 s
+[INFO] Finished at: 2021-08-18T21:26:22+02:00
 [INFO] ------------------------------------------------------------------------

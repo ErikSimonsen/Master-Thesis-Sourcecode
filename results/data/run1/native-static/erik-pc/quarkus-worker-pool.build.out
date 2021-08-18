@@ -46,31 +46,31 @@ Digest: sha256:becf08de869e707beaa5e57444b533ef93ebef15aad90c92ac660ddf7cea2b11
 Status: Image is up to date for quay.io/quarkus/ubi-quarkus-native-image:21.0.0-java11
 quay.io/quarkus/ubi-quarkus-native-image:21.0.0-java11
 [INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Running Quarkus native-image plugin on GraalVM Version 21.0.0 (Java Version 11.0.10+8-jvmci-21.0-b06)
-[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-DCoordinatorEnvironmentBean.transactionStatusManagerEnable=false -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=1 -J-Duser.language=de -J-Duser.country=DE -J-Dfile.encoding=UTF-8 --initialize-at-build-time= -H:InitialCollectionPolicy=com.oracle.svm.core.genscavenge.CollectionPolicy\$BySpaceAndTime -H:+JNI -H:+AllowFoldMethods -jar quarkus-worker-pool-runner.jar -H:FallbackThreshold=0 -H:+ReportExceptionStackTraces -H:-AddAllCharsets -H:EnableURLProtocols=http,https --enable-all-security-services --no-server -H:-UseServiceLoaderFeature -H:+StackTrace quarkus-worker-pool-runner
-[quarkus-worker-pool-runner:26]    classlist:   2.430,37 ms,  1,19 GB
-[quarkus-worker-pool-runner:26]        (cap):     685,65 ms,  1,19 GB
-[quarkus-worker-pool-runner:26]        setup:   2.492,41 ms,  1,19 GB
-17:31:49,410 INFO  [org.hib.Version] HHH000412: Hibernate ORM core version 5.4.28.Final
-17:31:49,420 INFO  [org.hib.ann.com.Version] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-17:31:49,451 INFO  [org.hib.dia.Dialect] HHH000400: Using dialect: io.quarkus.hibernate.orm.runtime.dialect.QuarkusPostgreSQL10Dialect
-17:31:58,067 INFO  [org.jbo.threads] JBoss Threads version 3.2.0.Final
-[quarkus-worker-pool-runner:26]     (clinit):   1.091,20 ms,  5,21 GB
-[quarkus-worker-pool-runner:26]   (typeflow):  14.783,57 ms,  5,21 GB
-[quarkus-worker-pool-runner:26]    (objects):  22.774,36 ms,  5,21 GB
-[quarkus-worker-pool-runner:26]   (features):   1.221,49 ms,  5,21 GB
-[quarkus-worker-pool-runner:26]     analysis:  42.082,77 ms,  5,21 GB
-[quarkus-worker-pool-runner:26]     universe:   2.325,82 ms,  5,21 GB
-[quarkus-worker-pool-runner:26]      (parse):   5.079,36 ms,  5,78 GB
-[quarkus-worker-pool-runner:26]     (inline):   2.768,93 ms,  5,99 GB
-[quarkus-worker-pool-runner:26]    (compile):  34.497,21 ms,  6,85 GB
-[quarkus-worker-pool-runner:26]      compile:  45.664,15 ms,  6,85 GB
-[quarkus-worker-pool-runner:26]        image:   5.447,20 ms,  6,80 GB
-[quarkus-worker-pool-runner:26]        write:     773,06 ms,  6,80 GB
-[quarkus-worker-pool-runner:26]      [total]: 101.474,38 ms,  6,80 GB
-[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 108329ms
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-DCoordinatorEnvironmentBean.transactionStatusManagerEnable=false -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=1 -J-Duser.language=de -J-Duser.country=DE -J-Dfile.encoding=UTF-8 --initialize-at-build-time= -H:InitialCollectionPolicy=com.oracle.svm.core.genscavenge.CollectionPolicy\$BySpaceAndTime -H:+JNI -H:+AllowFoldMethods -jar quarkus-worker-pool-runner.jar -H:FallbackThreshold=0 -H:+ReportExceptionStackTraces -H:-AddAllCharsets -H:EnableURLProtocols=http,https --enable-all-security-services --no-server -H:-UseServiceLoaderFeature -H:+StackTrace quarkus-worker-pool-runner
+[quarkus-worker-pool-runner:26]    classlist:   2.439,96 ms,  1,19 GB
+[quarkus-worker-pool-runner:26]        (cap):     697,82 ms,  1,19 GB
+[quarkus-worker-pool-runner:26]        setup:   2.574,86 ms,  1,19 GB
+12:50:31,447 INFO  [org.hib.Version] HHH000412: Hibernate ORM core version 5.4.28.Final
+12:50:31,453 INFO  [org.hib.ann.com.Version] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+12:50:31,471 INFO  [org.hib.dia.Dialect] HHH000400: Using dialect: io.quarkus.hibernate.orm.runtime.dialect.QuarkusPostgreSQL10Dialect
+12:50:40,137 INFO  [org.jbo.threads] JBoss Threads version 3.2.0.Final
+[quarkus-worker-pool-runner:26]     (clinit):   1.021,20 ms,  4,01 GB
+[quarkus-worker-pool-runner:26]   (typeflow):  14.883,04 ms,  4,01 GB
+[quarkus-worker-pool-runner:26]    (objects):  22.713,27 ms,  4,01 GB
+[quarkus-worker-pool-runner:26]   (features):   1.043,46 ms,  4,01 GB
+[quarkus-worker-pool-runner:26]     analysis:  41.792,58 ms,  4,01 GB
+[quarkus-worker-pool-runner:26]     universe:   2.135,39 ms,  4,01 GB
+[quarkus-worker-pool-runner:26]      (parse):   5.010,62 ms,  4,91 GB
+[quarkus-worker-pool-runner:26]     (inline):   3.115,17 ms,  5,46 GB
+[quarkus-worker-pool-runner:26]    (compile):  27.280,14 ms,  6,80 GB
+[quarkus-worker-pool-runner:26]      compile:  38.562,45 ms,  6,80 GB
+[quarkus-worker-pool-runner:26]        image:   5.175,43 ms,  6,80 GB
+[quarkus-worker-pool-runner:26]        write:     768,59 ms,  6,80 GB
+[quarkus-worker-pool-runner:26]      [total]:  93.828,47 ms,  6,82 GB
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 100758ms
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:51 min
-[INFO] Finished at: 2021-07-26T19:33:26+02:00
+[INFO] Total time:  01:44 min
+[INFO] Finished at: 2021-08-18T14:52:00+02:00
 [INFO] ------------------------------------------------------------------------

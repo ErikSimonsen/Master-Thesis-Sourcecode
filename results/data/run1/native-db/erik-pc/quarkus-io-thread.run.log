@@ -1,5 +1,5 @@
-2021-07-26 20:10:33,653 INFO  [org.hib.rea.pro.imp.ReactiveIntegrator] (main) HRX000001: Hibernate Reactive Preview
-STARTUP 20:10:33.654
-2021-07-26 20:10:33,656 INFO  [io.quarkus] (main) quarkus-io-thread 1.0 native (powered by Quarkus 1.12.1.Final) started in 0.036s. Listening on: http://0.0.0.0:8080
-2021-07-26 20:10:33,656 INFO  [io.quarkus] (main) Profile prod activated. 
-2021-07-26 20:10:33,656 INFO  [io.quarkus] (main) Installed features: [cdi, hibernate-orm, hibernate-reactive, mutiny, reactive-pg-client, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]
+2021-08-18 13:36:56,798 INFO  [org.hib.rea.pro.imp.ReactiveIntegrator] (main) HRX000001: Hibernate Reactive Preview
+STARTUP 13:36:56.800
+2021-08-18 13:36:56,801 INFO  [io.quarkus] (main) quarkus-io-thread 1.0 native (powered by Quarkus 1.12.1.Final) started in 0.040s. Listening on: http://0.0.0.0:8080
+2021-08-18 13:36:56,801 INFO  [io.quarkus] (main) Profile prod activated. 
+2021-08-18 13:36:56,801 INFO  [io.quarkus] (main) Installed features: [cdi, hibernate-orm, hibernate-reactive, mutiny, reactive-pg-client, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, vertx]

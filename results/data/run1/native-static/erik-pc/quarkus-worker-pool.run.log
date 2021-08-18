@@ -1,5 +1,5 @@
-2021-07-26 17:53:33,112 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-2021-07-26 17:53:33,112 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (main) HHH000342: Could not obtain connection to query metadata: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2021-08-18 13:14:18,979 WARN  [io.agr.pool] (agroal-11) Datasource '<default>': Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2021-08-18 13:14:18,980 WARN  [org.hib.eng.jdb.env.int.JdbcEnvironmentInitiator] (main) HHH000342: Could not obtain connection to query metadata: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:303)
 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
 	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
@@ -29,7 +29,7 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
 	... 14 more
 
-STARTUP 17:53:33.114
-2021-07-26 17:53:33,116 INFO  [io.quarkus] (main) quarkus-worker-pool 1.0 native (powered by Quarkus 1.12.1.Final) started in 0.068s. Listening on: http://0.0.0.0:8080
-2021-07-26 17:53:33,116 INFO  [io.quarkus] (main) Profile prod activated. 
-2021-07-26 17:53:33,116 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
+STARTUP 13:14:18.982
+2021-08-18 13:14:18,983 INFO  [io.quarkus] (main) quarkus-worker-pool 1.0 native (powered by Quarkus 1.12.1.Final) started in 0.045s. Listening on: http://0.0.0.0:8080
+2021-08-18 13:14:18,984 INFO  [io.quarkus] (main) Profile prod activated. 
+2021-08-18 13:14:18,984 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]
