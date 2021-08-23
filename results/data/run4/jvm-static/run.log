@@ -1,0 +1,1082 @@
+2021-08-23 17:19:24,766 Running qDup version 0.6.6 @ a86f0f6
+2021-08-23 17:19:24,773 run-1629731963838 starting state:
+ TEST_REPO_URL = https://github.com/ErikSimonsen/quarkus-iothread-workerpool
+ TEST_REPO_DIR = quarkus-iothread-workerpool
+ TEST_REPO_BRANCH = master
+ SERVER_FILE_PATH = /tmp/quarkus-test/server
+ CLIENT_FILE_PATH = /tmp/quarkus-test/client
+ TEST_ITERATIONS = 5
+ DOCKER_APP_CPUS = 4
+ DOCKER_APP_MEM = 1024m
+ RUNTIMES = [{"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"},{"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}]
+ TEST_STATIC_ENDPOINT = http://erik-pc.local:8080/greeting/Bob
+ ENVIRONMENT_URL = http://erik-pc.local:8080/environment
+ JAVA_VERSION = 11.0.11-open
+
+2021-08-23 17:19:26,016 server-setup@erik-pc:server-setup
+2021-08-23 17:19:26,016 client-setup@erik-laptop:client-setup
+2021-08-23 17:19:26,155 client-setup@erik-laptop:start-env:
+2021-08-23 17:19:26,157 client-setup@erik-laptop:script-cmd: set-locale-numeric
+2021-08-23 17:19:26,157 server-setup@erik-pc:start-env:
+2021-08-23 17:19:26,158 client-setup@erik-laptop:set-locale-numeric
+2021-08-23 17:19:26,159 server-setup@erik-pc:script-cmd: set-locale-numeric
+2021-08-23 17:19:26,160 server-setup@erik-pc:set-locale-numeric
+2021-08-23 17:19:26,471 client-setup@erik-laptop:export LC_NUMERIC="en_US.UTF-8"
+2021-08-23 17:19:26,472 client-setup@erik-laptop:script-cmd: clear-client-dirs
+2021-08-23 17:19:26,472 client-setup@erik-laptop:clear-client-dirs
+2021-08-23 17:19:26,476 server-setup@erik-pc:export LC_NUMERIC="en_US.UTF-8"
+2021-08-23 17:19:26,477 server-setup@erik-pc:script-cmd: define-signals
+2021-08-23 17:19:26,478 server-setup@erik-pc:define-signals
+2021-08-23 17:19:26,798 client-setup@erik-laptop:if [ -d /tmp/quarkus-test/client ]; then rm -Rf /tmp/quarkus-test/client; fi
+2021-08-23 17:19:27,111 client-setup@erik-laptop:mkdir -p /tmp/quarkus-test/client/output
+2021-08-23 17:19:27,237 client-setup@erik-laptop:stop-env: export LC_NUMERIC="en_US.UTF-8"
+2021-08-23 17:19:27,326 server-setup@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:19:27,329 server-setup@erik-pc:set-signal: quarkus-io-thread-READY 1
+2021-08-23 17:19:27,330 server-setup@erik-pc:set-signal: quarkus-io-thread-DONE 1
+2021-08-23 17:19:27,371 server-setup@erik-pc:for-each: RUN_RATE = 10000
+2021-08-23 17:19:27,373 server-setup@erik-pc:set-signal: quarkus-io-thread-10000-WARM-UP-START 1
+2021-08-23 17:19:27,375 server-setup@erik-pc:set-signal: quarkus-io-thread-10000-WARM-UP-END 1
+2021-08-23 17:19:27,377 server-setup@erik-pc:set-signal: quarkus-io-thread-10000-MEASURE-START 1
+2021-08-23 17:19:27,378 server-setup@erik-pc:set-signal: quarkus-io-thread-10000-MEASURE-END 1
+2021-08-23 17:19:27,383 server-setup@erik-pc:for-each: RUN_RATE = 20000
+2021-08-23 17:19:27,385 server-setup@erik-pc:set-signal: quarkus-io-thread-20000-WARM-UP-START 1
+2021-08-23 17:19:27,386 server-setup@erik-pc:set-signal: quarkus-io-thread-20000-WARM-UP-END 1
+2021-08-23 17:19:27,388 server-setup@erik-pc:set-signal: quarkus-io-thread-20000-MEASURE-START 1
+2021-08-23 17:19:27,389 server-setup@erik-pc:set-signal: quarkus-io-thread-20000-MEASURE-END 1
+2021-08-23 17:19:27,391 server-setup@erik-pc:for-each: RUN_RATE = 30000
+2021-08-23 17:19:27,393 server-setup@erik-pc:set-signal: quarkus-io-thread-30000-WARM-UP-START 1
+2021-08-23 17:19:27,394 server-setup@erik-pc:set-signal: quarkus-io-thread-30000-WARM-UP-END 1
+2021-08-23 17:19:27,396 server-setup@erik-pc:set-signal: quarkus-io-thread-30000-MEASURE-START 1
+2021-08-23 17:19:27,398 server-setup@erik-pc:set-signal: quarkus-io-thread-30000-MEASURE-END 1
+2021-08-23 17:19:27,399 server-setup@erik-pc:for-each: RUN_RATE = 40000
+2021-08-23 17:19:27,401 server-setup@erik-pc:set-signal: quarkus-io-thread-40000-WARM-UP-START 1
+2021-08-23 17:19:27,402 server-setup@erik-pc:set-signal: quarkus-io-thread-40000-WARM-UP-END 1
+2021-08-23 17:19:27,408 server-setup@erik-pc:set-signal: quarkus-io-thread-40000-MEASURE-START 1
+2021-08-23 17:19:27,409 server-setup@erik-pc:set-signal: quarkus-io-thread-40000-MEASURE-END 1
+2021-08-23 17:19:27,410 server-setup@erik-pc:for-each: RUN_RATE = 50000
+2021-08-23 17:19:27,411 server-setup@erik-pc:set-signal: quarkus-io-thread-50000-WARM-UP-START 1
+2021-08-23 17:19:27,412 server-setup@erik-pc:set-signal: quarkus-io-thread-50000-WARM-UP-END 1
+2021-08-23 17:19:27,413 server-setup@erik-pc:set-signal: quarkus-io-thread-50000-MEASURE-START 1
+2021-08-23 17:19:27,415 server-setup@erik-pc:set-signal: quarkus-io-thread-50000-MEASURE-END 1
+2021-08-23 17:19:27,416 server-setup@erik-pc:for-each: RUN_RATE = 60000
+2021-08-23 17:19:27,417 server-setup@erik-pc:set-signal: quarkus-io-thread-60000-WARM-UP-START 1
+2021-08-23 17:19:27,418 server-setup@erik-pc:set-signal: quarkus-io-thread-60000-WARM-UP-END 1
+2021-08-23 17:19:27,420 server-setup@erik-pc:set-signal: quarkus-io-thread-60000-MEASURE-START 1
+2021-08-23 17:19:27,421 server-setup@erik-pc:set-signal: quarkus-io-thread-60000-MEASURE-END 1
+2021-08-23 17:19:27,422 server-setup@erik-pc:for-each: RUN_RATE = 70000
+2021-08-23 17:19:27,423 server-setup@erik-pc:set-signal: quarkus-io-thread-70000-WARM-UP-START 1
+2021-08-23 17:19:27,424 server-setup@erik-pc:set-signal: quarkus-io-thread-70000-WARM-UP-END 1
+2021-08-23 17:19:27,426 server-setup@erik-pc:set-signal: quarkus-io-thread-70000-MEASURE-START 1
+2021-08-23 17:19:27,427 server-setup@erik-pc:set-signal: quarkus-io-thread-70000-MEASURE-END 1
+2021-08-23 17:19:27,428 server-setup@erik-pc:for-each: RUN_RATE = 80000
+2021-08-23 17:19:27,429 server-setup@erik-pc:set-signal: quarkus-io-thread-80000-WARM-UP-START 1
+2021-08-23 17:19:27,430 server-setup@erik-pc:set-signal: quarkus-io-thread-80000-WARM-UP-END 1
+2021-08-23 17:19:27,431 server-setup@erik-pc:set-signal: quarkus-io-thread-80000-MEASURE-START 1
+2021-08-23 17:19:27,432 server-setup@erik-pc:set-signal: quarkus-io-thread-80000-MEASURE-END 1
+2021-08-23 17:19:27,433 server-setup@erik-pc:for-each: RUN_RATE = 100000
+2021-08-23 17:19:27,434 server-setup@erik-pc:set-signal: quarkus-io-thread-100000-WARM-UP-START 1
+2021-08-23 17:19:27,435 server-setup@erik-pc:set-signal: quarkus-io-thread-100000-WARM-UP-END 1
+2021-08-23 17:19:27,436 server-setup@erik-pc:set-signal: quarkus-io-thread-100000-MEASURE-START 1
+2021-08-23 17:19:27,437 server-setup@erik-pc:set-signal: quarkus-io-thread-100000-MEASURE-END 1
+2021-08-23 17:19:27,438 server-setup@erik-pc:for-each: RUN_RATE = 110000
+2021-08-23 17:19:27,439 server-setup@erik-pc:set-signal: quarkus-io-thread-110000-WARM-UP-START 1
+2021-08-23 17:19:27,440 server-setup@erik-pc:set-signal: quarkus-io-thread-110000-WARM-UP-END 1
+2021-08-23 17:19:27,441 server-setup@erik-pc:set-signal: quarkus-io-thread-110000-MEASURE-START 1
+2021-08-23 17:19:27,442 server-setup@erik-pc:set-signal: quarkus-io-thread-110000-MEASURE-END 1
+2021-08-23 17:19:27,443 server-setup@erik-pc:for-each: RUN_RATE = 120000
+2021-08-23 17:19:27,444 server-setup@erik-pc:set-signal: quarkus-io-thread-120000-WARM-UP-START 1
+2021-08-23 17:19:27,446 server-setup@erik-pc:set-signal: quarkus-io-thread-120000-WARM-UP-END 1
+2021-08-23 17:19:27,450 server-setup@erik-pc:set-signal: quarkus-io-thread-120000-MEASURE-START 1
+2021-08-23 17:19:27,451 server-setup@erik-pc:set-signal: quarkus-io-thread-120000-MEASURE-END 1
+2021-08-23 17:19:27,453 server-setup@erik-pc:for-each: RUN_RATE = 130000
+2021-08-23 17:19:27,454 server-setup@erik-pc:set-signal: quarkus-io-thread-130000-WARM-UP-START 1
+2021-08-23 17:19:27,455 server-setup@erik-pc:set-signal: quarkus-io-thread-130000-WARM-UP-END 1
+2021-08-23 17:19:27,456 server-setup@erik-pc:set-signal: quarkus-io-thread-130000-MEASURE-START 1
+2021-08-23 17:19:27,457 server-setup@erik-pc:set-signal: quarkus-io-thread-130000-MEASURE-END 1
+2021-08-23 17:19:27,458 server-setup@erik-pc:for-each: RUN_RATE = 138000
+2021-08-23 17:19:27,459 server-setup@erik-pc:set-signal: quarkus-io-thread-138000-WARM-UP-START 1
+2021-08-23 17:19:27,460 server-setup@erik-pc:set-signal: quarkus-io-thread-138000-WARM-UP-END 1
+2021-08-23 17:19:27,461 server-setup@erik-pc:set-signal: quarkus-io-thread-138000-MEASURE-START 1
+2021-08-23 17:19:27,462 server-setup@erik-pc:set-signal: quarkus-io-thread-138000-MEASURE-END 1
+2021-08-23 17:19:27,463 server-setup@erik-pc:for-each: RUN_RATE = 140000
+2021-08-23 17:19:27,464 server-setup@erik-pc:set-signal: quarkus-io-thread-140000-WARM-UP-START 1
+2021-08-23 17:19:27,465 server-setup@erik-pc:set-signal: quarkus-io-thread-140000-WARM-UP-END 1
+2021-08-23 17:19:27,466 server-setup@erik-pc:set-signal: quarkus-io-thread-140000-MEASURE-START 1
+2021-08-23 17:19:27,467 server-setup@erik-pc:set-signal: quarkus-io-thread-140000-MEASURE-END 1
+2021-08-23 17:19:27,468 server-setup@erik-pc:for-each: RUN_RATE = 141000
+2021-08-23 17:19:27,469 server-setup@erik-pc:set-signal: quarkus-io-thread-141000-WARM-UP-START 1
+2021-08-23 17:19:27,470 server-setup@erik-pc:set-signal: quarkus-io-thread-141000-WARM-UP-END 1
+2021-08-23 17:19:27,471 server-setup@erik-pc:set-signal: quarkus-io-thread-141000-MEASURE-START 1
+2021-08-23 17:19:27,472 server-setup@erik-pc:set-signal: quarkus-io-thread-141000-MEASURE-END 1
+2021-08-23 17:19:27,473 server-setup@erik-pc:for-each: RUN_RATE = 142000
+2021-08-23 17:19:27,474 server-setup@erik-pc:set-signal: quarkus-io-thread-142000-WARM-UP-START 1
+2021-08-23 17:19:27,475 server-setup@erik-pc:set-signal: quarkus-io-thread-142000-WARM-UP-END 1
+2021-08-23 17:19:27,476 server-setup@erik-pc:set-signal: quarkus-io-thread-142000-MEASURE-START 1
+2021-08-23 17:19:27,477 server-setup@erik-pc:set-signal: quarkus-io-thread-142000-MEASURE-END 1
+2021-08-23 17:19:27,480 server-setup@erik-pc:for-each: RUN_RATE
+2021-08-23 17:19:27,482 server-setup@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:19:27,483 server-setup@erik-pc:set-signal: quarkus-worker-pool-READY 1
+2021-08-23 17:19:27,484 server-setup@erik-pc:set-signal: quarkus-worker-pool-DONE 1
+2021-08-23 17:19:27,506 server-setup@erik-pc:for-each: RUN_RATE = 10000
+2021-08-23 17:19:27,507 server-setup@erik-pc:set-signal: quarkus-worker-pool-10000-WARM-UP-START 1
+2021-08-23 17:19:27,509 server-setup@erik-pc:set-signal: quarkus-worker-pool-10000-WARM-UP-END 1
+2021-08-23 17:19:27,510 server-setup@erik-pc:set-signal: quarkus-worker-pool-10000-MEASURE-START 1
+2021-08-23 17:19:27,511 server-setup@erik-pc:set-signal: quarkus-worker-pool-10000-MEASURE-END 1
+2021-08-23 17:19:27,512 server-setup@erik-pc:for-each: RUN_RATE = 20000
+2021-08-23 17:19:27,513 server-setup@erik-pc:set-signal: quarkus-worker-pool-20000-WARM-UP-START 1
+2021-08-23 17:19:27,514 server-setup@erik-pc:set-signal: quarkus-worker-pool-20000-WARM-UP-END 1
+2021-08-23 17:19:27,515 server-setup@erik-pc:set-signal: quarkus-worker-pool-20000-MEASURE-START 1
+2021-08-23 17:19:27,517 server-setup@erik-pc:set-signal: quarkus-worker-pool-20000-MEASURE-END 1
+2021-08-23 17:19:27,518 server-setup@erik-pc:for-each: RUN_RATE = 30000
+2021-08-23 17:19:27,519 server-setup@erik-pc:set-signal: quarkus-worker-pool-30000-WARM-UP-START 1
+2021-08-23 17:19:27,520 server-setup@erik-pc:set-signal: quarkus-worker-pool-30000-WARM-UP-END 1
+2021-08-23 17:19:27,521 server-setup@erik-pc:set-signal: quarkus-worker-pool-30000-MEASURE-START 1
+2021-08-23 17:19:27,522 server-setup@erik-pc:set-signal: quarkus-worker-pool-30000-MEASURE-END 1
+2021-08-23 17:19:27,523 server-setup@erik-pc:for-each: RUN_RATE = 40000
+2021-08-23 17:19:27,524 server-setup@erik-pc:set-signal: quarkus-worker-pool-40000-WARM-UP-START 1
+2021-08-23 17:19:27,525 server-setup@erik-pc:set-signal: quarkus-worker-pool-40000-WARM-UP-END 1
+2021-08-23 17:19:27,526 server-setup@erik-pc:set-signal: quarkus-worker-pool-40000-MEASURE-START 1
+2021-08-23 17:19:27,527 server-setup@erik-pc:set-signal: quarkus-worker-pool-40000-MEASURE-END 1
+2021-08-23 17:19:27,528 server-setup@erik-pc:for-each: RUN_RATE = 50000
+2021-08-23 17:19:27,529 server-setup@erik-pc:set-signal: quarkus-worker-pool-50000-WARM-UP-START 1
+2021-08-23 17:19:27,530 server-setup@erik-pc:set-signal: quarkus-worker-pool-50000-WARM-UP-END 1
+2021-08-23 17:19:27,531 server-setup@erik-pc:set-signal: quarkus-worker-pool-50000-MEASURE-START 1
+2021-08-23 17:19:27,532 server-setup@erik-pc:set-signal: quarkus-worker-pool-50000-MEASURE-END 1
+2021-08-23 17:19:27,533 server-setup@erik-pc:for-each: RUN_RATE = 60000
+2021-08-23 17:19:27,535 server-setup@erik-pc:set-signal: quarkus-worker-pool-60000-WARM-UP-START 1
+2021-08-23 17:19:27,536 server-setup@erik-pc:set-signal: quarkus-worker-pool-60000-WARM-UP-END 1
+2021-08-23 17:19:27,537 server-setup@erik-pc:set-signal: quarkus-worker-pool-60000-MEASURE-START 1
+2021-08-23 17:19:27,538 server-setup@erik-pc:set-signal: quarkus-worker-pool-60000-MEASURE-END 1
+2021-08-23 17:19:27,540 server-setup@erik-pc:for-each: RUN_RATE = 65000
+2021-08-23 17:19:27,541 server-setup@erik-pc:set-signal: quarkus-worker-pool-65000-WARM-UP-START 1
+2021-08-23 17:19:27,544 server-setup@erik-pc:set-signal: quarkus-worker-pool-65000-WARM-UP-END 1
+2021-08-23 17:19:27,545 server-setup@erik-pc:set-signal: quarkus-worker-pool-65000-MEASURE-START 1
+2021-08-23 17:19:27,546 server-setup@erik-pc:set-signal: quarkus-worker-pool-65000-MEASURE-END 1
+2021-08-23 17:19:27,546 server-setup@erik-pc:for-each: RUN_RATE = 68000
+2021-08-23 17:19:27,547 server-setup@erik-pc:set-signal: quarkus-worker-pool-68000-WARM-UP-START 1
+2021-08-23 17:19:27,548 server-setup@erik-pc:set-signal: quarkus-worker-pool-68000-WARM-UP-END 1
+2021-08-23 17:19:27,550 server-setup@erik-pc:set-signal: quarkus-worker-pool-68000-MEASURE-START 1
+2021-08-23 17:19:27,551 server-setup@erik-pc:set-signal: quarkus-worker-pool-68000-MEASURE-END 1
+2021-08-23 17:19:27,552 server-setup@erik-pc:for-each: RUN_RATE = 69000
+2021-08-23 17:19:27,553 server-setup@erik-pc:set-signal: quarkus-worker-pool-69000-WARM-UP-START 1
+2021-08-23 17:19:27,554 server-setup@erik-pc:set-signal: quarkus-worker-pool-69000-WARM-UP-END 1
+2021-08-23 17:19:27,555 server-setup@erik-pc:set-signal: quarkus-worker-pool-69000-MEASURE-START 1
+2021-08-23 17:19:27,559 server-setup@erik-pc:set-signal: quarkus-worker-pool-69000-MEASURE-END 1
+2021-08-23 17:19:27,560 server-setup@erik-pc:for-each: RUN_RATE = 70000
+2021-08-23 17:19:27,561 server-setup@erik-pc:set-signal: quarkus-worker-pool-70000-WARM-UP-START 1
+2021-08-23 17:19:27,562 server-setup@erik-pc:set-signal: quarkus-worker-pool-70000-WARM-UP-END 1
+2021-08-23 17:19:27,563 server-setup@erik-pc:set-signal: quarkus-worker-pool-70000-MEASURE-START 1
+2021-08-23 17:19:27,564 server-setup@erik-pc:set-signal: quarkus-worker-pool-70000-MEASURE-END 1
+2021-08-23 17:19:27,565 server-setup@erik-pc:for-each: RUN_RATE = 71000
+2021-08-23 17:19:27,566 server-setup@erik-pc:set-signal: quarkus-worker-pool-71000-WARM-UP-START 1
+2021-08-23 17:19:27,567 server-setup@erik-pc:set-signal: quarkus-worker-pool-71000-WARM-UP-END 1
+2021-08-23 17:19:27,568 server-setup@erik-pc:set-signal: quarkus-worker-pool-71000-MEASURE-START 1
+2021-08-23 17:19:27,569 server-setup@erik-pc:set-signal: quarkus-worker-pool-71000-MEASURE-END 1
+2021-08-23 17:19:27,570 server-setup@erik-pc:for-each: RUN_RATE
+2021-08-23 17:19:27,571 server-setup@erik-pc:for-each: RUNTIME
+2021-08-23 17:19:27,572 server-setup@erik-pc:script-cmd: clear-server-dirs
+2021-08-23 17:19:27,572 server-setup@erik-pc:clear-server-dirs
+2021-08-23 17:19:27,886 server-setup@erik-pc:if [ -d /tmp/quarkus-test/server ]; then rm -Rf /tmp/quarkus-test/server; fi
+2021-08-23 17:19:28,197 server-setup@erik-pc:mkdir -p /tmp/quarkus-test/server/output
+2021-08-23 17:19:28,198 server-setup@erik-pc:script-cmd: build-applications
+2021-08-23 17:19:28,198 server-setup@erik-pc:build-applications
+2021-08-23 17:19:28,922 server-setup@erik-pc:sdk use java 11.0.11-open
+Using java version 11.0.11-open in this shell.
+2021-08-23 17:19:29,365 server-setup@erik-pc:java --version
+openjdk 11.0.11 2021-04-20
+OpenJDK Runtime Environment 18.9 (build 11.0.11+9)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.11+9, mixed mode)
+2021-08-23 17:19:29,677 server-setup@erik-pc:cd /tmp/quarkus-test/server
+2021-08-23 17:19:33,547 server-setup@erik-pc:git -c http.sslVerify=false clone https://github.com/ErikSimonsen/quarkus-iothread-workerpool
+Klone nach 'quarkus-iothread-workerpool' ...
+remote: Enumerating objects: 4654, done.
+remote: Counting objects:   0% (1/4654)remote: Counting objects:   1% (47/4654)remote: Counting objects:   2% (94/4654)remote: Counting objects:   3% (140/4654)remote: Counting objects:   4% (187/4654)remote: Counting objects:   5% (233/4654)remote: Counting objects:   6% (280/4654)remote: Counting objects:   7% (326/4654)remote: Counting objects:   8% (373/4654)remote: Counting objects:   9% (419/4654)remote: Counting objects:  10% (466/4654)remote: Counting objects:  11% (512/4654)remote: Counting objects:  12% (559/4654)remote: Counting objects:  13% (606/4654)remote: Counting objects:  14% (652/4654)remote: Counting objects:  15% (699/4654)remote: Counting objects:  16% (745/4654)remote: Counting objects:  17% (792/4654)remote: Counting objects:  18% (838/4654)remote: Counting objects:  19% (885/4654)remote: Counting objects:  20% (931/4654)remote: Counting objects:  21% (978/4654)remote: Counting objects:  22% (1024/4654)remote: Counting objects:  23% (1071/4654)remote: Counting objects:  24% (1117/4654)remote: Counting objects:  25% (1164/4654)remote: Counting objects:  26% (1211/4654)remote: Counting objects:  27% (1257/4654)remote: Counting objects:  28% (1304/4654)remote: Counting objects:  29% (1350/4654)remote: Counting objects:  30% (1397/4654)remote: Counting objects:  31% (1443/4654)remote: Counting objects:  32% (1490/4654)remote: Counting objects:  33% (1536/4654)remote: Counting objects:  34% (1583/4654)remote: Counting objects:  35% (1629/4654)remote: Counting objects:  36% (1676/4654)remote: Counting objects:  37% (1722/4654)remote: Counting objects:  38% (1769/4654)remote: Counting objects:  39% (1816/4654)remote: Counting objects:  40% (1862/4654)remote: Counting objects:  41% (1909/4654)remote: Counting objects:  42% (1955/4654)remote: Counting objects:  43% (2002/4654)remote: Counting objects:  44% (2048/4654)remote: Counting objects:  45% (2095/4654)remote: Counting objects:  46% (2141/4654)remote: Counting objects:  47% (2188/4654)remote: Counting objects:  48% (2234/4654)remote: Counting objects:  49% (2281/4654)remote: Counting objects:  50% (2327/4654)remote: Counting objects:  51% (2374/4654)remote: Counting objects:  52% (2421/4654)remote: Counting objects:  53% (2467/4654)remote: Counting objects:  54% (2514/4654)remote: Counting objects:  55% (2560/4654)remote: Counting objects:  56% (2607/4654)remote: Counting objects:  57% (2653/4654)remote: Counting objects:  58% (2700/4654)remote: Counting objects:  59% (2746/4654)remote: Counting objects:  60% (2793/4654)remote: Counting objects:  61% (2839/4654)remote: Counting objects:  62% (2886/4654)remote: Counting objects:  63% (2933/4654)remote: Counting objects:  64% (2979/4654)remote: Counting objects:  65% (3026/4654)remote: Counting objects:  66% (3072/4654)remote: Counting objects:  67% (3119/4654)remote: Counting objects:  68% (3165/4654)remote: Counting objects:  69% (3212/4654)remote: Counting objects:  70% (3258/4654)remote: Counting objects:  71% (3305/4654)remote: Counting objects:  72% (3351/4654)remote: Counting objects:  73% (3398/4654)remote: Counting objects:  74% (3444/4654)remote: Counting objects:  75% (3491/4654)remote: Counting objects:  76% (3538/4654)remote: Counting objects:  77% (3584/4654)remote: Counting objects:  78% (3631/4654)remote: Counting objects:  79% (3677/4654)remote: Counting objects:  80% (3724/4654)remote: Counting objects:  81% (3770/4654)remote: Counting objects:  82% (3817/4654)remote: Counting objects:  83% (3863/4654)remote: Counting objects:  84% (3910/4654)remote: Counting objects:  85% (3956/4654)remote: Counting objects:  86% (4003/4654)remote: Counting objects:  87% (4049/4654)remote: Counting objects:  88% (4096/4654)remote: Counting objects:  89% (4143/4654)remote: Counting objects:  90% (4189/4654)remote: Counting objects:  91% (4236/4654)remote: Counting objects:  92% (4282/4654)remote: Counting objects:  93% (4329/4654)remote: Counting objects:  94% (4375/4654)remote: Counting objects:  95% (4422/4654)remote: Counting objects:  96% (4468/4654)remote: Counting objects:  97% (4515/4654)remote: Counting objects:  98% (4561/4654)remote: Counting objects:  99% (4608/4654)remote: Counting objects: 100% (4654/4654)remote: Counting objects: 100% (4654/4654), done.
+remote: Compressing objects:   0% (1/2606)remote: Compressing objects:   1% (27/2606)remote: Compressing objects:   2% (53/2606)remote: Compressing objects:   3% (79/2606)remote: Compressing objects:   4% (105/2606)remote: Compressing objects:   5% (131/2606)remote: Compressing objects:   6% (157/2606)remote: Compressing objects:   7% (183/2606)remote: Compressing objects:   8% (209/2606)remote: Compressing objects:   9% (235/2606)remote: Compressing objects:  10% (261/2606)remote: Compressing objects:  11% (287/2606)remote: Compressing objects:  12% (313/2606)remote: Compressing objects:  13% (339/2606)remote: Compressing objects:  14% (365/2606)remote: Compressing objects:  15% (391/2606)remote: Compressing objects:  16% (417/2606)remote: Compressing objects:  17% (444/2606)remote: Compressing objects:  18% (470/2606)remote: Compressing objects:  19% (496/2606)remote: Compressing objects:  20% (522/2606)remote: Compressing objects:  21% (548/2606)remote: Compressing objects:  22% (574/2606)remote: Compressing objects:  23% (600/2606)remote: Compressing objects:  24% (626/2606)remote: Compressing objects:  25% (652/2606)remote: Compressing objects:  26% (678/2606)remote: Compressing objects:  27% (704/2606)remote: Compressing objects:  28% (730/2606)remote: Compressing objects:  29% (756/2606)remote: Compressing objects:  30% (782/2606)remote: Compressing objects:  31% (808/2606)remote: Compressing objects:  32% (834/2606)remote: Compressing objects:  33% (860/2606)remote: Compressing objects:  34% (887/2606)remote: Compressing objects:  35% (913/2606)remote: Compressing objects:  36% (939/2606)remote: Compressing objects:  37% (965/2606)remote: Compressing objects:  38% (991/2606)remote: Compressing objects:  39% (1017/2606)remote: Compressing objects:  40% (1043/2606)remote: Compressing objects:  41% (1069/2606)remote: Compressing objects:  42% (1095/2606)remote: Compressing objects:  43% (1121/2606)remote: Compressing objects:  44% (1147/2606)remote: Compressing objects:  45% (1173/2606)remote: Compressing objects:  46% (1199/2606)remote: Compressing objects:  47% (1225/2606)remote: Compressing objects:  48% (1251/2606)remote: Compressing objects:  49% (1277/2606)remote: Compressing objects:  50% (1303/2606)remote: Compressing objects:  51% (1330/2606)remote: Compressing objects:  52% (1356/2606)remote: Compressing objects:  53% (1382/2606)remote: Compressing objects:  54% (1408/2606)remote: Compressing objects:  55% (1434/2606)remote: Compressing objects:  56% (1460/2606)remote: Compressing objects:  57% (1486/2606)remote: Compressing objects:  58% (1512/2606)remote: Compressing objects:  59% (1538/2606)remote: Compressing objects:  60% (1564/2606)remote: Compressing objects:  61% (1590/2606)remote: Compressing objects:  62% (1616/2606)remote: Compressing objects:  63% (1642/2606)remote: Compressing objects:  64% (1668/2606)remote: Compressing objects:  65% (1694/2606)remote: Compressing objects:  66% (1720/2606)remote: Compressing objects:  67% (1747/2606)remote: Compressing objects:  68% (1773/2606)remote: Compressing objects:  69% (1799/2606)remote: Compressing objects:  70% (1825/2606)remote: Compressing objects:  71% (1851/2606)remote: Compressing objects:  72% (1877/2606)remote: Compressing objects:  73% (1903/2606)remote: Compressing objects:  74% (1929/2606)remote: Compressing objects:  75% (1955/2606)remote: Compressing objects:  76% (1981/2606)remote: Compressing objects:  77% (2007/2606)remote: Compressing objects:  78% (2033/2606)remote: Compressing objects:  78% (2055/2606)remote: Compressing objects:  79% (2059/2606)remote: Compressing objects:  80% (2085/2606)remote: Compressing objects:  81% (2111/2606)remote: Compressing objects:  82% (2137/2606)remote: Compressing objects:  83% (2163/2606)remote: Compressing objects:  84% (2190/2606)remote: Compressing objects:  85% (2216/2606)remote: Compressing objects:  86% (2242/2606)remote: Compressing objects:  87% (2268/2606)remote: Compressing objects:  88% (2294/2606)remote: Compressing objects:  89% (2320/2606)remote: Compressing objects:  90% (2346/2606)remote: Compressing objects:  91% (2372/2606)remote: Compressing objects:  92% (2398/2606)remote: Compressing objects:  93% (2424/2606)remote: Compressing objects:  94% (2450/2606)remote: Compressing objects:  95% (2476/2606)remote: Compressing objects:  96% (2502/2606)remote: Compressing objects:  97% (2528/2606)remote: Compressing objects:  98% (2554/2606)remote: Compressing objects:  99% (2580/2606)remote: Compressing objects: 100% (2606/2606)remote: Compressing objects: 100% (2606/2606), done.
+Empfange Objekte:   0% (1/4654)Empfange Objekte:   1% (47/4654)Empfange Objekte:   2% (94/4654)Empfange Objekte:   3% (140/4654)Empfange Objekte:   4% (187/4654)Empfange Objekte:   5% (233/4654)Empfange Objekte:   6% (280/4654)Empfange Objekte:   7% (326/4654)Empfange Objekte:   8% (373/4654)Empfange Objekte:   9% (419/4654)Empfange Objekte:  10% (466/4654)Empfange Objekte:  11% (512/4654)Empfange Objekte:  12% (559/4654)Empfange Objekte:  13% (606/4654)Empfange Objekte:  14% (652/4654)Empfange Objekte:  15% (699/4654)Empfange Objekte:  16% (745/4654)Empfange Objekte:  17% (792/4654)Empfange Objekte:  18% (838/4654)Empfange Objekte:  19% (885/4654)Empfange Objekte:  20% (931/4654)Empfange Objekte:  21% (978/4654)Empfange Objekte:  22% (1024/4654)Empfange Objekte:  23% (1071/4654)Empfange Objekte:  24% (1117/4654)Empfange Objekte:  25% (1164/4654)Empfange Objekte:  26% (1211/4654)Empfange Objekte:  27% (1257/4654)Empfange Objekte:  28% (1304/4654)Empfange Objekte:  29% (1350/4654)Empfange Objekte:  30% (1397/4654)Empfange Objekte:  31% (1443/4654)Empfange Objekte:  32% (1490/4654)Empfange Objekte:  33% (1536/4654)Empfange Objekte:  34% (1583/4654)Empfange Objekte:  35% (1629/4654)Empfange Objekte:  36% (1676/4654)Empfange Objekte:  37% (1722/4654)Empfange Objekte:  38% (1769/4654)Empfange Objekte:  39% (1816/4654)Empfange Objekte:  40% (1862/4654)Empfange Objekte:  41% (1909/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  42% (1955/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  43% (2002/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  44% (2048/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  45% (2095/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  46% (2141/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  47% (2188/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  48% (2234/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  49% (2281/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  50% (2327/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  51% (2374/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  52% (2421/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  53% (2467/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  54% (2514/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  55% (2560/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  56% (2607/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  57% (2653/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  58% (2700/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  59% (2746/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  60% (2793/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  61% (2839/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  62% (2886/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  63% (2933/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  64% (2979/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  65% (3026/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  66% (3072/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  67% (3119/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  68% (3165/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  69% (3212/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  70% (3258/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  71% (3305/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  72% (3351/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  73% (3398/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  74% (3444/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  75% (3491/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  76% (3538/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  77% (3584/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  77% (3623/4654), 2.20 MiB | 4.38 MiB/sEmpfange Objekte:  78% (3631/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  79% (3677/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  80% (3724/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  81% (3770/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  82% (3817/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  83% (3863/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  84% (3910/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  85% (3956/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  86% (4003/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  87% (4049/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  88% (4096/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  89% (4143/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  90% (4189/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  91% (4236/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  92% (4282/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  93% (4329/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  94% (4375/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  95% (4422/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  96% (4468/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  97% (4515/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  98% (4561/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte:  99% (4608/4654), 8.75 MiB | 8.68 MiB/sremote: Total 4654 (delta 2157), reused 4408 (delta 1914), pack-reused 0
+Empfange Objekte: 100% (4654/4654), 8.75 MiB | 8.68 MiB/sEmpfange Objekte: 100% (4654/4654), 13.19 MiB | 10.28 MiB/s, fertig.
+Löse Unterschiede auf:   0% (0/2157)Löse Unterschiede auf:   1% (22/2157)Löse Unterschiede auf:   2% (44/2157)Löse Unterschiede auf:   3% (65/2157)Löse Unterschiede auf:   4% (87/2157)Löse Unterschiede auf:   5% (108/2157)Löse Unterschiede auf:   6% (131/2157)Löse Unterschiede auf:   7% (152/2157)Löse Unterschiede auf:   8% (173/2157)Löse Unterschiede auf:   9% (195/2157)Löse Unterschiede auf:  10% (216/2157)Löse Unterschiede auf:  11% (238/2157)Löse Unterschiede auf:  12% (260/2157)Löse Unterschiede auf:  13% (281/2157)Löse Unterschiede auf:  14% (302/2157)Löse Unterschiede auf:  15% (325/2157)Löse Unterschiede auf:  16% (346/2157)Löse Unterschiede auf:  17% (367/2157)Löse Unterschiede auf:  18% (390/2157)Löse Unterschiede auf:  19% (410/2157)Löse Unterschiede auf:  20% (432/2157)Löse Unterschiede auf:  21% (453/2157)Löse Unterschiede auf:  22% (475/2157)Löse Unterschiede auf:  23% (497/2157)Löse Unterschiede auf:  24% (518/2157)Löse Unterschiede auf:  25% (540/2157)Löse Unterschiede auf:  26% (561/2157)Löse Unterschiede auf:  27% (583/2157)Löse Unterschiede auf:  28% (604/2157)Löse Unterschiede auf:  29% (626/2157)Löse Unterschiede auf:  30% (648/2157)Löse Unterschiede auf:  31% (669/2157)Löse Unterschiede auf:  32% (691/2157)Löse Unterschiede auf:  33% (712/2157)Löse Unterschiede auf:  34% (736/2157)Löse Unterschiede auf:  35% (755/2157)Löse Unterschiede auf:  36% (777/2157)Löse Unterschiede auf:  37% (799/2157)Löse Unterschiede auf:  38% (820/2157)Löse Unterschiede auf:  39% (842/2157)Löse Unterschiede auf:  40% (863/2157)Löse Unterschiede auf:  41% (885/2157)Löse Unterschiede auf:  42% (906/2157)Löse Unterschiede auf:  43% (928/2157)Löse Unterschiede auf:  44% (951/2157)Löse Unterschiede auf:  45% (971/2157)Löse Unterschiede auf:  46% (993/2157)Löse Unterschiede auf:  47% (1014/2157)Löse Unterschiede auf:  48% (1036/2157)Löse Unterschiede auf:  49% (1057/2157)Löse Unterschiede auf:  50% (1079/2157)Löse Unterschiede auf:  51% (1101/2157)Löse Unterschiede auf:  52% (1122/2157)Löse Unterschiede auf:  53% (1144/2157)Löse Unterschiede auf:  54% (1165/2157)Löse Unterschiede auf:  55% (1187/2157)Löse Unterschiede auf:  56% (1208/2157)Löse Unterschiede auf:  57% (1230/2157)Löse Unterschiede auf:  58% (1252/2157)Löse Unterschiede auf:  59% (1273/2157)Löse Unterschiede auf:  60% (1295/2157)Löse Unterschiede auf:  61% (1316/2157)Löse Unterschiede auf:  62% (1338/2157)Löse Unterschiede auf:  63% (1359/2157)Löse Unterschiede auf:  64% (1381/2157)Löse Unterschiede auf:  65% (1403/2157)Löse Unterschiede auf:  66% (1424/2157)Löse Unterschiede auf:  67% (1446/2157)Löse Unterschiede auf:  68% (1467/2157)Löse Unterschiede auf:  69% (1489/2157)Löse Unterschiede auf:  70% (1510/2157)Löse Unterschiede auf:  71% (1532/2157)Löse Unterschiede auf:  72% (1554/2157)Löse Unterschiede auf:  73% (1575/2157)Löse Unterschiede auf:  74% (1597/2157)Löse Unterschiede auf:  75% (1618/2157)Löse Unterschiede auf:  76% (1640/2157)Löse Unterschiede auf:  77% (1661/2157)Löse Unterschiede auf:  78% (1683/2157)Löse Unterschiede auf:  79% (1705/2157)Löse Unterschiede auf:  80% (1726/2157)Löse Unterschiede auf:  81% (1748/2157)Löse Unterschiede auf:  82% (1769/2157)Löse Unterschiede auf:  83% (1791/2157)Löse Unterschiede auf:  84% (1812/2157)Löse Unterschiede auf:  85% (1834/2157)Löse Unterschiede auf:  86% (1856/2157)Löse Unterschiede auf:  87% (1877/2157)Löse Unterschiede auf:  88% (1899/2157)Löse Unterschiede auf:  89% (1920/2157)Löse Unterschiede auf:  90% (1942/2157)Löse Unterschiede auf:  91% (1963/2157)Löse Unterschiede auf:  92% (1985/2157)Löse Unterschiede auf:  93% (2007/2157)Löse Unterschiede auf:  94% (2028/2157)Löse Unterschiede auf:  95% (2050/2157)Löse Unterschiede auf:  96% (2071/2157)Löse Unterschiede auf:  97% (2093/2157)Löse Unterschiede auf:  98% (2114/2157)Löse Unterschiede auf:  99% (2136/2157)Löse Unterschiede auf: 100% (2157/2157)Löse Unterschiede auf: 100% (2157/2157), fertig.
+2021-08-23 17:19:33,860 server-setup@erik-pc:cd /tmp/quarkus-test/server/quarkus-iothread-workerpool
+2021-08-23 17:19:34,294 server-setup@erik-pc:git switch master
+Bereits auf 'master'
+Ihr Branch ist auf demselben Stand wie 'origin/master'.
+2021-08-23 17:19:34,607 server-setup@erik-pc:git rev-parse HEAD
+9ba49890fc73fd0ebaad96394d9f18229764bee5
+2021-08-23 17:19:38,058 server-setup@erik-pc:npm install request
+[..................] / rollbackFailedOptional: verb npm-session 35ea264f93165d28[..................] / rollbackFailedOptional: verb npm-session 35ea264f93165d28[..................] / rollbackFailedOptional: verb npm-session 35ea264f93165d28[..................] / rollbackFailedOptional: verb npm-session 35ea264f93165d28[..................] / rollbackFailedOptional: verb npm-session 35ea264f93165d28[..................] / rollbackFailedOptional: verb npm-session 35ea264f93165d28npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+[..................] | fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable status[..................] | fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable status[..................] | fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable status[..................] \ fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable status[..................] \ fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable status[..................] \ fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable status[..................] \ fetchMetadata: sill resolveWithNewModule request@2.88.2 checking installable statusnpm WARN deprecated har-validator@5.1.5: this library is no longer supported
+[..................] - fetchMetadata: WARN deprecated har-validator@5.1.5: this library is no longer supported[..................] - fetchMetadata: WARN deprecated har-validator@5.1.5: this library is no longer supported[..................] - fetchMetadata: WARN deprecated har-validator@5.1.5: this library is no longer supported[..................] / fetchMetadata: sill resolveWithNewModule uuid@3.4.0 checking installable status[..................] / fetchMetadata: sill resolveWithNewModule uuid@3.4.0 checking installable status[ .................] | loadDep:mime-types: sill resolveWithNewModule delayed-stream@1.0.0 checking installable status[ .................] \ fetchMetadata: sill resolveWithNewModule asynckit@0.4.0 checking installable status[ .................] \ fetchMetadata: sill resolveWithNewModule asynckit@0.4.0 checking installable status[ .................] - fetchMetadata: sill resolveWithNewModule mime-db@1.49.0 checking installable status[ .................] / fetchMetadata: sill resolveWithNewModule mime-db@1.49.0 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule ajv@6.12.6 checking installable status[ .................] \ fetchMetadata: sill resolveWithNewModule ajv@6.12.6 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule fast-deep-equal@3.1.3 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule fast-deep-equal@3.1.3 checking installable status[ .................] \ fetchMetadata: sill resolveWithNewModule punycode@2.1.1 checking installable status[ .................] \ fetchMetadata: sill resolveWithNewModule punycode@2.1.1 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule assert-plus@1.0.0 checking installable status[ .................] \ fetchMetadata: sill resolveWithNewModule assert-plus@1.0.0 checking installable status[ .................] / loadDep:extsprintf: sill resolveWithNewModule extsprintf@1.3.0 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule core-util-is@1.0.2 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule core-util-is@1.0.2 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule core-util-is@1.0.2 checking installable status[ .................] | fetchMetadata: sill resolveWithNewModule core-util-is@1.0.2 checking installable status[   ...............] | loadDep:punycode: sill resolveWithNewModule bcrypt-pbkdf@1.0.2 checking installable status[       ...........] / postinstall: sill install executeActions[       ...........] / extract:request: verb lock using /home/erik/.npm/_locks/staging-dfd1847773624ca0.lock for /tmp/quarkus-test/server/quarkus-iothread-workerpool/node_modules/.staging[       ...........] / extract:request: verb lock using /home/erik/.npm/_locks/staging-dfd1847773624ca0.lock for /tmp/quarkus-test/server/quarkus-iothread-workerpool/node_modules/.staging[       ...........] \ extract:assert-plus: sill extract assert-plus@^1.0.0 extracted to /tmp/quarkus-test/server/quarkus-iothread-workerpool/node_modules/.staging/assert-plus-1700f964 (161ms)[            ......] - finalize:request: sill doSerial finalize 376[            ......] / refresh-package-json:request: timing action:finalize Completed in 24ms[            ......] | refresh-package-json:request: timing action:finalize Completed in 24ms[            ......] - postinstall: info lifecycle request@2.88.2~postinstall: request@2.88.2npm WARN saveError ENOENT: no such file or directory, open '/tmp/quarkus-test/server/quarkus-iothread-workerpool/package.json'
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN enoent ENOENT: no such file or directory, open '/tmp/quarkus-test/server/quarkus-iothread-workerpool/package.json'
+npm WARN quarkus-iothread-workerpool No description
+npm WARN quarkus-iothread-workerpool No repository field.
+npm WARN quarkus-iothread-workerpool No README data
+npm WARN quarkus-iothread-workerpool No license field.
+
++ request@2.88.2
+added 47 packages from 58 contributors and audited 47 packages in 2.467s
+
+2 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+[            ......] - postinstall: sill install printInstalled
+
+   ╭────────────────────────────────────────────────────────────────╮
+   │                                                                │
+   │      New major version of npm available! 6.14.13 → 7.21.0      │
+   │   Changelog: https://github.com/npm/cli/releases/tag/v7.21.0   │
+   │               Run npm install -g npm to update!                │
+   │                                                                │
+   ╰────────────────────────────────────────────────────────────────╯
+2021-08-23 17:19:38,105 server-setup@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:19:38,417 server-setup@erik-pc:cd /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread
+2021-08-23 17:19:50,604 server-setup@erik-pc:eval ./mvnw clean test > /dev/null
+2021-08-23 17:19:50,918 server-setup@erik-pc:echo "" > /tmp/quarkus-test/server/output/quarkus-io-thread.test.out
+2021-08-23 17:20:02,047 server-setup@erik-pc:eval ./mvnw clean test >> /tmp/quarkus-test/server/output/quarkus-io-thread.test.out
+2021-08-23 17:20:02,358 server-setup@erik-pc:echo "" > /tmp/quarkus-test/server/output/quarkus-io-thread.build.out
+2021-08-23 17:20:10,954 server-setup@erik-pc:eval ./mvnw clean package -DskipTests >> /tmp/quarkus-test/server/output/quarkus-io-thread.build.out
+2021-08-23 17:20:34,700 server-setup@erik-pc:docker build -f src/main/docker/Dockerfile.jvm -t framework/quarkus-io-thread .
+Sending build context to Docker daemon  557.1kBSending build context to Docker daemon  30.09MB
+Step 1/4 : FROM openjdk:11
+11: Pulling from library/openjdk
+
+1cfaf5c6f756: Pulling fs layer 
+c4099a935a96: Pulling fs layer 
+f6e2960d8365: Pulling fs layer 
+dffd4e638592: Pulling fs layer 
+a60431b16af7: Pulling fs layer 
+4869c4e8de8d: Pulling fs layer 
+9815a275e5d0: Pulling fs layer dffd4e638592: Waiting 9815a275e5d0: Waiting c4099a935a96: Downloading [>                                                  ]  81.67kB/7.833MBf6e2960d8365: Downloading [>                                                  ]  101.8kB/9.997MB1cfaf5c6f756: Downloading [>                                                  ]  519.4kB/50.44MBc4099a935a96: Downloading [====>                                              ]  654.6kB/7.833MBf6e2960d8365: Downloading [===>                                               ]  653.8kB/9.997MB1cfaf5c6f756: Downloading [==>                                                ]   2.55MB/50.44MBf6e2960d8365: Downloading [========>                                          ]  1.661MB/9.997MBc4099a935a96: Downloading [========>                                          ]  1.392MB/7.833MB1cfaf5c6f756: Downloading [====>                                              ]  4.619MB/50.44MBc4099a935a96: Downloading [============>                                      ]  1.883MB/7.833MBf6e2960d8365: Downloading [=============>                                     ]  2.685MB/9.997MB1cfaf5c6f756: Downloading [======>                                            ]  6.667MB/50.44MBc4099a935a96: Downloading [===============>                                   ]  2.465MB/7.833MBf6e2960d8365: Downloading [==================>                                ]  3.697MB/9.997MB1cfaf5c6f756: Downloading [========>                                          ]  8.715MB/50.44MBc4099a935a96: Downloading [==================>                                ]  2.968MB/7.833MBf6e2960d8365: Downloading [=======================>                           ]  4.709MB/9.997MB1cfaf5c6f756: Downloading [===========>                                       ]  11.27MB/50.44MBc4099a935a96: Downloading [======================>                            ]  3.554MB/7.833MBf6e2960d8365: Downloading [============================>                      ]  5.741MB/9.997MB1cfaf5c6f756: Downloading [=============>                                     ]  13.32MB/50.44MBc4099a935a96: Downloading [=========================>                         ]  4.045MB/7.833MB1cfaf5c6f756: Downloading [===============>                                   ]  15.88MB/50.44MBf6e2960d8365: Downloading [==================================>                ]   6.97MB/9.997MB1cfaf5c6f756: Downloading [=================>                                 ]  17.92MB/50.44MBc4099a935a96: Downloading [============================>                      ]  4.455MB/7.833MBf6e2960d8365: Downloading [========================================>          ]  8.092MB/9.997MBf6e2960d8365: Downloading [=============================================>     ]   9.12MB/9.997MB1cfaf5c6f756: Downloading [====================>                              ]  20.47MB/50.44MBc4099a935a96: Downloading [===============================>                   ]  4.946MB/7.833MBf6e2960d8365: Verifying Checksum f6e2960d8365: Download complete 1cfaf5c6f756: Downloading [======================>                            ]  23.03MB/50.44MBc4099a935a96: Downloading [===================================>               ]  5.532MB/7.833MBc4099a935a96: Downloading [======================================>            ]  6.024MB/7.833MB1cfaf5c6f756: Downloading [========================>                          ]  24.56MB/50.44MBc4099a935a96: Downloading [=========================================>         ]  6.519MB/7.833MB1cfaf5c6f756: Downloading [=========================>                         ]  26.09MB/50.44MBc4099a935a96: Downloading [=============================================>     ]  7.105MB/7.833MB1cfaf5c6f756: Downloading [===========================>                       ]  27.63MB/50.44MBc4099a935a96: Downloading [================================================>  ]  7.596MB/7.833MBc4099a935a96: Verifying Checksum c4099a935a96: Download complete 1cfaf5c6f756: Downloading [============================>                      ]  29.15MB/50.44MB1cfaf5c6f756: Downloading [==============================>                    ]  31.21MB/50.44MBdffd4e638592: Downloading [>                                                  ]  522.7kB/51.84MBdffd4e638592: Downloading [===>                                               ]  3.148MB/51.84MB1cfaf5c6f756: Downloading [================================>                  ]  32.74MB/50.44MBdffd4e638592: Downloading [=====>                                             ]  5.782MB/51.84MB1cfaf5c6f756: Downloading [=================================>                 ]  34.27MB/50.44MBdffd4e638592: Downloading [========>                                          ]  8.412MB/51.84MB1cfaf5c6f756: Downloading [==================================>                ]  35.29MB/50.44MBdffd4e638592: Downloading [==========>                                        ]  11.04MB/51.84MB1cfaf5c6f756: Downloading [===================================>               ]   35.8MB/50.44MBdffd4e638592: Downloading [=============>                                     ]  14.19MB/51.84MBa60431b16af7: Downloading [>                                                  ]  53.89kB/5.287MB1cfaf5c6f756: Downloading [====================================>              ]  36.83MB/50.44MBdffd4e638592: Downloading [================>                                  ]  16.83MB/51.84MBa60431b16af7: Downloading [==>                                                ]  281.9kB/5.287MB1cfaf5c6f756: Downloading [=====================================>             ]  37.84MB/50.44MBdffd4e638592: Downloading [==================>                                ]  19.45MB/51.84MBa60431b16af7: Downloading [========>                                          ]  937.2kB/5.287MB1cfaf5c6f756: Downloading [=======================================>           ]  39.37MB/50.44MBdffd4e638592: Downloading [===================>                               ]   20.5MB/51.84MBa60431b16af7: Downloading [======================>                            ]  2.423MB/5.287MB1cfaf5c6f756: Downloading [========================================>          ]  40.39MB/50.44MBa60431b16af7: Downloading [======================================>            ]  4.115MB/5.287MBdffd4e638592: Downloading [=====================>                             ]  22.07MB/51.84MBa60431b16af7: Verifying Checksum a60431b16af7: Download complete 1cfaf5c6f756: Downloading [=========================================>         ]   41.4MB/50.44MBdffd4e638592: Downloading [======================>                            ]  23.65MB/51.84MB1cfaf5c6f756: Downloading [==========================================>        ]  42.95MB/50.44MBdffd4e638592: Downloading [=========================>                         ]  26.29MB/51.84MB1cfaf5c6f756: Downloading [===========================================>       ]  43.96MB/50.44MBdffd4e638592: Downloading [===========================>                       ]  28.39MB/51.84MBdffd4e638592: Downloading [============================>                      ]  29.96MB/51.84MB1cfaf5c6f756: Downloading [============================================>      ]     45MB/50.44MBdffd4e638592: Downloading [==============================>                    ]  32.09MB/51.84MB1cfaf5c6f756: Downloading [==============================================>    ]  46.54MB/50.44MB4869c4e8de8d: Downloading [==================================================>]     212B/212B4869c4e8de8d: Verifying Checksum 4869c4e8de8d: Download complete dffd4e638592: Downloading [================================>                  ]  33.68MB/51.84MB1cfaf5c6f756: Downloading [===============================================>   ]  48.09MB/50.44MBdffd4e638592: Downloading [==================================>                ]  35.25MB/51.84MB1cfaf5c6f756: Downloading [================================================>  ]  49.12MB/50.44MBdffd4e638592: Downloading [===================================>               ]   36.3MB/51.84MB1cfaf5c6f756: Downloading [=================================================> ]  50.13MB/50.44MBdffd4e638592: Downloading [====================================>              ]  37.87MB/51.84MB1cfaf5c6f756: Download complete dffd4e638592: Downloading [======================================>            ]  39.97MB/51.84MB1cfaf5c6f756: Extracting [>                                                  ]  524.3kB/50.44MBdffd4e638592: Downloading [=========================================>         ]  42.61MB/51.84MB1cfaf5c6f756: Extracting [======>                                            ]  6.816MB/50.44MB1cfaf5c6f756: Extracting [===========>                                       ]  12.06MB/50.44MBdffd4e638592: Downloading [===========================================>       ]  44.71MB/51.84MB9815a275e5d0: Downloading [>                                                  ]  539.9kB/203.1MB1cfaf5c6f756: Extracting [=================>                                 ]   17.3MB/50.44MBdffd4e638592: Downloading [=============================================>     ]  46.82MB/51.84MB9815a275e5d0: Downloading [>                                                  ]  2.157MB/203.1MB1cfaf5c6f756: Extracting [======================>                            ]  22.54MB/50.44MBdffd4e638592: Downloading [===============================================>   ]  48.94MB/51.84MB9815a275e5d0: Downloading [>                                                  ]  3.767MB/203.1MB1cfaf5c6f756: Extracting [=========================>                         ]  26.21MB/50.44MBdffd4e638592: Downloading [================================================>  ]  50.51MB/51.84MB9815a275e5d0: Downloading [=>                                                 ]  6.441MB/203.1MB1cfaf5c6f756: Extracting [=================================>                 ]  34.08MB/50.44MBdffd4e638592: Verifying Checksum dffd4e638592: Download complete 1cfaf5c6f756: Extracting [====================================>              ]  37.22MB/50.44MB9815a275e5d0: Downloading [=>                                                 ]  7.515MB/203.1MB1cfaf5c6f756: Extracting [=========================================>         ]  41.42MB/50.44MB9815a275e5d0: Downloading [===>                                               ]  12.84MB/203.1MB1cfaf5c6f756: Extracting [=============================================>     ]  45.61MB/50.44MB9815a275e5d0: Downloading [====>                                              ]  16.58MB/203.1MB1cfaf5c6f756: Extracting [================================================>  ]  48.76MB/50.44MB9815a275e5d0: Downloading [=====>                                             ]  20.31MB/203.1MB1cfaf5c6f756: Extracting [=================================================> ]  49.81MB/50.44MB9815a275e5d0: Downloading [=====>                                             ]  24.07MB/203.1MB1cfaf5c6f756: Extracting [==================================================>]  50.44MB/50.44MB1cfaf5c6f756: Pull complete c4099a935a96: Extracting [>                                                  ]   98.3kB/7.833MB9815a275e5d0: Downloading [======>                                            ]  27.83MB/203.1MB9815a275e5d0: Downloading [=======>                                           ]  31.56MB/203.1MB9815a275e5d0: Downloading [========>                                          ]  35.33MB/203.1MB9815a275e5d0: Downloading [=========>                                         ]  38.02MB/203.1MBc4099a935a96: Extracting [=>                                                 ]  196.6kB/7.833MB9815a275e5d0: Downloading [==========>                                        ]  41.76MB/203.1MBc4099a935a96: Extracting [======================>                            ]  3.539MB/7.833MB9815a275e5d0: Downloading [===========>                                       ]  44.95MB/203.1MBc4099a935a96: Extracting [================================================>  ]  7.569MB/7.833MBc4099a935a96: Extracting [==================================================>]  7.833MB/7.833MB9815a275e5d0: Downloading [===========>                                       ]  48.69MB/203.1MBc4099a935a96: Pull complete f6e2960d8365: Extracting [>                                                  ]  131.1kB/9.997MB9815a275e5d0: Downloading [============>                                      ]  51.36MB/203.1MBf6e2960d8365: Extracting [=>                                                 ]  262.1kB/9.997MB9815a275e5d0: Downloading [=============>                                     ]  54.58MB/203.1MBf6e2960d8365: Extracting [=========================================>         ]  8.389MB/9.997MBf6e2960d8365: Extracting [==================================================>]  9.997MB/9.997MBf6e2960d8365: Pull complete 9815a275e5d0: Downloading [==============>                                    ]  57.28MB/203.1MBdffd4e638592: Extracting [>                                                  ]  524.3kB/51.84MB9815a275e5d0: Downloading [==============>                                    ]   60.5MB/203.1MBdffd4e638592: Extracting [======>                                            ]  6.816MB/51.84MB9815a275e5d0: Downloading [===============>                                   ]  63.19MB/203.1MBdffd4e638592: Extracting [==============>                                    ]  14.68MB/51.84MB9815a275e5d0: Downloading [================>                                  ]  65.87MB/203.1MBdffd4e638592: Extracting [==================>                                ]   19.4MB/51.84MB9815a275e5d0: Downloading [================>                                  ]  68.55MB/203.1MBdffd4e638592: Extracting [=====================>                             ]  22.54MB/51.84MB9815a275e5d0: Downloading [=================>                                 ]  71.22MB/203.1MBdffd4e638592: Extracting [========================>                          ]  25.17MB/51.84MB9815a275e5d0: Downloading [=================>                                 ]  72.82MB/203.1MBdffd4e638592: Extracting [==========================>                        ]  27.26MB/51.84MB9815a275e5d0: Downloading [==================>                                ]  75.49MB/203.1MBdffd4e638592: Extracting [==============================>                    ]  31.98MB/51.84MB9815a275e5d0: Downloading [===================>                               ]  78.17MB/203.1MBdffd4e638592: Extracting [=================================>                 ]  35.13MB/51.84MB9815a275e5d0: Downloading [===================>                               ]  80.33MB/203.1MBdffd4e638592: Extracting [====================================>              ]  37.75MB/51.84MB9815a275e5d0: Downloading [====================>                              ]  82.49MB/203.1MBdffd4e638592: Extracting [=========================================>         ]  43.52MB/51.84MB9815a275e5d0: Downloading [====================>                              ]  84.65MB/203.1MBdffd4e638592: Extracting [=============================================>     ]  47.19MB/51.84MB9815a275e5d0: Downloading [=====================>                             ]  86.27MB/203.1MBdffd4e638592: Extracting [================================================>  ]  49.81MB/51.84MB9815a275e5d0: Downloading [=====================>                             ]  88.42MB/203.1MBdffd4e638592: Extracting [=================================================> ]  51.38MB/51.84MBdffd4e638592: Extracting [==================================================>]  51.84MB/51.84MBdffd4e638592: Pull complete a60431b16af7: Extracting [>                                                  ]  65.54kB/5.287MB9815a275e5d0: Downloading [======================>                            ]  90.59MB/203.1MB9815a275e5d0: Downloading [======================>                            ]  92.72MB/203.1MBa60431b16af7: Extracting [==>                                                ]  262.1kB/5.287MB9815a275e5d0: Downloading [=======================>                           ]  94.88MB/203.1MBa60431b16af7: Extracting [==================================================>]  5.287MB/5.287MBa60431b16af7: Pull complete 4869c4e8de8d: Extracting [==================================================>]     212B/212B4869c4e8de8d: Extracting [==================================================>]     212B/212B9815a275e5d0: Downloading [=======================>                           ]  97.02MB/203.1MB4869c4e8de8d: Pull complete 9815a275e5d0: Downloading [========================>                          ]  99.15MB/203.1MB9815a275e5d0: Downloading [========================>                          ]  101.3MB/203.1MB9815a275e5d0: Downloading [=========================>                         ]  103.4MB/203.1MB9815a275e5d0: Downloading [==========================>                        ]  106.1MB/203.1MB9815a275e5d0: Downloading [==========================>                        ]  108.2MB/203.1MB9815a275e5d0: Downloading [===========================>                       ]  110.9MB/203.1MB9815a275e5d0: Downloading [===========================>                       ]  113.1MB/203.1MB9815a275e5d0: Downloading [============================>                      ]  115.7MB/203.1MB9815a275e5d0: Downloading [=============================>                     ]  117.9MB/203.1MB9815a275e5d0: Downloading [=============================>                     ]  120.6MB/203.1MB9815a275e5d0: Downloading [==============================>                    ]  122.7MB/203.1MB9815a275e5d0: Downloading [==============================>                    ]  125.4MB/203.1MB9815a275e5d0: Downloading [===============================>                   ]  128.1MB/203.1MB9815a275e5d0: Downloading [================================>                  ]  130.7MB/203.1MB9815a275e5d0: Downloading [================================>                  ]  133.4MB/203.1MB9815a275e5d0: Downloading [=================================>                 ]  136.1MB/203.1MB9815a275e5d0: Downloading [==================================>                ]  138.7MB/203.1MB9815a275e5d0: Downloading [==================================>                ]  141.4MB/203.1MB9815a275e5d0: Downloading [===================================>               ]  144.1MB/203.1MB9815a275e5d0: Downloading [====================================>              ]  146.8MB/203.1MB9815a275e5d0: Downloading [====================================>              ]  149.5MB/203.1MB9815a275e5d0: Downloading [=====================================>             ]  151.7MB/203.1MB9815a275e5d0: Downloading [=====================================>             ]  153.8MB/203.1MB9815a275e5d0: Downloading [======================================>            ]  155.9MB/203.1MB9815a275e5d0: Downloading [=======================================>           ]  158.6MB/203.1MB9815a275e5d0: Downloading [=======================================>           ]  160.8MB/203.1MB9815a275e5d0: Downloading [========================================>          ]  163.5MB/203.1MB9815a275e5d0: Downloading [========================================>          ]  165.1MB/203.1MB9815a275e5d0: Downloading [=========================================>         ]  167.2MB/203.1MB9815a275e5d0: Downloading [=========================================>         ]  169.4MB/203.1MB9815a275e5d0: Downloading [==========================================>        ]  171.5MB/203.1MB9815a275e5d0: Downloading [==========================================>        ]  173.7MB/203.1MB9815a275e5d0: Downloading [===========================================>       ]  175.8MB/203.1MB9815a275e5d0: Downloading [===========================================>       ]    178MB/203.1MB9815a275e5d0: Downloading [============================================>      ]  180.1MB/203.1MB9815a275e5d0: Downloading [============================================>      ]  182.3MB/203.1MB9815a275e5d0: Downloading [=============================================>     ]  184.4MB/203.1MB9815a275e5d0: Downloading [==============================================>    ]  187.1MB/203.1MB9815a275e5d0: Downloading [==============================================>    ]  189.8MB/203.1MB9815a275e5d0: Downloading [===============================================>   ]  192.5MB/203.1MB9815a275e5d0: Downloading [================================================>  ]  195.1MB/203.1MB9815a275e5d0: Downloading [================================================>  ]  197.8MB/203.1MB9815a275e5d0: Downloading [=================================================> ]  200.5MB/203.1MB9815a275e5d0: Verifying Checksum 9815a275e5d0: Download complete 9815a275e5d0: Extracting [>                                                  ]  557.1kB/203.1MB9815a275e5d0: Extracting [===>                                               ]   15.6MB/203.1MB9815a275e5d0: Extracting [=======>                                           ]  30.64MB/203.1MB9815a275e5d0: Extracting [===========>                                       ]  45.12MB/203.1MB9815a275e5d0: Extracting [==============>                                    ]  60.16MB/203.1MB9815a275e5d0: Extracting [==================>                                ]   75.2MB/203.1MB9815a275e5d0: Extracting [=====================>                             ]  85.79MB/203.1MB9815a275e5d0: Extracting [======================>                            ]  91.91MB/203.1MB9815a275e5d0: Extracting [=======================>                           ]  97.48MB/203.1MB9815a275e5d0: Extracting [=========================>                         ]  104.2MB/203.1MB9815a275e5d0: Extracting [===========================>                       ]  110.3MB/203.1MB9815a275e5d0: Extracting [============================>                      ]  116.4MB/203.1MB9815a275e5d0: Extracting [==============================>                    ]    122MB/203.1MB9815a275e5d0: Extracting [===============================>                   ]    127MB/203.1MB9815a275e5d0: Extracting [================================>                  ]    132MB/203.1MB9815a275e5d0: Extracting [=================================>                 ]    137MB/203.1MB9815a275e5d0: Extracting [===================================>               ]  142.6MB/203.1MB9815a275e5d0: Extracting [====================================>              ]  148.7MB/203.1MB9815a275e5d0: Extracting [========================================>          ]  164.3MB/203.1MB9815a275e5d0: Extracting [============================================>      ]  180.5MB/203.1MB9815a275e5d0: Extracting [================================================>  ]  196.6MB/203.1MB9815a275e5d0: Extracting [==================================================>]  203.1MB/203.1MB9815a275e5d0: Pull complete Digest: sha256:3df51df4478257259281a8090417c25210a1b786a05d7e3264772216ff411652
+Status: Downloaded newer image for openjdk:11
+ ---> e8128589e67b
+Step 2/4 : COPY target/quarkus-io-thread-runner.jar quarkus-io-thread-runner.jar
+ ---> a40b1d13f0f0
+Step 3/4 : EXPOSE 8080
+ ---> Running in 21a78df285c3
+Removing intermediate container 21a78df285c3
+ ---> d39c29e3b1eb
+Step 4/4 : CMD ["java", "-Dquarkus.http.host=0.0.0.0", "-Djava.util.logging.manager=org.jboss.logmanager.LogManager", "-jar", "quarkus-io-thread-runner.jar"]
+ ---> Running in 8f705b5abb1e
+Removing intermediate container 8f705b5abb1e
+ ---> e5937bf489d6
+Successfully built e5937bf489d6
+Successfully tagged framework/quarkus-io-thread:latest
+2021-08-23 17:20:35,011 server-setup@erik-pc:cd /tmp/quarkus-test/server/quarkus-iothread-workerpool
+2021-08-23 17:20:35,322 server-setup@erik-pc:echo "" > /tmp/quarkus-test/server/output/quarkus-io-thread.timeFirstRequest.out
+2021-08-23 17:20:43,389 server-setup@erik-pc:for i in  $(seq 1 5); do eval node scripts/timing/time.js quarkus-io-thread/target/quarkus-io-thread-runner.jar >> /tmp/quarkus-test/server/output/quarkus-io-thread.timeFirstRequest.out; done
+2021-08-23 17:20:43,403 server-setup@erik-pc:queue-download: /tmp/quarkus-test/server/output/* ./results/data/run4/jvm-static/erik-pc/
+2021-08-23 17:20:43,404 server-setup@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:20:43,712 server-setup@erik-pc:cd /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-worker-pool
+2021-08-23 17:20:54,742 server-setup@erik-pc:eval ./mvnw clean test > /dev/null
+2021-08-23 17:20:55,054 server-setup@erik-pc:echo "" > /tmp/quarkus-test/server/output/quarkus-worker-pool.test.out
+2021-08-23 17:21:06,059 server-setup@erik-pc:eval ./mvnw clean test >> /tmp/quarkus-test/server/output/quarkus-worker-pool.test.out
+2021-08-23 17:21:06,368 server-setup@erik-pc:echo "" > /tmp/quarkus-test/server/output/quarkus-worker-pool.build.out
+2021-08-23 17:21:14,675 server-setup@erik-pc:eval ./mvnw clean package -DskipTests >> /tmp/quarkus-test/server/output/quarkus-worker-pool.build.out
+2021-08-23 17:21:18,432 server-setup@erik-pc:docker build -f src/main/docker/Dockerfile.jvm -t framework/quarkus-worker-pool .
+Sending build context to Docker daemon  557.1kBSending build context to Docker daemon  28.97MBSending build context to Docker daemon  30.35MB
+Step 1/4 : FROM openjdk:11
+ ---> e8128589e67b
+Step 2/4 : COPY target/quarkus-worker-pool-runner.jar quarkus-worker-pool-runner.jar
+ ---> db34bbab37bf
+Step 3/4 : EXPOSE 8080
+ ---> Running in df6e2b192b54
+Removing intermediate container df6e2b192b54
+ ---> d6afed32660f
+Step 4/4 : CMD ["java", "-Dquarkus.http.host=0.0.0.0", "-Djava.util.logging.manager=org.jboss.logmanager.LogManager", "-jar", "quarkus-worker-pool-runner.jar"]
+ ---> Running in 8635a3d819c0
+Removing intermediate container 8635a3d819c0
+ ---> c39abf6b3f5e
+Successfully built c39abf6b3f5e
+Successfully tagged framework/quarkus-worker-pool:latest
+2021-08-23 17:21:18,743 server-setup@erik-pc:cd /tmp/quarkus-test/server/quarkus-iothread-workerpool
+2021-08-23 17:21:19,054 server-setup@erik-pc:echo "" > /tmp/quarkus-test/server/output/quarkus-worker-pool.timeFirstRequest.out
+2021-08-23 17:21:28,136 server-setup@erik-pc:for i in  $(seq 1 5); do eval node scripts/timing/time.js quarkus-worker-pool/target/quarkus-worker-pool-runner.jar >> /tmp/quarkus-test/server/output/quarkus-worker-pool.timeFirstRequest.out; done
+2021-08-23 17:21:28,140 server-setup@erik-pc:queue-download: /tmp/quarkus-test/server/output/* ./results/data/run4/jvm-static/erik-pc/
+2021-08-23 17:21:28,144 server-setup@erik-pc:for-each: RUNTIME
+2021-08-23 17:21:28,255 server-setup@erik-pc:stop-env: export PATH="/home/erik/.sdkman/candidates/java/11.0.11-open/bin:/home/erik/.local/bin:/home/erik/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"  JAVA_HOME="/home/erik/.sdkman/candidates/java/11.0.11-open"  LC_NUMERIC="en_US.UTF-8"
+2021-08-23 17:21:29,250 generate-load@erik-laptop:script-cmd: generate-load
+2021-08-23 17:21:29,250 start-applications@erik-pc:script-cmd: start-applications
+2021-08-23 17:21:29,250 capture-platform-stats@erik-pc:script-cmd: capture-platform-stats
+2021-08-23 17:21:29,251 generate-load@erik-laptop:generate-load
+2021-08-23 17:21:29,251 capture-platform-stats@erik-pc:capture-platform-stats
+2021-08-23 17:21:29,251 start-applications@erik-pc:start-applications
+2021-08-23 17:21:29,290 capture-platform-stats@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:21:29,293 generate-load@erik-laptop:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:21:29,303 capture-platform-stats@erik-pc:for-each: RUN_RATE = 10000
+2021-08-23 17:21:29,560 start-applications@erik-pc:cd /tmp/quarkus-test/server/quarkus-iothread-workerpool
+2021-08-23 17:21:29,596 start-applications@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:21:29,945 start-applications@erik-pc:docker stop quarkus-io-thread
+Error response from daemon: No such container: quarkus-io-thread
+2021-08-23 17:21:30,653 start-applications@erik-pc:docker run --rm -d --network=host --cpus=4 --memory=1024m --name=quarkus-io-thread framework/quarkus-io-thread:latest
+43f36689948607bec34894b58210b84e1d28d0d8d128c24174a5a4583ae8599c
+2021-08-23 17:21:35,966 start-applications@erik-pc:sleep 5s
+2021-08-23 17:21:36,302 start-applications@erik-pc:ps -AF | grep quarkus-io-thread-runner.jar | grep -v grep | awk '{print $2}'
+5370
+2021-08-23 17:21:36,304 start-applications@erik-pc:set-state: RUN.JAVA_APP_PID 5370
+2021-08-23 17:21:36,789 start-applications@erik-pc:curl  -s -w "%{http_code}\n"  -o /tmp/quarkus-test/server/output/quarkus-io-thread.env.out http://erik-pc.local:8080/environment
+200
+2021-08-23 17:21:36,791 reached quarkus-io-thread-READY
+2021-08-23 17:21:36,792 generate-load@erik-laptop:wait-for: quarkus-io-thread-READY
+2021-08-23 17:21:36,794 start-applications@erik-pc:signal: quarkus-io-thread-READY
+2021-08-23 17:21:36,822 generate-load@erik-laptop:for-each: RUN_RATE = 10000
+2021-08-23 17:21:36,824 reached quarkus-io-thread-10000-WARM-UP-START
+2021-08-23 17:21:36,824 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-10000-WARM-UP-START
+2021-08-23 17:21:36,824 generate-load@erik-laptop:signal: quarkus-io-thread-10000-WARM-UP-START
+2021-08-23 17:21:37,138 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-10000-WARM-UP-top.out &
+[1] 5443
+2021-08-23 17:21:37,445 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:22:37,215 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 10000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-10000-WARM-UP.wrk2.out
+2021-08-23 17:22:37,217 reached quarkus-io-thread-10000-WARM-UP-END
+2021-08-23 17:22:37,218 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-10000-WARM-UP-END
+2021-08-23 17:22:37,219 generate-load@erik-laptop:signal: quarkus-io-thread-10000-WARM-UP-END
+2021-08-23 17:22:37,528 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:22:42,531 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:22:42,532 reached quarkus-io-thread-10000-MEASURE-START
+2021-08-23 17:22:42,533 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-10000-MEASURE-START
+2021-08-23 17:22:42,533 generate-load@erik-laptop:signal: quarkus-io-thread-10000-MEASURE-START
+2021-08-23 17:22:42,848 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-10000-MEASURE-top.out &
+[2] 5474
+[1]   Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-10000-WARM-UP-top.out
+2021-08-23 17:22:43,156 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:23:42,941 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 10000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-10000-MEASURE.wrk2.out
+2021-08-23 17:23:42,942 reached quarkus-io-thread-10000-MEASURE-END
+2021-08-23 17:23:42,943 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-10000-MEASURE-END
+2021-08-23 17:23:42,943 generate-load@erik-laptop:signal: quarkus-io-thread-10000-MEASURE-END
+2021-08-23 17:23:42,944 generate-load@erik-laptop:for-each: RUN_RATE = 20000
+2021-08-23 17:23:42,946 reached quarkus-io-thread-20000-WARM-UP-START
+2021-08-23 17:23:42,946 generate-load@erik-laptop:signal: quarkus-io-thread-20000-WARM-UP-START
+2021-08-23 17:23:43,251 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:23:43,253 capture-platform-stats@erik-pc:for-each: RUN_RATE = 20000
+2021-08-23 17:23:43,255 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-20000-WARM-UP-START
+2021-08-23 17:23:43,565 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-20000-WARM-UP-top.out &
+[3] 5492
+2021-08-23 17:23:43,875 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:24:43,439 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 20000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-20000-WARM-UP.wrk2.out
+2021-08-23 17:24:43,441 reached quarkus-io-thread-20000-WARM-UP-END
+2021-08-23 17:24:43,441 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-20000-WARM-UP-END
+2021-08-23 17:24:43,442 generate-load@erik-laptop:signal: quarkus-io-thread-20000-WARM-UP-END
+2021-08-23 17:24:43,750 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:24:48,755 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:24:48,757 reached quarkus-io-thread-20000-MEASURE-START
+2021-08-23 17:24:48,757 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-20000-MEASURE-START
+2021-08-23 17:24:48,758 generate-load@erik-laptop:signal: quarkus-io-thread-20000-MEASURE-START
+2021-08-23 17:24:49,074 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-20000-MEASURE-top.out &
+[1] 5498
+2021-08-23 17:24:49,382 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:25:49,164 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 20000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-20000-MEASURE.wrk2.out
+2021-08-23 17:25:49,166 reached quarkus-io-thread-20000-MEASURE-END
+2021-08-23 17:25:49,166 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-20000-MEASURE-END
+2021-08-23 17:25:49,167 generate-load@erik-laptop:signal: quarkus-io-thread-20000-MEASURE-END
+2021-08-23 17:25:49,169 generate-load@erik-laptop:for-each: RUN_RATE = 30000
+2021-08-23 17:25:49,171 reached quarkus-io-thread-30000-WARM-UP-START
+2021-08-23 17:25:49,171 generate-load@erik-laptop:signal: quarkus-io-thread-30000-WARM-UP-START
+2021-08-23 17:25:49,473 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:25:49,475 capture-platform-stats@erik-pc:for-each: RUN_RATE = 30000
+2021-08-23 17:25:49,475 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-30000-WARM-UP-START
+2021-08-23 17:25:49,782 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-30000-WARM-UP-top.out &
+[2] 5509
+2021-08-23 17:25:50,087 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:26:49,667 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 30000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-30000-WARM-UP.wrk2.out
+2021-08-23 17:26:49,669 reached quarkus-io-thread-30000-WARM-UP-END
+2021-08-23 17:26:49,669 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-30000-WARM-UP-END
+2021-08-23 17:26:49,670 generate-load@erik-laptop:signal: quarkus-io-thread-30000-WARM-UP-END
+2021-08-23 17:26:49,979 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-20000-MEASURE-top.out
+2021-08-23 17:26:54,980 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:26:54,981 reached quarkus-io-thread-30000-MEASURE-START
+2021-08-23 17:26:54,982 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-30000-MEASURE-START
+2021-08-23 17:26:54,982 generate-load@erik-laptop:signal: quarkus-io-thread-30000-MEASURE-START
+2021-08-23 17:26:55,291 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-30000-MEASURE-top.out &
+[1] 5514
+2021-08-23 17:26:55,596 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:27:55,368 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 30000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-30000-MEASURE.wrk2.out
+2021-08-23 17:27:55,370 reached quarkus-io-thread-30000-MEASURE-END
+2021-08-23 17:27:55,370 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-30000-MEASURE-END
+2021-08-23 17:27:55,371 generate-load@erik-laptop:signal: quarkus-io-thread-30000-MEASURE-END
+2021-08-23 17:27:55,372 generate-load@erik-laptop:for-each: RUN_RATE = 40000
+2021-08-23 17:27:55,373 reached quarkus-io-thread-40000-WARM-UP-START
+2021-08-23 17:27:55,374 generate-load@erik-laptop:signal: quarkus-io-thread-40000-WARM-UP-START
+2021-08-23 17:27:55,677 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:27:55,678 capture-platform-stats@erik-pc:for-each: RUN_RATE = 40000
+2021-08-23 17:27:55,678 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-40000-WARM-UP-START
+2021-08-23 17:27:55,985 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-40000-WARM-UP-top.out &
+[2] 5529
+2021-08-23 17:27:56,290 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:28:55,860 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 40000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-40000-WARM-UP.wrk2.out
+2021-08-23 17:28:55,861 reached quarkus-io-thread-40000-WARM-UP-END
+2021-08-23 17:28:55,861 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-40000-WARM-UP-END
+2021-08-23 17:28:55,862 generate-load@erik-laptop:signal: quarkus-io-thread-40000-WARM-UP-END
+2021-08-23 17:28:56,171 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-30000-MEASURE-top.out
+2021-08-23 17:29:01,172 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:29:01,172 reached quarkus-io-thread-40000-MEASURE-START
+2021-08-23 17:29:01,172 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-40000-MEASURE-START
+2021-08-23 17:29:01,173 generate-load@erik-laptop:signal: quarkus-io-thread-40000-MEASURE-START
+2021-08-23 17:29:01,482 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-40000-MEASURE-top.out &
+[1] 5535
+2021-08-23 17:29:01,787 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:30:01,566 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 40000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-40000-MEASURE.wrk2.out
+2021-08-23 17:30:01,567 reached quarkus-io-thread-40000-MEASURE-END
+2021-08-23 17:30:01,568 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-40000-MEASURE-END
+2021-08-23 17:30:01,569 generate-load@erik-laptop:signal: quarkus-io-thread-40000-MEASURE-END
+2021-08-23 17:30:01,570 generate-load@erik-laptop:for-each: RUN_RATE = 50000
+2021-08-23 17:30:01,572 reached quarkus-io-thread-50000-WARM-UP-START
+2021-08-23 17:30:01,572 generate-load@erik-laptop:signal: quarkus-io-thread-50000-WARM-UP-START
+2021-08-23 17:30:01,875 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:30:01,876 capture-platform-stats@erik-pc:for-each: RUN_RATE = 50000
+2021-08-23 17:30:01,876 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-50000-WARM-UP-START
+2021-08-23 17:30:02,182 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-50000-WARM-UP-top.out &
+[2] 5541
+2021-08-23 17:30:02,487 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:31:02,063 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 50000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-50000-WARM-UP.wrk2.out
+2021-08-23 17:31:02,065 reached quarkus-io-thread-50000-WARM-UP-END
+2021-08-23 17:31:02,065 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-50000-WARM-UP-END
+2021-08-23 17:31:02,066 generate-load@erik-laptop:signal: quarkus-io-thread-50000-WARM-UP-END
+2021-08-23 17:31:02,375 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-40000-MEASURE-top.out
+2021-08-23 17:31:07,377 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:31:07,378 reached quarkus-io-thread-50000-MEASURE-START
+2021-08-23 17:31:07,379 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-50000-MEASURE-START
+2021-08-23 17:31:07,379 generate-load@erik-laptop:signal: quarkus-io-thread-50000-MEASURE-START
+2021-08-23 17:31:07,689 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-50000-MEASURE-top.out &
+[1] 5546
+2021-08-23 17:31:07,994 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:32:07,761 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 50000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-50000-MEASURE.wrk2.out
+2021-08-23 17:32:07,761 reached quarkus-io-thread-50000-MEASURE-END
+2021-08-23 17:32:07,762 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-50000-MEASURE-END
+2021-08-23 17:32:07,762 generate-load@erik-laptop:signal: quarkus-io-thread-50000-MEASURE-END
+2021-08-23 17:32:07,763 generate-load@erik-laptop:for-each: RUN_RATE = 60000
+2021-08-23 17:32:07,765 reached quarkus-io-thread-60000-WARM-UP-START
+2021-08-23 17:32:07,766 generate-load@erik-laptop:signal: quarkus-io-thread-60000-WARM-UP-START
+2021-08-23 17:32:08,069 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:32:08,070 capture-platform-stats@erik-pc:for-each: RUN_RATE = 60000
+2021-08-23 17:32:08,070 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-60000-WARM-UP-START
+2021-08-23 17:32:08,376 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-60000-WARM-UP-top.out &
+[2] 5551
+2021-08-23 17:32:08,680 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:33:08,254 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 60000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-60000-WARM-UP.wrk2.out
+2021-08-23 17:33:08,256 reached quarkus-io-thread-60000-WARM-UP-END
+2021-08-23 17:33:08,256 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-60000-WARM-UP-END
+2021-08-23 17:33:08,257 generate-load@erik-laptop:signal: quarkus-io-thread-60000-WARM-UP-END
+2021-08-23 17:33:08,565 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-50000-MEASURE-top.out
+2021-08-23 17:33:13,566 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:33:13,568 reached quarkus-io-thread-60000-MEASURE-START
+2021-08-23 17:33:13,568 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-60000-MEASURE-START
+2021-08-23 17:33:13,568 generate-load@erik-laptop:signal: quarkus-io-thread-60000-MEASURE-START
+2021-08-23 17:33:13,878 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-60000-MEASURE-top.out &
+[1] 5567
+2021-08-23 17:33:14,185 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:34:13,964 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 60000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-60000-MEASURE.wrk2.out
+2021-08-23 17:34:13,965 reached quarkus-io-thread-60000-MEASURE-END
+2021-08-23 17:34:13,966 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-60000-MEASURE-END
+2021-08-23 17:34:13,966 generate-load@erik-laptop:signal: quarkus-io-thread-60000-MEASURE-END
+2021-08-23 17:34:13,968 generate-load@erik-laptop:for-each: RUN_RATE = 70000
+2021-08-23 17:34:13,969 reached quarkus-io-thread-70000-WARM-UP-START
+2021-08-23 17:34:13,970 generate-load@erik-laptop:signal: quarkus-io-thread-70000-WARM-UP-START
+2021-08-23 17:34:14,272 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:34:14,272 capture-platform-stats@erik-pc:for-each: RUN_RATE = 70000
+2021-08-23 17:34:14,273 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-70000-WARM-UP-START
+2021-08-23 17:34:14,580 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-70000-WARM-UP-top.out &
+[2] 5575
+2021-08-23 17:34:14,884 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:35:14,456 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 70000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-70000-WARM-UP.wrk2.out
+2021-08-23 17:35:14,457 reached quarkus-io-thread-70000-WARM-UP-END
+2021-08-23 17:35:14,458 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-70000-WARM-UP-END
+2021-08-23 17:35:14,461 generate-load@erik-laptop:signal: quarkus-io-thread-70000-WARM-UP-END
+2021-08-23 17:35:14,770 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-60000-MEASURE-top.out
+2021-08-23 17:35:19,772 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:35:19,773 reached quarkus-io-thread-70000-MEASURE-START
+2021-08-23 17:35:19,773 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-70000-MEASURE-START
+2021-08-23 17:35:19,774 generate-load@erik-laptop:signal: quarkus-io-thread-70000-MEASURE-START
+2021-08-23 17:35:20,085 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-70000-MEASURE-top.out &
+[1] 5580
+2021-08-23 17:35:20,390 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:36:20,175 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 70000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-70000-MEASURE.wrk2.out
+2021-08-23 17:36:20,175 reached quarkus-io-thread-70000-MEASURE-END
+2021-08-23 17:36:20,175 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-70000-MEASURE-END
+2021-08-23 17:36:20,176 generate-load@erik-laptop:signal: quarkus-io-thread-70000-MEASURE-END
+2021-08-23 17:36:20,177 generate-load@erik-laptop:for-each: RUN_RATE = 80000
+2021-08-23 17:36:20,179 reached quarkus-io-thread-80000-WARM-UP-START
+2021-08-23 17:36:20,179 generate-load@erik-laptop:signal: quarkus-io-thread-80000-WARM-UP-START
+2021-08-23 17:36:20,481 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:36:20,482 capture-platform-stats@erik-pc:for-each: RUN_RATE = 80000
+2021-08-23 17:36:20,483 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-80000-WARM-UP-START
+2021-08-23 17:36:20,788 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-80000-WARM-UP-top.out &
+[2] 5585
+2021-08-23 17:36:21,093 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:37:20,673 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 80000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-80000-WARM-UP.wrk2.out
+2021-08-23 17:37:20,674 reached quarkus-io-thread-80000-WARM-UP-END
+2021-08-23 17:37:20,675 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-80000-WARM-UP-END
+2021-08-23 17:37:20,675 generate-load@erik-laptop:signal: quarkus-io-thread-80000-WARM-UP-END
+2021-08-23 17:37:20,983 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-70000-MEASURE-top.out
+2021-08-23 17:37:25,986 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:37:25,987 reached quarkus-io-thread-80000-MEASURE-START
+2021-08-23 17:37:25,988 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-80000-MEASURE-START
+2021-08-23 17:37:25,988 generate-load@erik-laptop:signal: quarkus-io-thread-80000-MEASURE-START
+2021-08-23 17:37:26,299 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-80000-MEASURE-top.out &
+[1] 5590
+2021-08-23 17:37:26,603 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:38:26,370 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 80000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-80000-MEASURE.wrk2.out
+2021-08-23 17:38:26,370 reached quarkus-io-thread-80000-MEASURE-END
+2021-08-23 17:38:26,370 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-80000-MEASURE-END
+2021-08-23 17:38:26,371 generate-load@erik-laptop:signal: quarkus-io-thread-80000-MEASURE-END
+2021-08-23 17:38:26,373 generate-load@erik-laptop:for-each: RUN_RATE = 100000
+2021-08-23 17:38:26,374 reached quarkus-io-thread-100000-WARM-UP-START
+2021-08-23 17:38:26,374 generate-load@erik-laptop:signal: quarkus-io-thread-100000-WARM-UP-START
+2021-08-23 17:38:26,677 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:38:26,679 capture-platform-stats@erik-pc:for-each: RUN_RATE = 100000
+2021-08-23 17:38:26,680 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-100000-WARM-UP-START
+2021-08-23 17:38:26,993 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-100000-WARM-UP-top.out &
+[2] 5600
+2021-08-23 17:38:27,301 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:39:36,805 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 100000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-100000-WARM-UP.wrk2.out
+2021-08-23 17:39:36,805 reached quarkus-io-thread-100000-WARM-UP-END
+2021-08-23 17:39:36,806 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-100000-WARM-UP-END
+2021-08-23 17:39:36,806 generate-load@erik-laptop:signal: quarkus-io-thread-100000-WARM-UP-END
+2021-08-23 17:39:37,114 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-80000-MEASURE-top.out
+2021-08-23 17:39:42,117 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:39:42,119 reached quarkus-io-thread-100000-MEASURE-START
+2021-08-23 17:39:42,119 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-100000-MEASURE-START
+2021-08-23 17:39:42,120 generate-load@erik-laptop:signal: quarkus-io-thread-100000-MEASURE-START
+2021-08-23 17:39:42,431 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-100000-MEASURE-top.out &
+[1] 5605
+2021-08-23 17:39:42,735 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:40:42,507 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 100000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-100000-MEASURE.wrk2.out
+2021-08-23 17:40:42,508 reached quarkus-io-thread-100000-MEASURE-END
+2021-08-23 17:40:42,508 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-100000-MEASURE-END
+2021-08-23 17:40:42,509 generate-load@erik-laptop:signal: quarkus-io-thread-100000-MEASURE-END
+2021-08-23 17:40:42,510 generate-load@erik-laptop:for-each: RUN_RATE = 110000
+2021-08-23 17:40:42,511 reached quarkus-io-thread-110000-WARM-UP-START
+2021-08-23 17:40:42,512 generate-load@erik-laptop:signal: quarkus-io-thread-110000-WARM-UP-START
+2021-08-23 17:40:42,814 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:40:42,815 capture-platform-stats@erik-pc:for-each: RUN_RATE = 110000
+2021-08-23 17:40:42,816 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-110000-WARM-UP-START
+2021-08-23 17:40:43,123 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-110000-WARM-UP-top.out &
+[2] 5610
+2021-08-23 17:40:43,429 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:41:42,994 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 110000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-110000-WARM-UP.wrk2.out
+2021-08-23 17:41:42,996 reached quarkus-io-thread-110000-WARM-UP-END
+2021-08-23 17:41:42,996 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-110000-WARM-UP-END
+2021-08-23 17:41:42,997 generate-load@erik-laptop:signal: quarkus-io-thread-110000-WARM-UP-END
+2021-08-23 17:41:43,305 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-100000-MEASURE-top.out
+2021-08-23 17:41:48,307 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:41:48,309 reached quarkus-io-thread-110000-MEASURE-START
+2021-08-23 17:41:48,309 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-110000-MEASURE-START
+2021-08-23 17:41:48,310 generate-load@erik-laptop:signal: quarkus-io-thread-110000-MEASURE-START
+2021-08-23 17:41:48,619 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-110000-MEASURE-top.out &
+[1] 5615
+2021-08-23 17:41:48,929 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:42:48,721 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 110000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-110000-MEASURE.wrk2.out
+2021-08-23 17:42:48,722 reached quarkus-io-thread-110000-MEASURE-END
+2021-08-23 17:42:48,722 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-110000-MEASURE-END
+2021-08-23 17:42:48,722 generate-load@erik-laptop:signal: quarkus-io-thread-110000-MEASURE-END
+2021-08-23 17:42:48,723 generate-load@erik-laptop:for-each: RUN_RATE = 120000
+2021-08-23 17:42:48,737 reached quarkus-io-thread-120000-WARM-UP-START
+2021-08-23 17:42:48,738 generate-load@erik-laptop:signal: quarkus-io-thread-120000-WARM-UP-START
+2021-08-23 17:42:49,026 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:42:49,027 capture-platform-stats@erik-pc:for-each: RUN_RATE = 120000
+2021-08-23 17:42:49,028 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-120000-WARM-UP-START
+2021-08-23 17:42:49,336 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-120000-WARM-UP-top.out &
+[2] 5623
+2021-08-23 17:42:49,641 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:43:49,222 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 120000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-120000-WARM-UP.wrk2.out
+2021-08-23 17:43:49,223 reached quarkus-io-thread-120000-WARM-UP-END
+2021-08-23 17:43:49,224 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-120000-WARM-UP-END
+2021-08-23 17:43:49,224 generate-load@erik-laptop:signal: quarkus-io-thread-120000-WARM-UP-END
+2021-08-23 17:43:49,533 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-110000-MEASURE-top.out
+2021-08-23 17:43:54,534 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:43:54,536 reached quarkus-io-thread-120000-MEASURE-START
+2021-08-23 17:43:54,536 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-120000-MEASURE-START
+2021-08-23 17:43:54,537 generate-load@erik-laptop:signal: quarkus-io-thread-120000-MEASURE-START
+2021-08-23 17:43:54,847 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-120000-MEASURE-top.out &
+[1] 5630
+2021-08-23 17:43:55,152 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:44:54,929 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 120000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-120000-MEASURE.wrk2.out
+2021-08-23 17:44:54,930 reached quarkus-io-thread-120000-MEASURE-END
+2021-08-23 17:44:54,930 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-120000-MEASURE-END
+2021-08-23 17:44:54,930 generate-load@erik-laptop:signal: quarkus-io-thread-120000-MEASURE-END
+2021-08-23 17:44:54,932 generate-load@erik-laptop:for-each: RUN_RATE = 130000
+2021-08-23 17:44:54,933 reached quarkus-io-thread-130000-WARM-UP-START
+2021-08-23 17:44:54,933 generate-load@erik-laptop:signal: quarkus-io-thread-130000-WARM-UP-START
+2021-08-23 17:44:55,235 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:44:55,236 capture-platform-stats@erik-pc:for-each: RUN_RATE = 130000
+2021-08-23 17:44:55,237 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-130000-WARM-UP-START
+2021-08-23 17:44:55,545 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-130000-WARM-UP-top.out &
+[2] 5637
+2021-08-23 17:44:55,850 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:45:55,421 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 130000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-130000-WARM-UP.wrk2.out
+2021-08-23 17:45:55,422 reached quarkus-io-thread-130000-WARM-UP-END
+2021-08-23 17:45:55,423 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-130000-WARM-UP-END
+2021-08-23 17:45:55,423 generate-load@erik-laptop:signal: quarkus-io-thread-130000-WARM-UP-END
+2021-08-23 17:45:55,731 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-120000-MEASURE-top.out
+2021-08-23 17:46:00,732 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:46:00,734 reached quarkus-io-thread-130000-MEASURE-START
+2021-08-23 17:46:00,734 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-130000-MEASURE-START
+2021-08-23 17:46:00,735 generate-load@erik-laptop:signal: quarkus-io-thread-130000-MEASURE-START
+2021-08-23 17:46:01,048 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-130000-MEASURE-top.out &
+[1] 5642
+2021-08-23 17:46:01,352 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:47:01,208 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 130000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-130000-MEASURE.wrk2.out
+2021-08-23 17:47:01,210 reached quarkus-io-thread-130000-MEASURE-END
+2021-08-23 17:47:01,210 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-130000-MEASURE-END
+2021-08-23 17:47:01,211 generate-load@erik-laptop:signal: quarkus-io-thread-130000-MEASURE-END
+2021-08-23 17:47:01,213 generate-load@erik-laptop:for-each: RUN_RATE = 138000
+2021-08-23 17:47:01,215 reached quarkus-io-thread-138000-WARM-UP-START
+2021-08-23 17:47:01,215 generate-load@erik-laptop:signal: quarkus-io-thread-138000-WARM-UP-START
+2021-08-23 17:47:01,517 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:47:01,517 capture-platform-stats@erik-pc:for-each: RUN_RATE = 138000
+2021-08-23 17:47:01,518 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-138000-WARM-UP-START
+2021-08-23 17:47:01,825 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-138000-WARM-UP-top.out &
+[2] 5647
+2021-08-23 17:47:02,129 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:48:01,722 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 138000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-138000-WARM-UP.wrk2.out
+2021-08-23 17:48:01,724 reached quarkus-io-thread-138000-WARM-UP-END
+2021-08-23 17:48:01,724 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-138000-WARM-UP-END
+2021-08-23 17:48:01,725 generate-load@erik-laptop:signal: quarkus-io-thread-138000-WARM-UP-END
+2021-08-23 17:48:02,032 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:48:07,034 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:48:07,036 reached quarkus-io-thread-138000-MEASURE-START
+2021-08-23 17:48:07,036 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-138000-MEASURE-START
+2021-08-23 17:48:07,037 generate-load@erik-laptop:signal: quarkus-io-thread-138000-MEASURE-START
+2021-08-23 17:48:07,349 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-138000-MEASURE-top.out &
+[1] 5656
+2021-08-23 17:48:07,658 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:49:07,423 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 138000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-138000-MEASURE.wrk2.out
+2021-08-23 17:49:07,425 reached quarkus-io-thread-138000-MEASURE-END
+2021-08-23 17:49:07,425 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-138000-MEASURE-END
+2021-08-23 17:49:07,425 generate-load@erik-laptop:signal: quarkus-io-thread-138000-MEASURE-END
+2021-08-23 17:49:07,427 generate-load@erik-laptop:for-each: RUN_RATE = 140000
+2021-08-23 17:49:07,428 reached quarkus-io-thread-140000-WARM-UP-START
+2021-08-23 17:49:07,429 generate-load@erik-laptop:signal: quarkus-io-thread-140000-WARM-UP-START
+2021-08-23 17:49:07,731 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:49:07,732 capture-platform-stats@erik-pc:for-each: RUN_RATE = 140000
+2021-08-23 17:49:07,733 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-140000-WARM-UP-START
+2021-08-23 17:49:08,041 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-140000-WARM-UP-top.out &
+[2] 5661
+2021-08-23 17:49:08,346 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:50:07,943 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 140000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-140000-WARM-UP.wrk2.out
+2021-08-23 17:50:07,945 reached quarkus-io-thread-140000-WARM-UP-END
+2021-08-23 17:50:07,945 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-140000-WARM-UP-END
+2021-08-23 17:50:07,948 generate-load@erik-laptop:signal: quarkus-io-thread-140000-WARM-UP-END
+2021-08-23 17:50:08,255 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-138000-MEASURE-top.out
+2021-08-23 17:50:13,257 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:50:13,259 reached quarkus-io-thread-140000-MEASURE-START
+2021-08-23 17:50:13,259 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-140000-MEASURE-START
+2021-08-23 17:50:13,260 generate-load@erik-laptop:signal: quarkus-io-thread-140000-MEASURE-START
+2021-08-23 17:50:13,571 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-140000-MEASURE-top.out &
+[1] 5666
+2021-08-23 17:50:13,875 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:51:13,824 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 140000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-140000-MEASURE.wrk2.out
+2021-08-23 17:51:13,825 reached quarkus-io-thread-140000-MEASURE-END
+2021-08-23 17:51:13,825 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-140000-MEASURE-END
+2021-08-23 17:51:13,825 generate-load@erik-laptop:signal: quarkus-io-thread-140000-MEASURE-END
+2021-08-23 17:51:13,827 generate-load@erik-laptop:for-each: RUN_RATE = 141000
+2021-08-23 17:51:13,828 reached quarkus-io-thread-141000-WARM-UP-START
+2021-08-23 17:51:13,828 generate-load@erik-laptop:signal: quarkus-io-thread-141000-WARM-UP-START
+2021-08-23 17:51:14,130 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:51:14,132 capture-platform-stats@erik-pc:for-each: RUN_RATE = 141000
+2021-08-23 17:51:14,132 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-141000-WARM-UP-START
+2021-08-23 17:51:14,439 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-141000-WARM-UP-top.out &
+[2] 5671
+2021-08-23 17:51:14,743 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:52:14,323 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 141000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-141000-WARM-UP.wrk2.out
+2021-08-23 17:52:14,324 reached quarkus-io-thread-141000-WARM-UP-END
+2021-08-23 17:52:14,325 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-141000-WARM-UP-END
+2021-08-23 17:52:14,325 generate-load@erik-laptop:signal: quarkus-io-thread-141000-WARM-UP-END
+2021-08-23 17:52:14,633 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:52:19,635 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:52:19,637 reached quarkus-io-thread-141000-MEASURE-START
+2021-08-23 17:52:19,637 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-141000-MEASURE-START
+2021-08-23 17:52:19,638 generate-load@erik-laptop:signal: quarkus-io-thread-141000-MEASURE-START
+2021-08-23 17:52:19,950 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-141000-MEASURE-top.out &
+[1] 5677
+2021-08-23 17:52:20,258 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:53:20,055 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 141000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-141000-MEASURE.wrk2.out
+2021-08-23 17:53:20,057 reached quarkus-io-thread-141000-MEASURE-END
+2021-08-23 17:53:20,057 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-141000-MEASURE-END
+2021-08-23 17:53:20,057 generate-load@erik-laptop:signal: quarkus-io-thread-141000-MEASURE-END
+2021-08-23 17:53:20,059 generate-load@erik-laptop:for-each: RUN_RATE = 142000
+2021-08-23 17:53:20,061 reached quarkus-io-thread-142000-WARM-UP-START
+2021-08-23 17:53:20,061 generate-load@erik-laptop:signal: quarkus-io-thread-142000-WARM-UP-START
+2021-08-23 17:53:20,364 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:53:20,365 capture-platform-stats@erik-pc:for-each: RUN_RATE = 142000
+2021-08-23 17:53:20,365 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-142000-WARM-UP-START
+2021-08-23 17:53:20,672 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-142000-WARM-UP-top.out &
+[2] 5685
+2021-08-23 17:53:20,977 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:54:20,538 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 142000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-142000-WARM-UP.wrk2.out
+2021-08-23 17:54:20,540 reached quarkus-io-thread-142000-WARM-UP-END
+2021-08-23 17:54:20,540 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-142000-WARM-UP-END
+2021-08-23 17:54:20,540 generate-load@erik-laptop:signal: quarkus-io-thread-142000-WARM-UP-END
+2021-08-23 17:54:20,847 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:54:25,850 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:54:25,853 reached quarkus-io-thread-142000-MEASURE-START
+2021-08-23 17:54:25,853 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-142000-MEASURE-START
+2021-08-23 17:54:25,854 generate-load@erik-laptop:signal: quarkus-io-thread-142000-MEASURE-START
+2021-08-23 17:54:26,165 capture-platform-stats@erik-pc:top -b  -d 1 -p 5370 | grep java > /tmp/quarkus-test/server/output/quarkus-io-thread-142000-MEASURE-top.out &
+[1] 5690
+2021-08-23 17:54:26,469 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:55:26,265 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 142000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-io-thread-142000-MEASURE.wrk2.out
+2021-08-23 17:55:26,267 reached quarkus-io-thread-142000-MEASURE-END
+2021-08-23 17:55:26,267 capture-platform-stats@erik-pc:wait-for: quarkus-io-thread-142000-MEASURE-END
+2021-08-23 17:55:26,267 generate-load@erik-laptop:signal: quarkus-io-thread-142000-MEASURE-END
+2021-08-23 17:55:26,269 generate-load@erik-laptop:for-each: RUN_RATE
+2021-08-23 17:55:26,270 reached quarkus-io-thread-DONE
+2021-08-23 17:55:26,270 start-applications@erik-pc:wait-for: quarkus-io-thread-DONE
+2021-08-23 17:55:26,270 generate-load@erik-laptop:signal: quarkus-io-thread-DONE
+2021-08-23 17:55:26,272 generate-load@erik-laptop:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:55:26,573 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:55:26,575 capture-platform-stats@erik-pc:for-each: RUN_RATE
+2021-08-23 17:55:26,576 capture-platform-stats@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:55:26,606 capture-platform-stats@erik-pc:for-each: RUN_RATE = 10000
+2021-08-23 17:55:26,620 start-applications@erik-pc:docker logs quarkus-io-thread > /tmp/quarkus-test/server/output/quarkus-io-thread.run.log
+2021-08-23 17:55:26,621 start-applications@erik-pc:queue-download: /tmp/quarkus-test/server/output/quarkus-io-thread.run.log ./results/data/run4/jvm-static/erik-pc/
+2021-08-23 17:55:27,177 start-applications@erik-pc:docker stop quarkus-io-thread
+quarkus-io-thread
+2021-08-23 17:55:32,486 start-applications@erik-pc:sleep 5s
+2021-08-23 17:55:32,488 start-applications@erik-pc:for-each: RUNTIME = {"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}
+2021-08-23 17:55:32,832 start-applications@erik-pc:docker stop quarkus-worker-pool
+Error response from daemon: No such container: quarkus-worker-pool
+2021-08-23 17:55:33,433 start-applications@erik-pc:docker run --rm -d --network=host --cpus=4 --memory=1024m --name=quarkus-worker-pool framework/quarkus-worker-pool:latest
+3dc43700138322cf7b68d2920769c53b77701542ec172f8efdbde3ccd9327d60
+2021-08-23 17:55:38,743 start-applications@erik-pc:sleep 5s
+2021-08-23 17:55:39,077 start-applications@erik-pc:ps -AF | grep quarkus-worker-pool-runner.jar | grep -v grep | awk '{print $2}'
+5823
+2021-08-23 17:55:39,078 start-applications@erik-pc:set-state: RUN.JAVA_APP_PID 5823
+2021-08-23 17:55:39,695 start-applications@erik-pc:curl  -s -w "%{http_code}\n"  -o /tmp/quarkus-test/server/output/quarkus-worker-pool.env.out http://erik-pc.local:8080/environment
+200
+2021-08-23 17:55:39,696 reached quarkus-worker-pool-READY
+2021-08-23 17:55:39,696 generate-load@erik-laptop:wait-for: quarkus-worker-pool-READY
+2021-08-23 17:55:39,697 start-applications@erik-pc:signal: quarkus-worker-pool-READY
+2021-08-23 17:55:39,726 generate-load@erik-laptop:for-each: RUN_RATE = 10000
+2021-08-23 17:55:39,728 reached quarkus-worker-pool-10000-WARM-UP-START
+2021-08-23 17:55:39,728 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-10000-WARM-UP-START
+2021-08-23 17:55:39,729 generate-load@erik-laptop:signal: quarkus-worker-pool-10000-WARM-UP-START
+2021-08-23 17:55:40,039 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-10000-WARM-UP-top.out &
+[2] 5902
+[1]   Getötet                top -b -d 1 -p 5370 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-io-thread-142000-MEASURE-top.out
+2021-08-23 17:55:40,346 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:56:40,112 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 10000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-10000-WARM-UP.wrk2.out
+2021-08-23 17:56:40,114 reached quarkus-worker-pool-10000-WARM-UP-END
+2021-08-23 17:56:40,114 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-10000-WARM-UP-END
+2021-08-23 17:56:40,114 generate-load@erik-laptop:signal: quarkus-worker-pool-10000-WARM-UP-END
+2021-08-23 17:56:40,422 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:56:45,423 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:56:45,424 reached quarkus-worker-pool-10000-MEASURE-START
+2021-08-23 17:56:45,424 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-10000-MEASURE-START
+2021-08-23 17:56:45,425 generate-load@erik-laptop:signal: quarkus-worker-pool-10000-MEASURE-START
+2021-08-23 17:56:45,734 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-10000-MEASURE-top.out &
+[3] 6014
+[2]   Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-10000-WARM-UP-top.out
+2021-08-23 17:56:46,040 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:57:45,819 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 10000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-10000-MEASURE.wrk2.out
+2021-08-23 17:57:45,820 reached quarkus-worker-pool-10000-MEASURE-END
+2021-08-23 17:57:45,821 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-10000-MEASURE-END
+2021-08-23 17:57:45,821 generate-load@erik-laptop:signal: quarkus-worker-pool-10000-MEASURE-END
+2021-08-23 17:57:45,822 generate-load@erik-laptop:for-each: RUN_RATE = 20000
+2021-08-23 17:57:45,824 reached quarkus-worker-pool-20000-WARM-UP-START
+2021-08-23 17:57:45,824 generate-load@erik-laptop:signal: quarkus-worker-pool-20000-WARM-UP-START
+2021-08-23 17:57:46,127 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:57:46,127 capture-platform-stats@erik-pc:for-each: RUN_RATE = 20000
+2021-08-23 17:57:46,127 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-20000-WARM-UP-START
+2021-08-23 17:57:46,434 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-20000-WARM-UP-top.out &
+[4] 6025
+2021-08-23 17:57:46,739 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:58:46,349 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 20000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-20000-WARM-UP.wrk2.out
+2021-08-23 17:58:46,350 reached quarkus-worker-pool-20000-WARM-UP-END
+2021-08-23 17:58:46,351 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-20000-WARM-UP-END
+2021-08-23 17:58:46,351 generate-load@erik-laptop:signal: quarkus-worker-pool-20000-WARM-UP-END
+2021-08-23 17:58:46,658 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[3]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-10000-MEASURE-top.out
+2021-08-23 17:58:51,660 generate-load@erik-laptop:sleep 5s
+2021-08-23 17:58:51,661 reached quarkus-worker-pool-20000-MEASURE-START
+2021-08-23 17:58:51,661 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-20000-MEASURE-START
+2021-08-23 17:58:51,662 generate-load@erik-laptop:signal: quarkus-worker-pool-20000-MEASURE-START
+2021-08-23 17:58:51,971 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-20000-MEASURE-top.out &
+[5] 6043
+[4]   Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-20000-WARM-UP-top.out
+2021-08-23 17:58:52,278 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 17:59:52,080 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 20000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-20000-MEASURE.wrk2.out
+2021-08-23 17:59:52,082 reached quarkus-worker-pool-20000-MEASURE-END
+2021-08-23 17:59:52,082 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-20000-MEASURE-END
+2021-08-23 17:59:52,082 generate-load@erik-laptop:signal: quarkus-worker-pool-20000-MEASURE-END
+2021-08-23 17:59:52,083 generate-load@erik-laptop:for-each: RUN_RATE = 30000
+2021-08-23 17:59:52,084 reached quarkus-worker-pool-30000-WARM-UP-START
+2021-08-23 17:59:52,085 generate-load@erik-laptop:signal: quarkus-worker-pool-30000-WARM-UP-START
+2021-08-23 17:59:52,387 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 17:59:52,388 capture-platform-stats@erik-pc:for-each: RUN_RATE = 30000
+2021-08-23 17:59:52,388 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-30000-WARM-UP-START
+2021-08-23 17:59:52,695 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-30000-WARM-UP-top.out &
+[6] 6060
+2021-08-23 17:59:53,001 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:00:52,580 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 30000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-30000-WARM-UP.wrk2.out
+2021-08-23 18:00:52,581 reached quarkus-worker-pool-30000-WARM-UP-END
+2021-08-23 18:00:52,581 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-30000-WARM-UP-END
+2021-08-23 18:00:52,582 generate-load@erik-laptop:signal: quarkus-worker-pool-30000-WARM-UP-END
+2021-08-23 18:00:52,889 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:00:57,891 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:00:57,892 reached quarkus-worker-pool-30000-MEASURE-START
+2021-08-23 18:00:57,892 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-30000-MEASURE-START
+2021-08-23 18:00:57,893 generate-load@erik-laptop:signal: quarkus-worker-pool-30000-MEASURE-START
+2021-08-23 18:00:58,201 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-30000-MEASURE-top.out &
+[1] 6069
+2021-08-23 18:00:58,508 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:01:58,290 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 30000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-30000-MEASURE.wrk2.out
+2021-08-23 18:01:58,292 reached quarkus-worker-pool-30000-MEASURE-END
+2021-08-23 18:01:58,292 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-30000-MEASURE-END
+2021-08-23 18:01:58,292 generate-load@erik-laptop:signal: quarkus-worker-pool-30000-MEASURE-END
+2021-08-23 18:01:58,294 generate-load@erik-laptop:for-each: RUN_RATE = 40000
+2021-08-23 18:01:58,296 reached quarkus-worker-pool-40000-WARM-UP-START
+2021-08-23 18:01:58,296 generate-load@erik-laptop:signal: quarkus-worker-pool-40000-WARM-UP-START
+2021-08-23 18:01:58,597 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:01:58,598 capture-platform-stats@erik-pc:for-each: RUN_RATE = 40000
+2021-08-23 18:01:58,598 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-40000-WARM-UP-START
+2021-08-23 18:01:58,906 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-40000-WARM-UP-top.out &
+[2] 6083
+2021-08-23 18:01:59,210 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:02:58,790 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 40000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-40000-WARM-UP.wrk2.out
+2021-08-23 18:02:58,791 reached quarkus-worker-pool-40000-WARM-UP-END
+2021-08-23 18:02:58,791 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-40000-WARM-UP-END
+2021-08-23 18:02:58,792 generate-load@erik-laptop:signal: quarkus-worker-pool-40000-WARM-UP-END
+2021-08-23 18:02:59,099 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-30000-MEASURE-top.out
+2021-08-23 18:03:04,102 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:03:04,103 reached quarkus-worker-pool-40000-MEASURE-START
+2021-08-23 18:03:04,103 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-40000-MEASURE-START
+2021-08-23 18:03:04,105 generate-load@erik-laptop:signal: quarkus-worker-pool-40000-MEASURE-START
+2021-08-23 18:03:04,414 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-40000-MEASURE-top.out &
+[1] 6104
+2021-08-23 18:03:04,719 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:04:04,496 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 40000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-40000-MEASURE.wrk2.out
+2021-08-23 18:04:04,497 reached quarkus-worker-pool-40000-MEASURE-END
+2021-08-23 18:04:04,498 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-40000-MEASURE-END
+2021-08-23 18:04:04,498 generate-load@erik-laptop:signal: quarkus-worker-pool-40000-MEASURE-END
+2021-08-23 18:04:04,499 generate-load@erik-laptop:for-each: RUN_RATE = 50000
+2021-08-23 18:04:04,500 reached quarkus-worker-pool-50000-WARM-UP-START
+2021-08-23 18:04:04,500 generate-load@erik-laptop:signal: quarkus-worker-pool-50000-WARM-UP-START
+2021-08-23 18:04:04,802 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:04:04,803 capture-platform-stats@erik-pc:for-each: RUN_RATE = 50000
+2021-08-23 18:04:04,803 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-50000-WARM-UP-START
+2021-08-23 18:04:05,109 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-50000-WARM-UP-top.out &
+[2] 6110
+2021-08-23 18:04:05,413 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:05:04,988 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 50000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-50000-WARM-UP.wrk2.out
+2021-08-23 18:05:04,989 reached quarkus-worker-pool-50000-WARM-UP-END
+2021-08-23 18:05:04,989 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-50000-WARM-UP-END
+2021-08-23 18:05:04,990 generate-load@erik-laptop:signal: quarkus-worker-pool-50000-WARM-UP-END
+2021-08-23 18:05:05,297 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-40000-MEASURE-top.out
+2021-08-23 18:05:10,299 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:05:10,301 reached quarkus-worker-pool-50000-MEASURE-START
+2021-08-23 18:05:10,301 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-50000-MEASURE-START
+2021-08-23 18:05:10,302 generate-load@erik-laptop:signal: quarkus-worker-pool-50000-MEASURE-START
+2021-08-23 18:05:10,611 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-50000-MEASURE-top.out &
+[1] 6133
+2021-08-23 18:05:10,915 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:06:10,727 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 50000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-50000-MEASURE.wrk2.out
+2021-08-23 18:06:10,728 reached quarkus-worker-pool-50000-MEASURE-END
+2021-08-23 18:06:10,729 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-50000-MEASURE-END
+2021-08-23 18:06:10,729 generate-load@erik-laptop:signal: quarkus-worker-pool-50000-MEASURE-END
+2021-08-23 18:06:10,730 generate-load@erik-laptop:for-each: RUN_RATE = 60000
+2021-08-23 18:06:10,731 reached quarkus-worker-pool-60000-WARM-UP-START
+2021-08-23 18:06:10,731 generate-load@erik-laptop:signal: quarkus-worker-pool-60000-WARM-UP-START
+2021-08-23 18:06:11,035 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:06:11,035 capture-platform-stats@erik-pc:for-each: RUN_RATE = 60000
+2021-08-23 18:06:11,036 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-60000-WARM-UP-START
+2021-08-23 18:06:11,342 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-60000-WARM-UP-top.out &
+[2] 6150
+2021-08-23 18:06:11,648 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:07:11,225 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 60000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-60000-WARM-UP.wrk2.out
+2021-08-23 18:07:11,227 reached quarkus-worker-pool-60000-WARM-UP-END
+2021-08-23 18:07:11,227 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-60000-WARM-UP-END
+2021-08-23 18:07:11,227 generate-load@erik-laptop:signal: quarkus-worker-pool-60000-WARM-UP-END
+2021-08-23 18:07:11,535 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:07:16,538 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:07:16,538 reached quarkus-worker-pool-60000-MEASURE-START
+2021-08-23 18:07:16,539 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-60000-MEASURE-START
+2021-08-23 18:07:16,539 generate-load@erik-laptop:signal: quarkus-worker-pool-60000-MEASURE-START
+2021-08-23 18:07:16,851 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-60000-MEASURE-top.out &
+[1] 6163
+2021-08-23 18:07:17,156 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:08:16,936 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 60000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-60000-MEASURE.wrk2.out
+2021-08-23 18:08:16,937 reached quarkus-worker-pool-60000-MEASURE-END
+2021-08-23 18:08:16,937 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-60000-MEASURE-END
+2021-08-23 18:08:16,938 generate-load@erik-laptop:signal: quarkus-worker-pool-60000-MEASURE-END
+2021-08-23 18:08:16,939 generate-load@erik-laptop:for-each: RUN_RATE = 65000
+2021-08-23 18:08:16,940 reached quarkus-worker-pool-65000-WARM-UP-START
+2021-08-23 18:08:16,940 generate-load@erik-laptop:signal: quarkus-worker-pool-65000-WARM-UP-START
+2021-08-23 18:08:17,243 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:08:17,244 capture-platform-stats@erik-pc:for-each: RUN_RATE = 65000
+2021-08-23 18:08:17,244 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-65000-WARM-UP-START
+2021-08-23 18:08:17,551 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-65000-WARM-UP-top.out &
+[2] 6175
+2021-08-23 18:08:17,856 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:09:17,428 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 65000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-65000-WARM-UP.wrk2.out
+2021-08-23 18:09:17,429 reached quarkus-worker-pool-65000-WARM-UP-END
+2021-08-23 18:09:17,429 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-65000-WARM-UP-END
+2021-08-23 18:09:17,430 generate-load@erik-laptop:signal: quarkus-worker-pool-65000-WARM-UP-END
+2021-08-23 18:09:17,737 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-60000-MEASURE-top.out
+2021-08-23 18:09:22,740 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:09:22,741 reached quarkus-worker-pool-65000-MEASURE-START
+2021-08-23 18:09:22,741 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-65000-MEASURE-START
+2021-08-23 18:09:22,742 generate-load@erik-laptop:signal: quarkus-worker-pool-65000-MEASURE-START
+2021-08-23 18:09:23,056 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-65000-MEASURE-top.out &
+[1] 6191
+2021-08-23 18:09:23,363 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:10:23,130 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 65000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-65000-MEASURE.wrk2.out
+2021-08-23 18:10:23,131 reached quarkus-worker-pool-65000-MEASURE-END
+2021-08-23 18:10:23,131 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-65000-MEASURE-END
+2021-08-23 18:10:23,132 generate-load@erik-laptop:signal: quarkus-worker-pool-65000-MEASURE-END
+2021-08-23 18:10:23,133 generate-load@erik-laptop:for-each: RUN_RATE = 68000
+2021-08-23 18:10:23,134 reached quarkus-worker-pool-68000-WARM-UP-START
+2021-08-23 18:10:23,135 generate-load@erik-laptop:signal: quarkus-worker-pool-68000-WARM-UP-START
+2021-08-23 18:10:23,438 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:10:23,438 capture-platform-stats@erik-pc:for-each: RUN_RATE = 68000
+2021-08-23 18:10:23,439 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-68000-WARM-UP-START
+2021-08-23 18:10:23,745 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-68000-WARM-UP-top.out &
+[2] 6200
+2021-08-23 18:10:24,049 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:11:23,625 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 68000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-68000-WARM-UP.wrk2.out
+2021-08-23 18:11:23,626 reached quarkus-worker-pool-68000-WARM-UP-END
+2021-08-23 18:11:23,626 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-68000-WARM-UP-END
+2021-08-23 18:11:23,627 generate-load@erik-laptop:signal: quarkus-worker-pool-68000-WARM-UP-END
+2021-08-23 18:11:23,935 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-65000-MEASURE-top.out
+2021-08-23 18:11:28,937 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:11:28,938 reached quarkus-worker-pool-68000-MEASURE-START
+2021-08-23 18:11:28,938 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-68000-MEASURE-START
+2021-08-23 18:11:28,939 generate-load@erik-laptop:signal: quarkus-worker-pool-68000-MEASURE-START
+2021-08-23 18:11:29,248 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-68000-MEASURE-top.out &
+[1] 6211
+2021-08-23 18:11:29,553 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:12:29,326 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 68000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-68000-MEASURE.wrk2.out
+2021-08-23 18:12:29,327 reached quarkus-worker-pool-68000-MEASURE-END
+2021-08-23 18:12:29,327 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-68000-MEASURE-END
+2021-08-23 18:12:29,328 generate-load@erik-laptop:signal: quarkus-worker-pool-68000-MEASURE-END
+2021-08-23 18:12:29,329 generate-load@erik-laptop:for-each: RUN_RATE = 69000
+2021-08-23 18:12:29,331 reached quarkus-worker-pool-69000-WARM-UP-START
+2021-08-23 18:12:29,331 generate-load@erik-laptop:signal: quarkus-worker-pool-69000-WARM-UP-START
+2021-08-23 18:12:29,633 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:12:29,634 capture-platform-stats@erik-pc:for-each: RUN_RATE = 69000
+2021-08-23 18:12:29,634 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-69000-WARM-UP-START
+2021-08-23 18:12:29,940 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-69000-WARM-UP-top.out &
+[2] 6223
+2021-08-23 18:12:30,246 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:13:29,825 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 69000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-69000-WARM-UP.wrk2.out
+2021-08-23 18:13:29,826 reached quarkus-worker-pool-69000-WARM-UP-END
+2021-08-23 18:13:29,827 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-69000-WARM-UP-END
+2021-08-23 18:13:29,827 generate-load@erik-laptop:signal: quarkus-worker-pool-69000-WARM-UP-END
+2021-08-23 18:13:30,134 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-68000-MEASURE-top.out
+2021-08-23 18:13:35,136 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:13:35,138 reached quarkus-worker-pool-69000-MEASURE-START
+2021-08-23 18:13:35,138 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-69000-MEASURE-START
+2021-08-23 18:13:35,138 generate-load@erik-laptop:signal: quarkus-worker-pool-69000-MEASURE-START
+2021-08-23 18:13:35,447 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-69000-MEASURE-top.out &
+[1] 6235
+2021-08-23 18:13:35,757 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:14:35,540 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 69000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-69000-MEASURE.wrk2.out
+2021-08-23 18:14:35,541 reached quarkus-worker-pool-69000-MEASURE-END
+2021-08-23 18:14:35,542 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-69000-MEASURE-END
+2021-08-23 18:14:35,542 generate-load@erik-laptop:signal: quarkus-worker-pool-69000-MEASURE-END
+2021-08-23 18:14:35,544 generate-load@erik-laptop:for-each: RUN_RATE = 70000
+2021-08-23 18:14:35,545 reached quarkus-worker-pool-70000-WARM-UP-START
+2021-08-23 18:14:35,546 generate-load@erik-laptop:signal: quarkus-worker-pool-70000-WARM-UP-START
+2021-08-23 18:14:35,847 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:14:35,849 capture-platform-stats@erik-pc:for-each: RUN_RATE = 70000
+2021-08-23 18:14:35,849 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-70000-WARM-UP-START
+2021-08-23 18:14:36,156 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-70000-WARM-UP-top.out &
+[2] 6250
+2021-08-23 18:14:36,461 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:15:36,028 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 70000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-70000-WARM-UP.wrk2.out
+2021-08-23 18:15:36,029 reached quarkus-worker-pool-70000-WARM-UP-END
+2021-08-23 18:15:36,029 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-70000-WARM-UP-END
+2021-08-23 18:15:36,029 generate-load@erik-laptop:signal: quarkus-worker-pool-70000-WARM-UP-END
+2021-08-23 18:15:36,337 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-69000-MEASURE-top.out
+2021-08-23 18:15:41,339 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:15:41,340 reached quarkus-worker-pool-70000-MEASURE-START
+2021-08-23 18:15:41,341 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-70000-MEASURE-START
+2021-08-23 18:15:41,341 generate-load@erik-laptop:signal: quarkus-worker-pool-70000-MEASURE-START
+2021-08-23 18:15:41,649 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-70000-MEASURE-top.out &
+[1] 6276
+2021-08-23 18:15:41,954 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:16:41,737 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 70000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-70000-MEASURE.wrk2.out
+2021-08-23 18:16:41,738 reached quarkus-worker-pool-70000-MEASURE-END
+2021-08-23 18:16:41,738 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-70000-MEASURE-END
+2021-08-23 18:16:41,739 generate-load@erik-laptop:signal: quarkus-worker-pool-70000-MEASURE-END
+2021-08-23 18:16:41,740 generate-load@erik-laptop:for-each: RUN_RATE = 71000
+2021-08-23 18:16:41,741 reached quarkus-worker-pool-71000-WARM-UP-START
+2021-08-23 18:16:41,741 generate-load@erik-laptop:signal: quarkus-worker-pool-71000-WARM-UP-START
+2021-08-23 18:16:42,045 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:16:42,046 capture-platform-stats@erik-pc:for-each: RUN_RATE = 71000
+2021-08-23 18:16:42,047 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-71000-WARM-UP-START
+2021-08-23 18:16:42,355 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-71000-WARM-UP-top.out &
+[2] 6291
+2021-08-23 18:16:42,659 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:17:42,359 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 71000 http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-71000-WARM-UP.wrk2.out
+2021-08-23 18:17:42,360 reached quarkus-worker-pool-71000-WARM-UP-END
+2021-08-23 18:17:42,360 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-71000-WARM-UP-END
+2021-08-23 18:17:42,362 generate-load@erik-laptop:signal: quarkus-worker-pool-71000-WARM-UP-END
+2021-08-23 18:17:42,669 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+[1]-  Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-70000-MEASURE-top.out
+2021-08-23 18:17:47,670 generate-load@erik-laptop:sleep 5s
+2021-08-23 18:17:47,672 reached quarkus-worker-pool-71000-MEASURE-START
+2021-08-23 18:17:47,672 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-71000-MEASURE-START
+2021-08-23 18:17:47,672 generate-load@erik-laptop:signal: quarkus-worker-pool-71000-MEASURE-START
+2021-08-23 18:17:47,982 capture-platform-stats@erik-pc:top -b  -d 1 -p 5823 | grep java > /tmp/quarkus-test/server/output/quarkus-worker-pool-71000-MEASURE-top.out &
+[3] 6301
+[2]   Getötet                top -b -d 1 -p 5823 | grep --color=auto java > /tmp/quarkus-test/server/output/quarkus-worker-pool-71000-WARM-UP-top.out
+2021-08-23 18:17:48,285 capture-platform-stats@erik-pc:export TOP_PID=$!
+2021-08-23 18:18:48,060 generate-load@erik-laptop:wrk -t 4 -c 100 -d60s -R 71000 --latency http://erik-pc.local:8080/greeting/Bob > /tmp/quarkus-test/client/output/quarkus-worker-pool-71000-MEASURE.wrk2.out
+2021-08-23 18:18:48,061 reached quarkus-worker-pool-71000-MEASURE-END
+2021-08-23 18:18:48,061 capture-platform-stats@erik-pc:wait-for: quarkus-worker-pool-71000-MEASURE-END
+2021-08-23 18:18:48,062 generate-load@erik-laptop:signal: quarkus-worker-pool-71000-MEASURE-END
+2021-08-23 18:18:48,063 generate-load@erik-laptop:for-each: RUN_RATE
+2021-08-23 18:18:48,064 reached quarkus-worker-pool-DONE
+2021-08-23 18:18:48,064 start-applications@erik-pc:wait-for: quarkus-worker-pool-DONE
+2021-08-23 18:18:48,064 generate-load@erik-laptop:signal: quarkus-worker-pool-DONE
+2021-08-23 18:18:48,065 generate-load@erik-laptop:for-each: RUNTIME
+2021-08-23 18:18:48,067 generate-load@erik-laptop:queue-download: /tmp/quarkus-test/client/output/* ./results/data/run4/jvm-static/erik-laptop/
+2021-08-23 18:18:48,367 capture-platform-stats@erik-pc:kill -9 $TOP_PID
+2021-08-23 18:18:48,368 capture-platform-stats@erik-pc:for-each: RUN_RATE
+2021-08-23 18:18:48,369 capture-platform-stats@erik-pc:for-each: RUNTIME
+2021-08-23 18:18:48,404 start-applications@erik-pc:docker logs quarkus-worker-pool > /tmp/quarkus-test/server/output/quarkus-worker-pool.run.log
+2021-08-23 18:18:48,407 start-applications@erik-pc:queue-download: /tmp/quarkus-test/server/output/quarkus-worker-pool.run.log ./results/data/run4/jvm-static/erik-pc/
+2021-08-23 18:18:48,979 start-applications@erik-pc:docker stop quarkus-worker-pool
+quarkus-worker-pool
+2021-08-23 18:18:54,288 start-applications@erik-pc:sleep 5s
+2021-08-23 18:18:54,289 start-applications@erik-pc:for-each: RUNTIME
+2021-08-23 18:18:56,430 run-1629731963838 closing state:
+ TEST_REPO_URL = https://github.com/ErikSimonsen/quarkus-iothread-workerpool
+ TEST_REPO_DIR = quarkus-iothread-workerpool
+ TEST_REPO_BRANCH = master
+ SERVER_FILE_PATH = /tmp/quarkus-test/server
+ CLIENT_FILE_PATH = /tmp/quarkus-test/client
+ TEST_ITERATIONS = 5
+ DOCKER_APP_CPUS = 4
+ DOCKER_APP_MEM = 1024m
+ RUNTIMES = [{"dockerImageName":"framework/quarkus-io-thread","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-io-thread","targetJar":"quarkus-io-thread-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,70000,80000,100000,110000,120000,130000,138000,140000,141000,142000],"testCmd":"./mvnw clean test"},{"dockerImageName":"framework/quarkus-worker-pool","buildCmd":"./mvnw clean package -DskipTests","dockerfile":"src/main/docker/Dockerfile.jvm","name":"quarkus-worker-pool","targetJar":"quarkus-worker-pool-runner.jar","runRates":[10000,20000,30000,40000,50000,60000,65000,68000,69000,70000,71000],"testCmd":"./mvnw clean test"}]
+ TEST_STATIC_ENDPOINT = http://erik-pc.local:8080/greeting/Bob
+ ENVIRONMENT_URL = http://erik-pc.local:8080/environment
+ JAVA_VERSION = 11.0.11-open
+ JAVA_APP_PID = 5823
+ erik-laptop : 
+   generate-load : 
+     id=110 : 
+ erik-pc : 
+   start-applications : 
+     id=120 : 
+   capture-platform-stats : 
+     id=122 : 
+

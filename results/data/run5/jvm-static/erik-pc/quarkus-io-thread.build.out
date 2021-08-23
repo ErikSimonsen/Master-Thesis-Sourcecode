@@ -1,0 +1,49 @@
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< personal.simonsen:quarkus-io-thread >-----------------
+[INFO] Building quarkus-io-thread 1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ quarkus-io-thread ---
+[INFO] Deleting /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:generate-code (default) @ quarkus-io-thread ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ quarkus-io-thread ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ quarkus-io-thread ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/classes
+[INFO] /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/main/java/personal/simonsen/GreetingResource.java: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/main/java/personal/simonsen/GreetingResource.java uses or overrides a deprecated API.
+[INFO] /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/main/java/personal/simonsen/GreetingResource.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:generate-code-tests (default) @ quarkus-io-thread ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ quarkus-io-thread ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ quarkus-io-thread ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ quarkus-io-thread ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ quarkus-io-thread ---
+[INFO] Building jar: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/quarkus-io-thread.jar
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:build (default) @ quarkus-io-thread ---
+[INFO] [org.jboss.threads] JBoss Threads version 3.2.0.Final
+[INFO] [org.hibernate.Version] HHH000412: Hibernate ORM core version 5.4.28.Final
+[INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building fat jar: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/quarkus-io-thread-runner.jar
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 3541ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.339 s
+[INFO] Finished at: 2021-08-21T17:08:53+02:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,4 @@
+STARTUP 18:06:33.228
+2021-08-21 18:06:33,230 INFO  [io.quarkus] (main) quarkus-worker-pool 1.0 native (powered by Quarkus 1.12.1.Final) started in 0.060s. Listening on: http://0.0.0.0:8080
+2021-08-21 18:06:33,230 INFO  [io.quarkus] (main) Profile prod activated. 
+2021-08-21 18:06:33,230 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, mutiny, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation]

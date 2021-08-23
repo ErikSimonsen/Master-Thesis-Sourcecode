@@ -1,0 +1,78 @@
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< personal.simonsen:quarkus-io-thread >-----------------
+[INFO] Building quarkus-io-thread 1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ quarkus-io-thread ---
+[INFO] Deleting /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:generate-code (default) @ quarkus-io-thread ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ quarkus-io-thread ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ quarkus-io-thread ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/classes
+[INFO] /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/main/java/personal/simonsen/GreetingResource.java: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/main/java/personal/simonsen/GreetingResource.java uses or overrides a deprecated API.
+[INFO] /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/main/java/personal/simonsen/GreetingResource.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:generate-code-tests (default) @ quarkus-io-thread ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ quarkus-io-thread ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ quarkus-io-thread ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ quarkus-io-thread ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ quarkus-io-thread ---
+[INFO] Building jar: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/quarkus-io-thread.jar
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.12.1.Final:build (default) @ quarkus-io-thread ---
+[INFO] [org.jboss.threads] JBoss Threads version 3.2.0.Final
+[INFO] [org.hibernate.Version] HHH000412: Hibernate ORM core version 5.4.28.Final
+[INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building native image source jar: /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/quarkus-io-thread-native-image-source-jar/quarkus-io-thread-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Building native image from /tmp/quarkus-test/server/quarkus-iothread-workerpool/quarkus-io-thread/target/quarkus-io-thread-native-image-source-jar/quarkus-io-thread-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildContainerRunner] Using docker to run the native image builder
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildContainerRunner] Checking image status quay.io/quarkus/ubi-quarkus-native-image:21.0.0-java11
+21.0.0-java11: Pulling from quarkus/ubi-quarkus-native-image
+Digest: sha256:becf08de869e707beaa5e57444b533ef93ebef15aad90c92ac660ddf7cea2b11
+Status: Image is up to date for quay.io/quarkus/ubi-quarkus-native-image:21.0.0-java11
+quay.io/quarkus/ubi-quarkus-native-image:21.0.0-java11
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Running Quarkus native-image plugin on GraalVM Version 21.0.0 (Java Version 11.0.10+8-jvmci-21.0-b06)
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=1 -J-Duser.language=de -J-Duser.country=DE -J-Dfile.encoding=UTF-8 --initialize-at-build-time= -H:InitialCollectionPolicy=com.oracle.svm.core.genscavenge.CollectionPolicy\$BySpaceAndTime -H:+JNI -H:+AllowFoldMethods -jar quarkus-io-thread-runner.jar -H:FallbackThreshold=0 -H:+ReportExceptionStackTraces -H:-AddAllCharsets -H:EnableURLProtocols=http,https --enable-all-security-services --no-server -H:-UseServiceLoaderFeature -H:+StackTrace quarkus-io-thread-runner
+[quarkus-io-thread-runner:28]    classlist:   2.285,89 ms,  0,94 GB
+[quarkus-io-thread-runner:28]        (cap):     694,92 ms,  1,19 GB
+[quarkus-io-thread-runner:28]        setup:   2.537,09 ms,  1,19 GB
+17:45:01,184 INFO  [org.hib.Version] HHH000412: Hibernate ORM core version 5.4.28.Final
+17:45:01,190 INFO  [org.hib.ann.com.Version] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17:45:01,211 INFO  [org.hib.dia.Dialect] HHH000400: Using dialect: io.quarkus.hibernate.orm.runtime.dialect.QuarkusPostgreSQL10Dialect
+17:45:10,739 INFO  [org.jbo.threads] JBoss Threads version 3.2.0.Final
+[quarkus-io-thread-runner:28]     (clinit):     848,19 ms,  5,15 GB
+[quarkus-io-thread-runner:28]   (typeflow):  15.284,21 ms,  5,15 GB
+[quarkus-io-thread-runner:28]    (objects):  18.078,39 ms,  5,15 GB
+[quarkus-io-thread-runner:28]   (features):     840,74 ms,  5,15 GB
+[quarkus-io-thread-runner:28]     analysis:  36.934,12 ms,  5,15 GB
+[quarkus-io-thread-runner:28]     universe:   2.011,33 ms,  5,15 GB
+[quarkus-io-thread-runner:28]      (parse):   2.933,17 ms,  4,93 GB
+[quarkus-io-thread-runner:28]     (inline):   4.592,60 ms,  6,20 GB
+[quarkus-io-thread-runner:28]    (compile):  19.903,35 ms,  6,20 GB
+[quarkus-io-thread-runner:28]      compile:  30.130,00 ms,  6,20 GB
+[quarkus-io-thread-runner:28]        image:   4.315,46 ms,  6,20 GB
+[quarkus-io-thread-runner:28]        write:     669,71 ms,  6,20 GB
+[quarkus-io-thread-runner:28]      [total]:  79.139,72 ms,  6,20 GB
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 86181ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:29 min
+[INFO] Finished at: 2021-08-21T19:46:16+02:00
+[INFO] ------------------------------------------------------------------------

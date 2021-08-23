@@ -1,0 +1,12 @@
+Running 1m test @ http://erik-pc.local:8080/fruits
+  4 threads and 100 connections
+  Thread calibration: mean lat.: 3.402ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 3.387ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 3.334ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 3.297ms, rate sampling interval: 10ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.40ms    1.09ms  12.50ms   72.23%
+    Req/Sec     2.64k   420.36     5.44k    72.37%
+  599410 requests in 1.00m, 97.18MB read
+Requests/sec:   9989.88
+Transfer/sec:      1.62MB
