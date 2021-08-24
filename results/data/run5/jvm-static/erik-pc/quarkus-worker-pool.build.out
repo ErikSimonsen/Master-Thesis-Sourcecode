@@ -47,10 +47,10 @@
 [WARNING] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Dependencies with duplicate files detected. The dependencies [com.github.java-json-tools:msg-simple::jar:1.2(compile), com.github.java-json-tools:json-patch::jar:1.13(compile), com.github.java-json-tools:jackson-coreutils::jar:2.0(compile), com.github.java-json-tools:btf::jar:1.3(compile)] contain duplicate files, e.g. META-INF/ASL-2.0.txt
 [WARNING] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Dependencies with duplicate files detected. The dependencies [com.sun.activation:jakarta.activation::jar:1.2.1(compile), jakarta.activation:jakarta.activation-api::jar:1.2.1(compile)] contain duplicate files, e.g. javax/activation/ActivationDataFlavor.class
 [WARNING] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Dependencies with duplicate files detected. The dependencies [com.fasterxml.jackson.module:jackson-module-jaxb-annotations::jar:2.12.1(compile), com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider::jar:2.12.1(compile), com.fasterxml.jackson.jaxrs:jackson-jaxrs-base::jar:2.12.1(compile)] contain duplicate files, e.g. META-INF/versions/11/module-info.class
-[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 3486ms
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 3476ms
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.033 s
-[INFO] Finished at: 2021-08-21T17:09:56+02:00
+[INFO] Total time:  6.978 s
+[INFO] Finished at: 2021-08-24T01:09:55+02:00
 [INFO] ------------------------------------------------------------------------
